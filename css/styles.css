@@ -1,0 +1,45 @@
+.page {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.logo {
+  max-width: 200px;
+  margin: 10px;
+  margin-left: 15px;
+}
+
+.contact-info {
+  padding-top: 6px;
+  font-size: 12px;
+  text-align: right;
+}
+
+
+.body {
+  margin-bottom: 30px;
+}
+
+.widget {
+  margin-top: 20px;
+  height: 150px;
+  border: 1px solid rgb(61, 61, 61);
+  border-radius: 12px;
+}
+
+@media only screen and (max-width: 768px){
+
+.page {
+  max-width: 100%;
+}
+
+.logo {
+
+}
+
+.contact-info {
+  text-align: left;
+}
+
+
+}
