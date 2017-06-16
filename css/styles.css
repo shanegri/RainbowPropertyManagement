@@ -4,14 +4,14 @@
 }
 
 .logo {
-  max-width: 200px;
+  max-width: 180px;
   margin: 10px;
   margin-left: 15px;
 }
 
 .contact-info {
   padding-top: 6px;
-  font-size: 12px;
+
   text-align: right;
 }
 
@@ -20,12 +20,27 @@
   margin-bottom: 30px;
 }
 
+.propertyPreview {
+  padding: 12px;
+  padding-top: 0px;
+  border: 1px solid rgb(61, 61, 61);
+  border-radius: 12px;
+  margin-bottom: 10px;
+
+}
+
+.propertyIcon {
+    width: 100%;
+}
+
 .widget {
   margin-top: 20px;
   height: 150px;
   border: 1px solid rgb(61, 61, 61);
   border-radius: 12px;
 }
+
+
 
 @media only screen and (max-width: 768px){
 

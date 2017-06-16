@@ -18,13 +18,13 @@
   </head>
   <body>
 
-<div class="page" id="1">
+<div class="page" id="2">
 
     <!-- Header -->
     <?php include_once("php/header.php") ?>
 
     <!-- Content -->
-    <?php include_once("php/contentHome.php") ?>
+    <?php include_once("php/contentProperties.php") ?>
 
     <!--Footer-->
     <?php include_once("php/footer.php") ?>
