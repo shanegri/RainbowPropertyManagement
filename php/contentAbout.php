@@ -3,10 +3,8 @@
 
     <!--Main Content-->
     <div class="col-sm-8 body">
-      <h1 class="text-center"> Available Properties  </h1>
-      <?php include("properties/preview.php") ?>
-      <?php include("properties/preview.php") ?>
-      <?php include("properties/preview.php") ?>
+      <h1 class="text-center"> About </h1>
+
     </div>
 
     <!--Widgets-->

@@ -1,3 +1,4 @@
+
 <div class="propertyPreview">
   <div class="row">
     <div class="col-xs-8" style="padding: 10px;">

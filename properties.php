@@ -18,18 +18,19 @@
   </head>
   <body>
 
-<div class="page" id="2">
+    <div class="head" id="2">
+        <!-- Header -->
+        <?php include_once("php/header.php") ?>
+    </div>
 
-    <!-- Header -->
-    <?php include_once("php/header.php") ?>
+  <div class="page">
+      <!-- Content -->
+      <?php include_once("php/contentProperties.php") ?>
+  </div>
 
-    <!-- Content -->
-    <?php include_once("php/contentProperties.php") ?>
 
-    <!--Footer-->
-    <?php include_once("php/footer.php") ?>
-
-</div>
+      <!--Footer-->
+      <?php include_once("php/footer.php") ?>
 
 
 </body>
