@@ -4,12 +4,10 @@
 
     <!--Main Content-->
 
-    <h1 class="text-center" style="font-size: 50px;">Welcome</h1>
-
     <div class="col-sm-8 body" >
       <h2 class="text-center"> About</h1>
       <div style="  border: 1px solid rgb(221, 220, 216);
-        border-radius: 12px; padding: 15px;">
+        border-radius: 12px; padding: 15px; background: white;">
 
 
       <h3>Our Services</h2>

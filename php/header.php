@@ -9,19 +9,21 @@
   </head>
   <body>
 
-    <div class="headContent">
-<div class="container-fluid head" >
-  <div class="row">
+<div class="headContent">
+<div class="container-fluid" >
+  <div class="row" >
     <!--Logo-->
     <div class="col-xs-7 col-sm-9">
-      <a href="index.php" ><img src="images/LOGO_A.png" class="img-fluid logo" alt="Logo"></a>
+      <a href="index.php" ><img src="images/LOGO_C.png" class="img-fluid logo" alt="Logo"></a>
     </div>
     <!--Contact Info-->
-    <div class="col-xs-5 col-sm-3 contact-info">
-      <p>123 Temp Ave.</p>
-      <p>City city</p>
-      <p>1234-123-1234</p>
-      <p>temp@temp.temp</p>
+    <div class="col-xs-5 col-sm-3">
+      <div class="container-fluid  contact-info">
+        <p>123 Temp Ave.</p>
+        <p>City city</p>
+        <p>1234-123-1234</p>
+        <p>temp@temp.temp</p>
+      </div>
     </div>
   </div>
 

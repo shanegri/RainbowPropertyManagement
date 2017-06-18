@@ -1,5 +1,9 @@
 .head {
-  background: rgb(204, 239, 252);
+  /*background: rgb(224, 255, 255);*/
+  background: white;
+  /*background-image: url("../images/bg_4.png");
+  background-size: 100% auto;
+  background-position: 0px 0px;*/
 }
 
 .headContent {
@@ -7,12 +11,12 @@
   margin: 0 auto;
 }
 
-
-
 .page {
+  background: rgb(241, 241, 241);
   /*max-width: 70%;*/
   max-width: 1100px;
   margin: 0 auto;
+  border-radius: 6px;
 }
 
 .logo {
@@ -22,8 +26,13 @@
 }
 
 .contact-info {
-  padding-top: 8px;
-  text-align: right;
+  line-height: 17px;
+  font-size: 12px;
+  margin-top: 15px;
+  text-align: center;
+  background: white;
+  padding: 7px;
+  border-radius: 6px;
 }
 
 
@@ -32,6 +41,7 @@
 }
 
 .propertyPreview {
+  background: white;
   padding: 12px;
   padding-top: 0px;
   border: 1px solid rgb(221, 220, 216);
@@ -41,12 +51,12 @@
 
 
 .propertyIcon {
-    width: 100%;
+    max-width: 100%;
 }
 
 .widget {
   margin-top: 20px;
-
+  background: white;
   border: 1px solid rgb(221, 220, 216);
   border-radius: 12px;
 }
@@ -54,12 +64,22 @@
 
 /*Custom NavBar Colors*/
 
+.navbar-default {
+  background-color: rgb(29, 32, 32);
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: white;
+}
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
     color: rgb(40, 40, 40);
-    background-color:  rgb(204, 239, 252);
+    background-color:  rgb(192, 246, 243);
 }
+
 
 .navbar.navbar-default {
     border: 0;
