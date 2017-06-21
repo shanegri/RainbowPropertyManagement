@@ -21,7 +21,7 @@
     <h2 class="text-center"> Links</h1>
     <div class="col-sm-4">
       <?php include("widgets/submitWorkOrder.php") ?>
-      <?php include("widgets/newProperties.php") ?>
+      <?php include("widgets/contactUs.php") ?>
       <?php include("widgets/newProperties.php") ?>
     </div>
   </div>

@@ -11,7 +11,9 @@
       <p>Address: 123 temp st.</p>
       <p>Type: House for Rent</p>
       <p>Cost: .$005</p>
-      <button type="button" name="button">More Information</button>
+      <a href="../../propertiesExpanded.php"><button type="button" name="button">More Information</button></a>
+      <button type="button" name="button">Apply</button>
+
       <!-- <img src="images/TEMPICON.jpg" class="img-fluid propertyIcon" alt="Logo">
       <img src="images/TEMPICON.jpg" class="img-fluid propertyIcon"  style="margin-top: 10px;"alt="Logo"> -->
     </div>

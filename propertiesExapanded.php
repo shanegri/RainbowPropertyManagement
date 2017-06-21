@@ -17,23 +17,24 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+
   </head>
   <body>
 
+    <div class="head" id="2">
+        <!-- Header -->
+        <?php include_once("php/header.php") ?>
+    </div>
 
-  <div class="head" id="1">
-      <!-- Header -->
-      <?php include_once("php/header.php") ?>
+  <div class="page">
+      <!-- Content -->
+      <?php include_once("php/contentPropertiesExpanded.php") ?>
   </div>
 
-<div class="page">
-    <!-- Content -->
-    <?php include_once("php/contentHome.php") ?>
-</div>
 
+      <!--Footer-->
+      <?php include_once("php/footer.php") ?>
 
-    <!--Footer-->
-    <?php include_once("php/footer.php") ?>
 
 </body>
 </html>

@@ -3,9 +3,12 @@
     <!--Main Content-->
     <div class="col-sm-8 body">
       <h2 class="text-center"> Available Properties  </h1>
-      <?php include("properties/preview.php") ?>
-      <?php include("properties/preview.php") ?>
-      <?php include("properties/preview.php") ?>
+      <?php
+        for($i = 0 ; $i < 25 ; $i++){
+            include("properties/preview.php");
+        }
+       ?>
+
     </div>
 
     <!--Widgets-->

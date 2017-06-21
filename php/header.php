@@ -14,7 +14,7 @@
   <div class="row" >
     <!--Logo-->
     <div class="col-xs-7 col-sm-9">
-      <a href="index.php" ><img src="images/LOGO_C.png" class="img-fluid logo" alt="Logo"></a>
+      <a href="index.php" ><img src="images/LOGO_D.png" class="img-fluid logo" alt="Logo"></a>
     </div>
     <!--Contact Info-->
     <div class="col-xs-5 col-sm-3">
