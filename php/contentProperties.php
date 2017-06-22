@@ -6,16 +6,29 @@
       <?php
 
         include("./classes/Database.php");
+        include("./classes/Property.php");
+        session_start();
         $db = Database::getInstance();
-
-        $test = $db->fetch("SELECT * FROM DEL_PropertyListing");
-        // echo print_r($test->fetchAll());
+        $ar = $db->fetch("SELECT * FROM DEL_PropertyListing");
 
 
-        include("properties/preview.php");
-        for($i = 0 ; $i < 25 ; $i++){
-            printList();
+        if(!isset($_SESSION['propertylist'])){
+          $properties = array();
+          for($i = 0; $i < sizeof($ar) ; $i++){
+            array_push($properties, new Property($ar[$i]['id'], $ar[$i]['address'], $ar[$i]['description'], $ar[$i]['cost']));
+          }
+          $_SESSION['propertylist'] = $properties;
         }
+        $properties = $_SESSION['propertylist'];
+        if(!isset($_GET['property'])){
+          for($i = 0; $i < sizeof($_SESSION['propertylist']) ; $i++){
+             $properties[$i]->echoPreview();
+          }
+        } else {
+          $properties[$_GET['property']]->echoExpanded();
+        }
+
+
        ?>
 
     </div>
