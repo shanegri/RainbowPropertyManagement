@@ -3,7 +3,7 @@
     <!--Main Content-->
     <div class="col-sm-8 body">
           <h1 class="text-center">555 Temp st.</h1>
-      <div class="propertyPreview">
+      <div class="propertyPreview infoBox">
 
         <div class="row">
           <div class="col-xs-8" style="padding: 10px;">
@@ -29,7 +29,7 @@
             <p>Address: 123 temp st.</p>
             <p>Type: House for Rent</p>
             <p>Cost: .$005</p>
-            <button type="button" name="button">More Information</button>
+
             <button type="button" name="button">Apply</button>
           </div>
 

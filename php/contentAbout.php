@@ -1,4 +1,4 @@
-<div class="container-fluid body">
+<div class="container-fluid body ">
   <div class="row">
 
     <!--Main Content-->
@@ -9,7 +9,7 @@
 
     <!--Widgets-->
     <div class="col-sm-4">
-      <h2 class="text-center"> Other Links  </h1>
+      <h2 class="text-center"> More  </h1>
       <?php include("widgets/submitWorkOrder.php") ?>
 
       <?php include("widgets/newProperties.php") ?>

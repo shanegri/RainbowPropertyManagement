@@ -43,17 +43,23 @@ body {
 }
 
 
+
+
 .body {
   margin-bottom: 30px;
 }
 
 .propertyPreview {
-  background: white;
   padding: 12px;
   padding-top: 0px;
-  border: 1px solid rgb(221, 220, 216);
-  border-radius: 12px;
   margin-bottom: 10px;
+}
+
+.infoBox{
+    box-shadow: -3px 3px 20px #bbbaba;
+    border: 1px solid rgb(221, 220, 216);
+    border-radius: 12px;
+    background: white;
 }
 
 

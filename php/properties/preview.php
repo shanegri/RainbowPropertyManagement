@@ -1,5 +1,5 @@
 
-<div class="propertyPreview">
+<div class="propertyPreview infoBox">
   <div class="row">
     <div class="col-sm-6" style="padding: 10px;">
       <img src="images/TEMPICON.jpg" class="img-responsive propertyIcon" alt="Logo">

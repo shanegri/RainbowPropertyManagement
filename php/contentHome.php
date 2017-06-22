@@ -6,8 +6,7 @@
 
     <div class="col-sm-8 body" >
       <h2 class="text-center"> About</h1>
-      <div style="  border: 1px solid rgb(221, 220, 216);
-        border-radius: 12px; padding: 15px; background: white;">
+      <div class="infoBox" style="padding: 5px;">
 
 
       <h3>Our Services</h2>
@@ -18,7 +17,7 @@
     </div>
 
     <!--Widgets-->
-    <h2 class="text-center"> Links</h1>
+    <h2 class="text-center"> More</h1>
     <div class="col-sm-4">
       <?php include("widgets/submitWorkOrder.php") ?>
       <?php include("widgets/contactUs.php") ?>
