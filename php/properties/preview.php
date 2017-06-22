@@ -1,6 +1,6 @@
 <?php
-function printList($id, $address, $description, $cost){
-  $id--;
+function printList($arIndex, $address, $description, $cost){
+
   echo '
 <div class="propertyPreview infoBox">
   <div class="row">
@@ -13,7 +13,7 @@ function printList($id, $address, $description, $cost){
       <p>Type: House for Rent</p>
         <p>Address: '.$address.'</p>
       <p>Cost: '.$cost.'</p>
-      <a href="../../properties.php?property='.$id.'"><button type="button" name="button">More Information</button></a>
+      <a href="../../properties.php?property='.$arIndex.'"><button type="button" name="button">More Information</button></a>
       <button type="button" name="button">Apply</button>
     </div>
   </div>

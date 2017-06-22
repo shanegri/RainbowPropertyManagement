@@ -6,7 +6,6 @@ echo '
       <div class="col-xs-8" style="padding: 10px;">
         <img src="images/TEMPICON.jpg" class="img-responsive propertyIcon" alt="Logo">
       </div>
-
       <div class="col-xs-4" style="padding: 10px; padding-top: 15px;">
     <img src="images/TEMPICON.jpg" class="img-fluid propertyIcon" alt="Logo">
         <img src="images/TEMPICON.jpg" class="img-fluid propertyIcon"  style="margin-top: 10px;"alt="Logo">
@@ -22,7 +21,6 @@ echo '
         <button type="button" name="button">Apply</button>
       </div>
   </div>
-
   ';
 }
 

@@ -8,16 +8,18 @@ class Property {
   var $address;
   var $description;
   var $cost;
+  var $arIndex;
 
-  public function __construct($id, $address, $description, $cost){
+  public function __construct($arIndex, $id, $address, $description, $cost){
     $this->id = $id;
     $this->address = $address;
     $this->description = $description;
     $this->cost = $cost;
+    $this->arIndex = $arIndex;
   }
 
   public function echoPreview(){
-    printList($this->id, $this->address, $this->description, $this->cost);
+    printList($this->arIndex, $this->address, $this->description, $this->cost);
   }
 
   public function echoExpanded(){

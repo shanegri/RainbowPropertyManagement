@@ -76,7 +76,6 @@ body {
 
 
 /*Custom NavBar Colors*/
-
 .navbar-default {
   background-color: rgb(29, 32, 32);
 }
@@ -107,6 +106,12 @@ body {
     box-shadow: none;
 }
 
+/*Custom button style*/
+.travButton {
+  border: none;
+  background: none;
+  color: blue;
+}
 
 @media only screen and (max-width: 768px){
 
