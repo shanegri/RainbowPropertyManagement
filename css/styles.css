@@ -21,7 +21,7 @@ body {
   background: rgb(241, 241, 241);
   /*max-width: 70%;*/
   max-width: 1100px;
-  min-height: 900px;
+  min-height: 600px;
   margin: 0 auto;
   border-radius: 6px;
 }
@@ -56,15 +56,15 @@ body {
 }
 
 .infoBox{
-    box-shadow: -3px 3px 20px #bbbaba;
-    border: 1px solid rgb(221, 220, 216);
-    border-radius: 12px;
-    background: white;
+  box-shadow: -3px 3px 20px #bbbaba;
+  border: 1px solid rgb(221, 220, 216);
+  border-radius: 12px;
+  background: white;
 }
 
 
 .propertyIcon {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .widget {

@@ -4,8 +4,17 @@
     <div class="col-sm-8 body">
       <h2 class="text-center"> Available Properties  </h1>
       <?php
+
+        include("./classes/Database.php");
+        $db = Database::getInstance();
+
+        $test = $db->fetch("SELECT * FROM DEL_PropertyListing");
+        // echo print_r($test->fetchAll());
+
+
+        include("properties/preview.php");
         for($i = 0 ; $i < 25 ; $i++){
-            include("properties/preview.php");
+            printList();
         }
        ?>
 
