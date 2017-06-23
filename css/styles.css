@@ -108,9 +108,14 @@ body {
 
 /*Custom button style*/
 .travButton {
-  border: none;
   background: none;
-  color: blue;
+  border: none;
+
+}
+
+.travButton img{
+  height: 30px;
+
 }
 
 @media only screen and (max-width: 768px){
