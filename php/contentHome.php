@@ -6,7 +6,7 @@
 
     <div class="col-sm-8 body" >
       <h2 class="text-center"> About</h1>
-      <div class="infoBox" style="padding: 5px;">
+      <div class="card" style="padding: 5px;">
 
 
       <h3>Our Services</h2>

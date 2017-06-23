@@ -3,27 +3,19 @@ body {
   font-family: 'Droid Sans', sans-serif;
 }
 
-
+/*header*/
 .head {
   /*background: rgb(224, 255, 255);*/
   background: white;
   /*background-image: url("../images/bg_4.png");
   background-size: 100% auto;
   background-position: 0px 0px;*/
+  margin-bottom: -18px;
 }
 
 .headContent {
   max-width: 1100px;
   margin: 0 auto;
-}
-
-.page {
-  background: rgb(241, 241, 241);
-  /*max-width: 70%;*/
-  max-width: 1100px;
-  min-height: 1080px;
-  margin: 0 auto;
-  border-radius: 6px;
 }
 
 .logo {
@@ -41,37 +33,91 @@ body {
   padding: 7px;
   border-radius: 6px;
 }
-
-
+/*header*/
 
 
 .body {
   margin-bottom: 30px;
 }
 
-.propertyPreview {
-  padding: 12px;
-  padding-top: 0px;
-  margin-bottom: 10px;
+.page {
+  background: rgb(241, 241, 241);
+  /*max-width: 70%;*/
+  max-width: 1070px;
+  min-height: 1080px;
+  margin: 0 auto;
 }
 
-.infoBox{
-  box-shadow: -3px 3px 20px #bbbaba;
+.card{
+  box-shadow: 2px 2px 6px #bbbaba;
   border: 1px solid rgb(221, 220, 216);
   border-radius: 12px;
   background: white;
 }
 
 
-.propertyIcon {
-  max-width: 100%;
+/*listings*/
+.propertyPreview {
+  font-size: 13px;
+  height: 300px;
+  margin-bottom: 10px;
 }
 
+.propertyPreview button {
+  margin-top: 7px;
+  width: 48%;
+  height: 65px;
+  border: none;
+  background: rgb(207, 241, 242)
+}
+
+.propertyPreview button:hover {
+  background-color:  rgb(192, 246, 243)
+}
+
+.propPrevCrop {
+  height: 270px;
+  width: 50%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/*Custom button style*/
+.travButton {
+  background: none;
+  border: none;
+}
+
+.travButton:hover {
+  background: rgb(192, 246, 243);
+}
+
+
+.travButton img {
+  height: 30px;
+}
+
+/*listings*/
+
+
+
+/*other*/
 .widget {
   margin-top: 20px;
   background: white;
   border: 1px solid rgb(221, 220, 216);
   border-radius: 12px;
+}
+
+.loginBox {
+  width: 60%;
+  padding: 20px;
+}
+
+.loginBox button {
+  height: 50px;
+  width: 100px;
 }
 
 
@@ -106,17 +152,7 @@ body {
     box-shadow: none;
 }
 
-/*Custom button style*/
-.travButton {
-  background: none;
-  border: none;
 
-}
-
-.travButton img{
-  height: 30px;
-
-}
 
 @media only screen and (max-width: 768px){
 
@@ -128,6 +164,22 @@ body {
 
 }
 
+.propertyPreview {
+  padding-bottom: 7px;
+  font-size: 10px;
+  height: auto;
+}
+
+.propPrevCrop {
+  height: 270px;
+  width: 100%;
+
+}
+
+
+.loginBox {
+  width: 98%;
+}
 
 
 

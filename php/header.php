@@ -43,6 +43,12 @@
         <li><a href="properties.php?page=0">Properties</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php">Contact</a></li>
+        <?php
+        if(isset($_SESSION['id'])){
+          echo '<li><a href="php/forms/logout.php">Logs</a></li>';
+          echo '<li><a href="php/forms/logout.php">Log Out</a></li>';
+        }
+         ?>
       </ul>
 
       </div>

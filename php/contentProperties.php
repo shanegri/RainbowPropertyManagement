@@ -2,13 +2,9 @@
   <div class="row">
     <!--Main Content-->
     <div class="col-sm-8 body">
-      <h2 class="text-center"> Available Properties  </h1>
+      <!-- <h2 class="text-center"> Available Properties  </h1> -->
         <hr ></hr>
       <?php
-        include("./classes/Database.php");
-        include("./classes/Property.php");
-        session_start();
-
         if(!isset($_SESSION['propPage'])){
           $_SESSION['propPage'] = 0;
         }
@@ -54,7 +50,7 @@
         //Prints page
         if(!isset($_GET['property'])){
           for($i = $_GET['page'] * 10; $i < sizeof($_SESSION['propertylist']) && $i < ($_GET['page'] * 10) + 10; $i++){
-             $properties[$i]->echoPreview();
+            $properties[$i]->echoPreview();
           }
         } else {
           $properties[$_GET['property']]->echoExpanded();

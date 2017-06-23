@@ -20,6 +20,8 @@ class Database {
   public function fetch($query){
     $results = $this->db->query($query);
     return $results->fetchAll();
+
+
   }
 
   public static function getInstance(){

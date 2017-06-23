@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-        <?php include_once("php/headIncludes.html") ?>
+        <?php include_once("php/headIncludes.php") ?>
   <body>
     <div class="head" id="2">
         <!-- Header -->
         <?php include_once("php/header.php") ?>
     </div>
+    <!-- <h1 class="text-center">Available Properties</h1> -->
     <div class="page">
         <!-- Content -->
         <?php include_once("php/contentProperties.php") ?>

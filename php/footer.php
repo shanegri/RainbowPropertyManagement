@@ -7,5 +7,13 @@
     <p>123 Temp Ave.</p>
     <p>1234-123-1234</p>
     <p>temp@temp.temp</p>
+    <?php
+      if(isset($_SESSION['id'])){
+        echo '<a href="php/forms/logout.php"><b>Logout</b></a>';
+      } else {
+        echo '<a href="form.php?login=true"><b>Login</b></a>';
+      }
+     ?>
+
   </div>
 </div>

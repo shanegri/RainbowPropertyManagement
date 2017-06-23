@@ -1,15 +1,13 @@
 <?php
 function printExpandedView($address, $description, $cost){
 echo '
-  <div class="propertyPreview infoBox">
+  <div class="propertyPreview card">
     <div class="row">
       <div class="col-xs-8" style="padding: 10px;">
         <img src="images/TEMPICON.jpg" class="img-responsive propertyIcon" alt="Logo">
       </div>
       <div class="col-xs-4" style="padding: 10px; padding-top: 15px;">
-    <img src="images/TEMPICON.jpg" class="img-fluid propertyIcon" alt="Logo">
-        <img src="images/TEMPICON.jpg" class="img-fluid propertyIcon"  style="margin-top: 10px;"alt="Logo">
-      </div>
+    </div>
     </div>
       <div class="row" style="padding: 10px;">
         <h3 style="margin: 0px;"><small>Description</small></h3>
