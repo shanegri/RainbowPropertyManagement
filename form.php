@@ -11,6 +11,8 @@
         <?php
         if(isset($_GET['login'])){
           include_once('php/forms/login.php');
+        } else if (isset($_GET['addProperty'])){
+          include_once("php/forms/property.php");
         } else {
           include_once("php/contentHome.php");
         }

@@ -3,7 +3,6 @@
   <div class="row">
 
     <!--Main Content-->
-
     <div class="col-sm-8 body" >
       <h2 class="text-center"> About</h1>
       <div class="card" style="padding: 5px;">

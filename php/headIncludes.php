@@ -2,6 +2,12 @@
 include_once('./classes/Database.php');
 include_once('./classes/Property.php');
 session_start();
+
+
+//REMOVE BEFORE COMMITING
+// $_SESSION['id'] = 1;
+
+
  ?>
 <head>
   <meta charset="utf-8">

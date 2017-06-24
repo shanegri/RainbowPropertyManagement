@@ -83,6 +83,11 @@ body {
   background-repeat: no-repeat;
 }
 
+.facts h3 {
+  font-size: 20px;
+  margin: auto;
+}
+
 /*Custom button style*/
 .travButton {
   background: none;
@@ -120,6 +125,15 @@ body {
   width: 100px;
 }
 
+.propertyForm {
+  padding: 20px;
+  width: 80%;
+}
+
+hr {
+  border: 1px solid rgb(182, 182, 182);
+}
+
 
 /*Custom NavBar Colors*/
 .navbar-default {
@@ -153,6 +167,13 @@ body {
 }
 
 
+/*Custom carousel options*/
+.carousel {
+  margin: 0 auto;
+  overflow: hidden;
+  max-height: 400px;
+  width: 80%;
+}
 
 @media only screen and (max-width: 768px){
 

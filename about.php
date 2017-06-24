@@ -8,7 +8,7 @@
     </div>
     <div class="page">
         <!-- Content -->
-        <?php include_once("php/contentHome.php") ?>
+        <?php include_once("php/properties/expanded.php") ?>
     </div>
       <!--Footer-->
       <?php include_once("php/footer.php") ?>

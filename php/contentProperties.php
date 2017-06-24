@@ -3,18 +3,39 @@
     <!--Main Content-->
     <div class="col-sm-8 body">
       <!-- <h2 class="text-center"> Available Properties  </h1> -->
-        <hr ></hr>
+      <h3><small>Available properties</small></h3>
+        <hr></hr>
       <?php
         if(!isset($_SESSION['propPage'])){
           $_SESSION['propPage'] = 0;
         }
+
+        //Admin features
+        if(isset($_SESSION['id'])){
+          include('properties/adminBar.php');
+        }
+
+        unset($_SESSION['propertyList']);
         //Gets properties from db
         if(!isset($_SESSION['propertylist'])){
           $db = Database::getInstance();
-          $ar = $db->fetch("SELECT * FROM DEL_PropertyListing");
-          $properties = array();
+          $ar = $db->fetch("SELECT * FROM Properties");
+        $properties = array();
           for($i = 0; $i < sizeof($ar) ; $i++){
-            array_push($properties, new Property($i, $ar[$i]['id'], $ar[$i]['address'], $ar[$i]['description'], $ar[$i]['cost']));
+            array_push($properties, new Property(
+            $i,
+            $ar[$i]['id'],
+            $ar[$i]['address'],
+            $ar[$i]['description'],
+            $ar[$i]['cost'],
+            $ar[$i]['numBedroom'],
+            $ar[$i]['numBathroom'],
+            $ar[$i]['yearBuilt'],
+            $ar[$i]['sqrFeet'],
+            $ar[$i]['unitNum'],
+            $ar[$i]['type'],
+            $ar[$i]['singleormult']
+        ));
           }
           $_SESSION['propertylist'] = $properties;
         }
@@ -28,7 +49,7 @@
           }
         }
 
-        //Handell page traversal (10 properties per page)
+        //Handel page traversal (10 properties per page)
         if(isset($_POST['traverse'])){
           if($_POST['traverse'] == 'prev'){
             if($_SESSION['propPage'] != 0){
@@ -68,10 +89,11 @@
 
     <!--Widgets-->
     <div class="col-sm-4">
-      <h2 class="text-center">More</h1>
+      <h3 class="text-center"><small>Links</small></h3>
+        <hr>
       <?php include("widgets/submitWorkOrder.php") ?>
       <?php include("widgets/contactUs.php") ?>
-      <?php include("widgets/newProperties.php") ?>
+      <?php //include("widgets/newProperties.php") ?>
     </div>
   </div>
 </div>

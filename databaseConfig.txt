@@ -1,0 +1,15 @@
+Database Name: rpm
+
+table: Properties {
+  id
+  description 700 varchar
+  numBedroom
+  numBathroom
+  cost
+  yearBuilt
+  sqrFeet
+  unitNum
+  address 100 varchar
+  type 20 varchar
+  typesingleormult 20 varchar
+}
