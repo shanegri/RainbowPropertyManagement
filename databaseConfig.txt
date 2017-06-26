@@ -14,3 +14,11 @@ table: Properties {
   singleormult 20 varchar
   util 20 varchar
 }
+
+table: users {
+  id
+  username 255 varchar
+  password 255 varchar
+  email 255 varchar
+  
+}

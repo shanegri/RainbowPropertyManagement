@@ -19,7 +19,6 @@ class Property {
   var $singleormult;
   var $sqrFeet;
   var $util = 1;
-
   var $images = array();
 
   public function __construct($arIndex, $id, $address, $description, $cost, $numBed, $numBath, $yearBuilt, $sqrFeet, $unitNum, $type, $singleormult){
@@ -36,6 +35,7 @@ class Property {
     $this->unitNum = $unitNum;
     $this->type = $type;
     $this->singleormult = $singleormult;
+    $this->updateFolders();
     $this->populateImages();
   }
 
@@ -60,6 +60,12 @@ class Property {
   private function deleteProperty(){
     $db = Database::getInstance();
     $query = "DELETE FROM properties WHERE id='$this->id'";
+    $files= scandir("./images/Properties/".$this->id);
+    $files = array_diff($files, [".", ".."]);
+    foreach($files as $file){
+      unlink("././images/properties/".$this->id."/".$file);
+    }
+    rmdir("./images/Properties/".$this->id);
     if($db->query($query)){
       return true;
     } else {
@@ -67,15 +73,28 @@ class Property {
     }
   }
 
+
   public function populateImages(){
-    $files= scandir("./images/Properties/0");
+    $this->updateFolders();
+    $files= scandir("./images/Properties/".$this->id);
     $files = array_diff($files, [".", ".."]);
     $files = array_values($files);
     for($i = 0 ; $i < sizeOf($files) ; $i++){
-      $files[$i] = "././images/properties/0/".$files[$i];
+      $files[$i] = "././images/properties/".$this->id."/".$files[$i];
     }
     $this->images = $files;
   }
+
+
+   public function updateFolders(){
+    if (file_exists("././images/properties/".$this->id)){
+    } else {
+      mkdir("././images/properties/".$this->id);
+      $this->updateFolders();
+    }
+  }
+
+ 
 
 }
 

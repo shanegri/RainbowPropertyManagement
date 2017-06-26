@@ -188,7 +188,7 @@ button:hover {
 .carousel {
   margin: 0 auto;
   overflow: hidden;
-  max-height: 400px;
+  max-height: 300px;
   width: 80%;
 }
 
