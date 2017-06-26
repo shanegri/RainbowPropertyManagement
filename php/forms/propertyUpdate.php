@@ -2,6 +2,7 @@
 <div class="container-fluid card propertyForm">
   <!-- <h3 class="text-center" style="color: red">Error</h3> -->
   <?php
+  $prop = $_SESSION['propertylist'][$_GET['update']];
   if(isset($_POST['submit'])){
     $description = $_POST['description'];
     $numberBedroom = $_POST['numberBedroom'];
@@ -16,21 +17,14 @@
     $singleormult = $_POST['singleormult'];
 
     $db = Database::getInstance();
-    $query = "INSERT INTO properties (description, numBedroom, numBathroom, cost, yearBuilt, sqrFeet, unitNum, address, type, singleormult, util) VALUES ('$description', '$numberBedroom', '$numberBathroom', '$costPerMonth', '$yearBuilt', '$sqrFeet', '$unitNum', '$address', '$type', '$singleormult', '$util')";
-    $results = $db->query($query);
-    if($results){
-      echo 'done';
-    } else {
-      echo 'fail';
-    }
+    $query = "UPDATE properties SET description='$description', numBedroom='$numberBedroom', numBathroom='$numberBathroom',  cost='$costPerMonth', yearBuilt='$yearBuilt', sqrFeet='$sqrFeet', unitNum='$unitNum', address='$address', type='$type', singleormult='$singleormult',  util='$util' WHERE id='$prop->id'";
+
+    $db->query($query);
+
     if(isset($_SESSION['propertylist'])){
       unset($_SESSION['propertylist']);
     }
-
-    header('location:././properties.php?property=0');
-  }
-
-  if(isset($_GET['id'])){
+  header('location:././properties.php?property='.$_GET['update']);
 
   }
 
@@ -38,50 +32,49 @@
    ?>
     <form method="post">
       <h3><small>Description</small></h3>
-      <textarea name="description" rows="8" cols="120" style="max-width: 100%"></textarea>
-
+      <textarea name="description" rows="8" cols="120" style="max-width: 100%"><?php echo $prop->description ?></textarea>
       <div class="row">
         <div class="col-sm-6">
 
           <h3><small># Of Bedrooms</small></h3>
-          <input type="text" name="numberBedroom">
+          <input type="text" name="numberBedroom" value="<?php echo $prop->numBed ?>">
 
           <h3><small># Of Bathrooms</small></h3>
-          <input type="text" name="numberBathroom">
+          <input type="text" name="numberBathroom" value="<?php echo $prop->numBath ?>">
 
           <h3><small>Cost Per Month</small></h3>
-          <p style="display: inline">$</p><input type="text" name="costPerMonth">
+          <p style="display: inline">$</p><input type="text" name="costPerMonth" value="<?php echo $prop->cost ?>">
 
           <h3><small>Utils</small></h3>
-          <input type="text" name="util">
+          <input type="text" name="util" value="<?php echo $prop->util ?>">
 
           <h3><small><i>For Apartments Only</i></small></h3>
 
           <h3><small>Unit Number</small></h3>
-          <input type="text" name="unitNum">
+          <input type="text" name="unitNum" value="<?php echo $prop->unitNum ?>">
 
         </div>
         <div class="col-sm-6">
 
           <h3><small>Year Built</small></h3>
-          <input type="text" name="yearBuilt">
+          <input type="text" name="yearBuilt" value="<?php echo $prop->yearBuilt ?>">
 
           <h3><small>Sqr. Feet</small></h3>
-          <input type="text" name="sqrFeet">
+          <input type="text" name="sqrFeet" value="<?php echo $prop->sqrFeet ?>">
 
           <h3><small>Address</small></h3>
-          <input type="text" name="address">
+          <input type="text" name="address" value="<?php echo $prop->address ?>">
 
           <h3><small>Type:</small></h3>
           <select name="type">
-            <option value="House">House</option>
-            <option value="Apartment">Apartment</option>
+            <?php if($prop->type === "House") { echo'<option selected value="House">House</option>';} else { echo'<option value="House">House</option>';}  ?>
+            <?php if($prop->type === "Apartment") { echo'<option selected value="Apartment">Apartment</option>';} else { echo'<option value="Apartment">Apartment</option>';}  ?>
           </select>
 
           <h3><small>Single Family or Multi</small></h3>
           <select name="singleormult">
-            <option value="Single Family">Single</option>
-            <option value="Multiple Family">Multiple</option>
+            <option value="Single">Single</option>
+            <option value="Multiple">Multiple</option>
           </select>
         </div>
       </div>

@@ -11,5 +11,6 @@ table: Properties {
   unitNum
   address 100 varchar
   type 20 varchar
-  typesingleormult 20 varchar
+  singleormult 20 varchar
+  util 20 varchar
 }

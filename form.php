@@ -9,18 +9,32 @@
     <div class="page">
         <!-- Content -->
         <?php
-        if(isset($_GET['login'])){
+        $l = isset($_SESSION['id']);
+        $m = false;
+        if(isset($_GET['login']) && !$m){
           include_once('php/forms/login.php');
-        } else if (isset($_GET['addProperty'])){
-          include_once("php/forms/property.php");
-        } else {
-          include_once("php/contentHome.php");
+          $m = true;
         }
+
+        if(isset($_GET['addProperty']) && !isset($_GET['update']) && !isset($_GET['updatepic']) && !$m && $l){
+          include_once('php/forms/property.php');
+          $m = true;
+        }
+
+        if(isset($_GET['addProperty']) && isset($_GET['update']) && !isset($_GET['updatepic']) && !$m && $l){
+          include_once('php/forms/propertyUpdate.php');
+          $m = true;
+        }
+
+        if(isset($_GET['addProperty']) && !isset($_GET['update']) && isset($_GET['updatepic']) && !$m && $l){
+          include_once('php/forms/propertyPic.php');
+          $m = true;
+        }
+
 
         ?>
     </div>
       <!--Footer-->
       <?php include_once("php/footer.php") ?>
-
   </body>
 </html>

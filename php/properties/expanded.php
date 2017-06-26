@@ -1,6 +1,14 @@
+<?php
+
+if(isset($_SESSION['id'])){
+  include('adminProperty.php');
+}
+
+
+
+?>
 <div class="container-fluid card" style="width: 100%; padding: 20px;">
 <div style="">
-
   <div id="carousel-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -43,7 +51,7 @@
     <h3><small><i>Address:</i></small></h3> <p > <?php echo $this->address ?></p>
     <h3><small><i>Type:</i></small></h3><p><?php echo $this->type ?></p>
     <h3><small><i>Size:</i></small></h3><p><?php echo $this->singleormult ?></p>
-    <h3><small><i>Unit Number</i></small></h3><p>=<?php echo $this->unitNum ?></p>
+    <h3><small><i>Unit Number</i></small></h3><p><?php echo $this->unitNum ?></p>
   </div>
 </div>
 <div class="row facts">
@@ -54,6 +62,7 @@
   <div class="col-sm-6">
     <h3><small><i>Sqr Feet</i></small></h3><p><?php echo $this->sqrFeet ?></p>
     <h3><small><i>Cost Per Month: </i></small></h3><p><?php echo $this->cost ?></p>
+    <h3><small><i>Year Built: </i></small></h3><p><?php echo $this->yearBuilt ?></p>
   </div>
 
 </div>

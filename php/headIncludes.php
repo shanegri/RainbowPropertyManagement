@@ -5,7 +5,7 @@ session_start();
 
 
 //REMOVE BEFORE COMMITING
-// $_SESSION['id'] = 1;
+//$_SESSION['id'] = 1;
 
 
  ?>

@@ -6,6 +6,10 @@
       <h3><small>Available properties</small></h3>
         <hr></hr>
       <?php
+        if(!isset($_GET['page']) && !isset($_GET['property'])){
+          header('location:properties.php?page=0');
+        }
+
         if(!isset($_SESSION['propPage'])){
           $_SESSION['propPage'] = 0;
         }
@@ -15,12 +19,13 @@
           include('properties/adminBar.php');
         }
 
-        unset($_SESSION['propertyList']);
+
         //Gets properties from db
         if(!isset($_SESSION['propertylist'])){
           $db = Database::getInstance();
           $ar = $db->fetch("SELECT * FROM Properties");
-        $properties = array();
+          $ar = array_reverse($ar);
+          $properties = array();
           for($i = 0; $i < sizeof($ar) ; $i++){
             array_push($properties, new Property(
             $i,
@@ -40,7 +45,6 @@
           $_SESSION['propertylist'] = $properties;
         }
         $properties = $_SESSION['propertylist'];
-
 
         //Redirects if page is out of range
         if(isset($_GET['page'])){

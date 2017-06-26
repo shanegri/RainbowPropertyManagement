@@ -1,6 +1,7 @@
 <?php
 //include('./php/properties/preview.php');
 //include('./php/properties/expanded.php');
+include_once('Database.php');
 
 class Property {
 
@@ -17,6 +18,9 @@ class Property {
   var $type;
   var $singleormult;
   var $sqrFeet;
+  var $util = 1;
+
+  var $images = array();
 
   public function __construct($arIndex, $id, $address, $description, $cost, $numBed, $numBath, $yearBuilt, $sqrFeet, $unitNum, $type, $singleormult){
     $this->id = $id;
@@ -32,6 +36,7 @@ class Property {
     $this->unitNum = $unitNum;
     $this->type = $type;
     $this->singleormult = $singleormult;
+    $this->populateImages();
   }
 
   public function echoPreview(){
@@ -52,7 +57,25 @@ class Property {
     }
   }
 
+  private function deleteProperty(){
+    $db = Database::getInstance();
+    $query = "DELETE FROM properties WHERE id='$this->id'";
+    if($db->query($query)){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  public function populateImages(){
+    $files= scandir("./images/Properties/0");
+    $files = array_diff($files, [".", ".."]);
+    $files = array_values($files);
+    for($i = 0 ; $i < sizeOf($files) ; $i++){
+      $files[$i] = "././images/properties/0/".$files[$i];
+    }
+    $this->images = $files;
+  }
 
 }
 
