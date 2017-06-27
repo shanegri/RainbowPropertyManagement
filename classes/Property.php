@@ -40,12 +40,12 @@ class Property {
   }
 
   public function echoPreview(){
-//    printList($this->arIndex, $this->address, $this->descriptionShort, $this->cost);
+//  printList($this->arIndex, $this->address, $this->descriptionShort, $this->cost);
     include('./php/properties/preview.php');
   }
 
   public function echoExpanded(){
-  //  printExpandedView($this->address, $this->description, $this->cost);
+  //printExpandedView($this->address, $this->description, $this->cost);
     include('./php/properties/expanded.php');
   }
 
@@ -94,7 +94,16 @@ class Property {
     }
   }
 
- 
+  public function renameImages(){
+    $files = $this->images;
+    $target_dir = "././images/properties/".$this->id ."/";
+    for($i = 0 ; $i < sizeof($files) ; $i++){
+      $ext = pathinfo($files[$i])['extension'];
+      rename($files[$i], $target_dir.$i.'.'.$ext);
+    }
+  }
+
+
 
 }
 

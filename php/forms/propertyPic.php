@@ -9,35 +9,63 @@
     </form>
       <?php
       include('propertyPicPrev.php');
+
+      //Gets property to be modified
       $prop = $_SESSION['propertylist'][$_GET['updatepic']];
+
+      //Handel Image Deletions
+      if(isset($_POST['delete'])){
+        $id_delete = $_POST['delete'];
+        unlink($id_delete);
+        $prop->populateImages();
+        $prop->renameImages();
+      }
+
+      //Handel Image Uploads
+      $post = true;
       if(isset($_POST['submit'])){
-        if(isset($_FILES['file'])){
-          $file = $_FILES['file'];
-          $target_dir = "././images/properties/".$prop->id."/" . $file['name'];
-          $acc_ext = array('jpg', 'png');
-          $file_ext = explode('.', $file['name']);
-          if(isset($file_ext[1])){
-            if(in_array($file_ext[1], $acc_ext)){
-              move_uploaded_file($file['tmp_name'], $target_dir);
-            } else {
-              echo '<b style="color: red;">Incorrect File Type</b>';
-            }
+        //Accepted File types
+        $acc_ext = array('jpg', 'png', 'jpeg', 'gif');
+        $file_new_name = sizeof($prop->images);
+        $file = $_FILES['file'];
+        $file_ext = explode('.', $file['name']);
+
+        //Ensure File exists + breakoff extension
+        if(isset($file_ext[1])){
+          $file_ext = $file_ext[1];
+        //  echo $file_ext;
+        } else {
+          echo '<b style="color: red">Please Select a file</b>';
+          $post = false;
+        }
+
+        //Check if Accepted file type
+        if($post && !in_array($file_ext, $acc_ext)){
+          $post = false;
+          echo '<b style="color: red">Incorrect File Type</b>';
+        }
+
+        //move image from temp dir to server dir
+        if($post){
+          $target_dir = "././images/properties/".$prop->id."/" . $file_new_name . '.' . $file_ext;
+          if(move_uploaded_file($file['tmp_name'], $target_dir)){
+            echo '<b>Upload Succesful</b>';
           } else {
-            echo '<b style="color: red">Please Select a file</b>';
+            echo '<b style="color: red">Upload Failed</b>';
           }
-          $_FILES = array();
         }
       }
+      //Handel Image Uploads//
    ?>
     <div class="container-fluid" style="border: 1px solid black;  margin: 10px; display: ">
-    <?php 
+    <?php
       //Print Images
       $prop->populateImages();
       foreach($prop->images as $i){
         displayIm($i);
       }
       ?>
- 
+
     </div>
   </div>
 </div>
