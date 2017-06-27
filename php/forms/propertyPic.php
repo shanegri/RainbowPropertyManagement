@@ -1,6 +1,8 @@
 
 <div style="padding: 20px;">
+
   <div class="container-fluid card propertyForm">
+  <a href="././properties.php?property=<?php echo $_GET['updatepic']?>">Back</a>
     <form method="post" enctype="multipart/form-data">
         <h3><small>Select Image to Upload</small></h3>
         <input type="file" name="file">
@@ -19,6 +21,7 @@
         unlink($id_delete);
         $prop->populateImages();
         $prop->renameImages();
+        echo '<b>Image Deleted</b>';
       }
 
       //Handel Image Uploads
@@ -47,7 +50,7 @@
 
         //move image from temp dir to server dir
         if($post){
-          $target_dir = "././images/properties/".$prop->id."/" . $file_new_name . '.' . $file_ext;
+          $target_dir = "././images/properties/".$prop->id."/" . $file_new_name . '_'.$file['name']. '.' . $file_ext;
           if(move_uploaded_file($file['tmp_name'], $target_dir)){
             echo '<b>Upload Succesful</b>';
           } else {

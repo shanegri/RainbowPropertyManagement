@@ -1,6 +1,6 @@
 <div style="padding: 20px;">
 <div class="container-fluid card propertyForm">
-  <!-- <h3 class="text-center" style="color: red">Error</h3> -->
+  <a href=""></a>
   <?php
   $prop = $_SESSION['propertylist'][$_GET['update']];
   if(isset($_POST['submit'])){

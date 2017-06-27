@@ -88,6 +88,71 @@ body {
   margin: auto;
 }
 
+.slideshow {
+  height: 400px;
+  width: 100%;
+}
+
+.slide {
+  display: none;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideIm{
+  object-fit: cover;
+  height: 100%;
+}
+.arrow {
+  font-size: 50px;
+}
+
+.arrow a {
+  text-decoration: none;
+  color: black;
+  transition:background .2s ease-out; 
+}
+.arrow a:hover{
+  cursor: pointer;
+  background: grey;
+}
+
+.fadeS {
+  -webkit-animation-name: fadeS;
+  -webkit-animation-duration: .7s;
+  animation-name: fadeS;
+  animation-duration: .7s;
+}
+
+@-webkit-keyframes fadeS {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fadeS {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.Dotactive, .dot:hover {
+  background-color: #717171;
+}
+
+
 /*Custom button style*/
 .travButton {
   background: none;
@@ -157,6 +222,10 @@ button:hover {
   background: -webkit-linear-gradient(rgb(51, 59, 59), rgb(16, 18, 18));
 }
 
+.navbar-default .navbar-nav > li > a {
+  transition: color .3s ease-out;
+}
+
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: white;
@@ -166,7 +235,7 @@ button:hover {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
     color: rgb(40, 40, 40);
-    background-color:  rgb(192, 246, 243);
+    background:  rgb(192, 246, 243);
 }
 
 
@@ -184,13 +253,6 @@ button:hover {
 }
 
 
-/*Custom carousel options*/
-.carousel {
-  margin: 0 auto;
-  overflow: hidden;
-  max-height: 300px;
-  width: 80%;
-}
 
 @media only screen and (max-width: 768px){
 
