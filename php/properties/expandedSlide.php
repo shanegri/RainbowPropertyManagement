@@ -3,10 +3,10 @@
 
 
 <?php
-$images = $this->images; 
+$images = $this->images;
 for($i = 0 ; $i < sizeof($images) ; $i++){
 	?>
-	<div class="slide col-xs-12 fadeS"> 
+	<div class="slide col-xs-12 fadeS">
 	<img class="slideIm" src="<?php echo $images[$i]?>	">
 	</div>
 	<?php
@@ -19,10 +19,10 @@ for($i = 0 ; $i < sizeof($images) ; $i++){
 <div class="arrow text-center">
 <a onclick="reverse()" style="float: left;">&#x2190;</a>
   <?php
-	$images = $this->images; 
-	for($i = 0 ; $i < sizeof($images) ; $i++){
+	$images = $this->images;
+	for($i = 0 ; $i < sizeof($images); $i++){
 	?>
-  	<span class="dot" onclick="goto(<?php echo $i?>)"></span> 
+  	<span class="dot" onclick="goto(<?php echo $i?>)"></span>
 	<?php
 }
 

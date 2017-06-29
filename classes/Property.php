@@ -2,8 +2,9 @@
 //include('./php/properties/preview.php');
 //include('./php/properties/expanded.php');
 include_once('Database.php');
+include_once('PropertyProcessor.php');
 
-class Property {
+class Property extends PropertyProcessor {
 
   var $id;
   var $address;
@@ -102,6 +103,8 @@ class Property {
       rename($files[$i], $target_dir.$i.'.'.$ext);
     }
   }
+
+
 
 
 
