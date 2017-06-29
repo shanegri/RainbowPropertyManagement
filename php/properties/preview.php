@@ -1,7 +1,7 @@
 <div class="propertyPreview card">
   <div class="container-fluid" style=" margin: auto 0; margin-top: 15px;">
     <div class="row">
-      <div class="col-sm-6 propPrevCrop" style="background-image: url('././images/TEMPICON2.jpg')">
+      <div class="col-sm-6 propPrevCrop" style="background-image: url('<?php echo $this->prevImage; ?>')">
       </div>
       <div class="col-sm-6">
         <h3 style="margin: 0;"><small><i>Description:</i></small></h3>

@@ -21,6 +21,7 @@ class Property extends PropertyProcessor {
   var $sqrFeet;
   var $util = 1;
   var $images = array();
+  var $prevImage = "";
 
   public function __construct($arIndex, $id, $address, $description, $cost, $numBed, $numBath, $yearBuilt, $sqrFeet, $unitNum, $type, $singleormult){
     $this->id = $id;
@@ -38,6 +39,7 @@ class Property extends PropertyProcessor {
     $this->singleormult = $singleormult;
     $this->updateFolders();
     $this->populateImages();
+    $this->setPrevImage();
   }
 
   public function echoPreview(){
@@ -74,6 +76,14 @@ class Property extends PropertyProcessor {
     }
   }
 
+  public function setPrevImage(){
+    if(sizeof($this->images) != 0){
+      $this->prevImage = $this->images[0];
+    } else {
+      $this->prevImage = "././images/temp.png";
+    }
+  }
+
 
   public function populateImages(){
     $this->updateFolders();
@@ -84,6 +94,7 @@ class Property extends PropertyProcessor {
       $files[$i] = "././images/properties/".$this->id."/".$files[$i];
     }
     $this->images = $files;
+    $this->setPrevImage();
   }
 
 

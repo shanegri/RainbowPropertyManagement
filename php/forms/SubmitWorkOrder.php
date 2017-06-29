@@ -6,8 +6,11 @@
 
 if(!isset($_SESSION['form'])){
   $Form = new Form("Submit Work Order");
-  $Form->addInput("First Name", FormInput::$STR, 100);
-  $Form->addInput("Last Name", FormInput::$STR, 100);
+  //Key, Display name, type, length
+  $Form->addInput("fn", "First Name", FormInput::$STR, 100);
+  $Form->addInput("ln", "Last Name", FormInput::$STR, 100);
+  $Form->addInput("date", "Date", FormInput::$DATE);
+  $Form->addInput("i", "Some Number", FormInput::$INT);
   $_SESSION['form'] = $Form;
 } else {
   $Form = $_SESSION['form'];
@@ -19,8 +22,10 @@ if(isset($_POST['submit'])){
 }
 
 
-$Form->showInput("First Name");
-$Form->showInput('Last Name');
+$Form->showInput("fn");
+$Form->showInput('ln');
+$Form->showInput('date');
+$Form->showInput('i');
 
 ?>
 <br>
