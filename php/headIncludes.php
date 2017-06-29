@@ -1,7 +1,12 @@
 <?php
 include_once('./classes/Database.php');
 include_once('./classes/Property.php');
+include_once('./classes/Form.php');
 session_start();
+
+if(!isset($_GET['swo']) && isset($_SESSION['form'])){
+  unset($_SESSION['form']);
+}
 
 
 //REMOVE BEFORE COMMITING

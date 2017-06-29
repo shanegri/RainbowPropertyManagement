@@ -31,6 +31,11 @@
           $m = true;
         }
 
+        if(isset($_GET['swo']) && !$m){
+          include_once('php/forms/SubmitWorkOrder.php');
+          $m = true;
+        }
+
 
         ?>
     </div>
