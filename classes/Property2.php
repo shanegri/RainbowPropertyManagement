@@ -1,10 +1,15 @@
-<?php 
+<?php
 include('Form.php');
 
 class Property2 extends Form {
 
 	var $arIndex = 0;
 	var $id = 0;
+
+
+
+	var $images = array();
+	var $prevImage;
 
 public function __construct(){
 	parent::__construct('properties');
@@ -36,9 +41,13 @@ public static function initID($arIndex, $id){
 public function setValues(){
 }
 
+public function echoPreview(){}
+
+public function echoExpanded(){}
+
+private function shortenDescription($orgDescription){}
 
 
 
-	
 }
 ?>

@@ -5,13 +5,11 @@
 <?php
 
 if(!isset($_SESSION['form'])){
-  $Form = new Form("Submit Work Order");
-  //Key, Display name, type, length
-  $Form->addInput("fn", "First Name", FormInput::$STR, 100);
-  $Form->addInput("ln", "Last Name", FormInput::$STR, 100);
-  $Form->addInput("date", "Date", FormInput::$DATE, null);
-  $Form->addInput("i", "Some Number", FormInput::$TXTAR, 700);
-  $Form->addInput("drop", "Drop Down Test", FormInput::$DRPDWN, array("V1", "V2", "V3"));
+  $Form = new Form("test");
+  $Form->addInput('intTest', 'Test Int', FormInput::$INT, null, null);
+  $Form->addInput('name', 'Name', FormInput::$STR, 20, null);
+  $Form->addInput('middleinitial', 'Middle Initial', FormInput::$STR, 2, null);
+  $Form->addInput('dropTest', 'Drop Test', FormInput::$DRPDWN, array('test1', 'test2', 'test3', 'test4'), null);
   $_SESSION['form'] = $Form;
 } else {
   $Form = $_SESSION['form'];
@@ -22,18 +20,16 @@ if(isset($_POST['submit'])){
   if($Form->validate()){ $Form->insert(); }
 }
 
-
-$Form->showInput("fn");
-$Form->showInput('ln');
-$Form->showInput('date');
-$Form->showInput('i');
-$Form->showInput('drop');
+$Form->showInput('intTest');
+$Form->showInput('name');
+$Form->showInput('middleinitial');
+$Form->showInput('dropTest');
 
 ?>
 <br>
 <button type="submit" name="submit">Submit</button>
 </form>
 
-  
+
 </div>
 </div>

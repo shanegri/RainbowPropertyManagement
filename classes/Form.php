@@ -1,5 +1,6 @@
-<?php 
+<?php
 
+include_once('Database.php');
 
 class Form {
 
@@ -13,7 +14,7 @@ class Form {
 
 	//Format key, display name, type, max length
 	//Length is used as array drop down values
-	//Mod value id 
+	//Mod value id
 	public function addInput($key, $name, $type, $length = null, $mod = null){
 		if($length === null){ $length= 0; }
 		$this->store[$key] = new FormInput($key, $name, $type, $length, $mod);
@@ -44,8 +45,17 @@ class Form {
 	}
 
 	public function insert(){
-		unset($_SESSION['form']);
-		header('location:index.php');
+		$db = Database::getInstance();
+		$query = "INSERT INTO test () values ()";
+		$result = $db->query($query);
+		$id = $db->lastId();
+
+		foreach($store as $form){
+			$q = "UPDATE test SET "
+		}
+
+		//unset($_SESSION['form']);
+		//header('location:index.php');
 	}
 }
 
@@ -120,7 +130,7 @@ class FormInput {
 				break;
 			case FormInput::$DRPDWN:
 				$this->showDropDown();
-				break;		
+				break;
 		}
 	}
 
@@ -147,11 +157,11 @@ class FormInput {
     <?php
 	}
 
-	private function showDropDown(){	
+	private function showDropDown(){
 	?>
     <h3><small><?php echo $this->name; ?></small></h3>
-    <select name="<?php echo $this->key; ?>"> 
-         <?php 
+    <select name="<?php echo $this->key; ?>">
+         <?php
         foreach($this->length as $v){
         	if($v === $this->value){
         		echo '<option selected value="'.$v.'"">'.$v.'</option>';

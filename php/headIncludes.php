@@ -12,7 +12,7 @@ if(!isset($_GET['swo']) && isset($_SESSION['form'])){
 
 
 //REMOVE BEFORE COMMITING
-//$_SESSION['id'] = 1;
+$_SESSION['id'] = 1;
 
 
  ?>
