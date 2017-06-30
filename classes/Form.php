@@ -42,7 +42,7 @@ class Form {
 	}
 
 	public function getValue($name){
-		return $this->store[$name];
+		return $this->store[$name]->value;
 	}
 
 	//No id creates new row, w/ id updates existing data
@@ -96,7 +96,7 @@ class FormInput {
 			$this->error = "";
 			return true;
 		} else {
-			$this->error = "Input Must be an number";
+			$this->error = "Input Must be a number";
 			return false;
 		}
 	case FormInput::$TXTAR:

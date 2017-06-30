@@ -111,7 +111,7 @@ public function renameImages(){
 }
 
 public function v($key){
-  return $this->getValue($key)->value;
+  return $this->getValue($key);
 }
 
 

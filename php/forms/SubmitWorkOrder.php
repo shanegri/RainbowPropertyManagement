@@ -4,13 +4,16 @@
 <form method="post">
 <?php
 
+
 if(!isset($_SESSION['form'])){
-  $Form = new Form("test");
-  $Form->addInput('intTest', 'Test Int', FormInput::$INT, null, null);
-  $Form->addInput('name', 'Name', FormInput::$STR, 20, null);
-  $Form->addInput('middleinitial', 'Middle Initial', FormInput::$STR, 2, null);
-  $Form->addInput('dropTest', 'Drop Test', FormInput::$DRPDWN, array('test1', 'test2', 'test3', 'test4'), null);
-  $_SESSION['form'] = $Form;
+	$Form = new Form('WorkOrder');
+	$Form->addInput("fName", "First Name", FormInput::$STR, 20, null);
+	$Form->addInput("lName", "Last Name", FormInput::$STR, 20, null);
+	$Form->addInput("request", "Work Order Request", FormInput::$TXTAR, 700, null);
+	$Form->addInput("pEnter", "Permission to enter", FormInput::$DRPDWN, array("Yes", "No"), null);
+	$Form->addInput("intTest", "Integer Test", FormInput::$INT, null, null);
+
+	$_SESSION['form'] = $Form;
 } else {
   $Form = $_SESSION['form'];
 }
@@ -20,10 +23,14 @@ if(isset($_POST['submit'])){
   if($Form->validate()){ $Form->insert(); }
 }
 
+$Form->showInput('fName');
+$Form->showInput('lName');
+$Form->showInput('request');
+$Form->showInput('pEnter');
 $Form->showInput('intTest');
-$Form->showInput('name');
-$Form->showInput('middleinitial');
-$Form->showInput('dropTest');
+
+
+
 
 ?>
 <br>

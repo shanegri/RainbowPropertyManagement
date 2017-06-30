@@ -108,6 +108,7 @@ body {
 }
 .arrow {
   font-size: 50px;
+
 }
 
 .arrow a {
@@ -117,7 +118,7 @@ body {
 }
 .arrow a:hover{
   cursor: pointer;
-  background: grey;
+  background: #e1e3e8;
 }
 
 .fadeS {

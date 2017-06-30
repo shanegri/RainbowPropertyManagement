@@ -16,8 +16,8 @@ for($i = 0 ; $i < sizeof($images) ; $i++){
 
 </div>
 
-<div class="arrow text-center">
-<a onclick="reverse()" style="float: left;">&#x2190;</a>
+<div class="arrow text-center" style="margin-bottom: 50px;">
+<a onclick="reverse()" style="float: left; border-radius: 5px;">&#x2190;</a>
   <?php
 	$images = $this->images;
 	for($i = 0 ; $i < sizeof($images); $i++){
@@ -27,7 +27,7 @@ for($i = 0 ; $i < sizeof($images) ; $i++){
 }
 
 ?>
-<a onclick="advance()" style="float: right">&#x2192;</a>
+<a onclick="advance()" style="float: right; border-radius: 5px;">&#x2192;</a>
 </div>
 
 
