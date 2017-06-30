@@ -12,8 +12,11 @@ class Form {
 
 
 	//Format key, display name, type, max length
-	public function addInput($key, $name, $type, $length = 0){
-		$this->store[$key] = new FormInput($key, $name, $type, $length);
+	//Length is used as array drop down values
+	//Mod value id 
+	public function addInput($key, $name, $type, $length = null, $mod = null){
+		if($length === null){ $length= 0; }
+		$this->store[$key] = new FormInput($key, $name, $type, $length, $mod);
 	}
 
 	public function showInput($key){
@@ -36,6 +39,10 @@ class Form {
 		return $retVal;
 	}
 
+	public function getValue($name){
+		return $this->store[$name];
+	}
+
 	public function insert(){
 		unset($_SESSION['form']);
 		header('location:index.php');
@@ -49,45 +56,49 @@ class FormInput {
 	public static $STR = 1;
 	public static $TXTAR= 2;
 	public static $DATE = 3;
+	public static $DRPDWN = 4;
 
-	var $value;
+	private $value = "";
+	private $error = "";
+
+	var $key;
 	var $name;
-	var $error;
 	var $type;
 	var $length;
-	var $key;
+	var $mod;
 
-	public function __construct($key, $name, $type, $length){
+	public function __construct($key, $name, $type, $length, $mod){
 		$this->name = $name;
 		$this->type = $type;
-		$this->value = "";
-		$this->error = "";
 		$this->length = $length;
 		$this->key = $key;
+		$this->mod = $mod;
 	}
 
 	public function isValid(){
-		if($this->type === $this::$INT){
-			if(is_numeric($this->value)){
-				$this->error = "";
-				return true;
-			} else {
-				$this->error = "Input Must be an number";
-				return false;
-			}
-		} else if($this->type === $this::$STR){
-			if(strlen($this->value) < $this->length){
-				$this->error = "";
-				return true;
-			} else {
-				$this->error = "Input it too long";
-				return false;
-			}
-		} else if($this->type === $this::$DATE){
+	switch($this->type){
+	case FormInput::$INT:
+		if(is_numeric($this->value)){
+			$this->error = "";
 			return true;
+		} else {
+			$this->error = "Input Must be an number";
+			return false;
 		}
+	case FormInput::$TXTAR:
+	case FormInput::$STR:
+		if(strlen($this->value) < $this->length){
+			$this->error = "";
+			return true;
+		} else {
+			$this->error = "Input it too long";
+			return false;
+		}
+	default:
+		return true;
+	}
 
-		return false;
+
 	}
 
 	public function updateValue($value){
@@ -96,10 +107,20 @@ class FormInput {
 	}
 
 	public function showInput(){
-		if($this->type === $this::$INT || $this->type === $this::$STR){
-			$this->showTextInput();
-		} else if($this->type === $this::$DATE){
-			$this->showDateInput();
+		switch ($this->type) {
+			case FormInput::$INT:
+			case FormInput::$STR:
+				$this->showTextInput();
+				break;
+			case FormInput::$TXTAR:
+				$this->showTextAreaInput();
+				break;
+			case FormInput::$DATE:
+				$this->showDateInput();
+				break;
+			case FormInput::$DRPDWN:
+				$this->showDropDown();
+				break;		
 		}
 	}
 
@@ -111,13 +132,40 @@ class FormInput {
     <?php
 	}
 
-	private function showTextAreaInput(){}
+	private function showTextAreaInput(){
+	?>
+      <h3><small><?php echo $this->name ?></small></h3>
+      <textarea name="<?php echo $this->key ?>" rows="8" cols="120" style="max-width: 100%"><?php echo $this->value ?></textarea>
+
+	<?php
+	}
 
 	private function showDateInput(){
 	?>
 		<h3><small><?php echo $this->name ?> </small></h3>
         <input type="date" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
     <?php
+	}
+
+	private function showDropDown(){	
+	?>
+    <h3><small><?php echo $this->name; ?></small></h3>
+    <select name="<?php echo $this->key; ?>"> 
+         <?php 
+        foreach($this->length as $v){
+        	if($v === $this->value){
+        		echo '<option selected value="'.$v.'"">'.$v.'</option>';
+        	} else {
+        		echo '<option value="'.$v.'"">'.$v.'</option>';
+        	}
+        }
+        ?>
+    </select>
+	<?php
+	}
+
+	public function getValue(){
+		return $this->value;
 	}
 
 

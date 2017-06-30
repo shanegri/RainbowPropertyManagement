@@ -9,8 +9,6 @@ class Database {
   var $db;
 
 
-
-
   private function __construct(){
     try {
       $this->db = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username,$this->pass);
@@ -34,6 +32,10 @@ class Database {
     $instance = new Database();
     }
     return $instance;
+  }
+
+  public function lastId(){
+    return $this->db->lastInsertId();
   }
 
 }

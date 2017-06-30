@@ -17,7 +17,7 @@
         }
 
         if(isset($_GET['addProperty']) && !isset($_GET['update']) && !isset($_GET['updatepic']) && !$m && $l){
-          include_once('php/forms/property.php');
+          include_once('php/forms/property2.php');
           $m = true;
         }
 

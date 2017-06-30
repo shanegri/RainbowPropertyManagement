@@ -9,8 +9,9 @@ if(!isset($_SESSION['form'])){
   //Key, Display name, type, length
   $Form->addInput("fn", "First Name", FormInput::$STR, 100);
   $Form->addInput("ln", "Last Name", FormInput::$STR, 100);
-  $Form->addInput("date", "Date", FormInput::$DATE);
-  $Form->addInput("i", "Some Number", FormInput::$INT);
+  $Form->addInput("date", "Date", FormInput::$DATE, null);
+  $Form->addInput("i", "Some Number", FormInput::$TXTAR, 700);
+  $Form->addInput("drop", "Drop Down Test", FormInput::$DRPDWN, array("V1", "V2", "V3"));
   $_SESSION['form'] = $Form;
 } else {
   $Form = $_SESSION['form'];
@@ -26,6 +27,7 @@ $Form->showInput("fn");
 $Form->showInput('ln');
 $Form->showInput('date');
 $Form->showInput('i');
+$Form->showInput('drop');
 
 ?>
 <br>

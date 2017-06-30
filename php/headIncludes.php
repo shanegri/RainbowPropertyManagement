@@ -1,6 +1,8 @@
 <?php
 include_once('./classes/Database.php');
 include_once('./classes/Property.php');
+include_once('./classes/Property2.php');
+
 include_once('./classes/Form.php');
 session_start();
 
