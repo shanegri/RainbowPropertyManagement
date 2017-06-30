@@ -27,20 +27,9 @@
           $ar = array_reverse($ar);
           $properties = array();
           for($i = 0; $i < sizeof($ar) ; $i++){
-            array_push($properties, new Property(
-            $i,
-            $ar[$i]['id'],
-            $ar[$i]['address'],
-            $ar[$i]['description'],
-            $ar[$i]['cost'],
-            $ar[$i]['numBedroom'],
-            $ar[$i]['numBathroom'],
-            $ar[$i]['yearBuilt'],
-            $ar[$i]['sqrFeet'],
-            $ar[$i]['unitNum'],
-            $ar[$i]['type'],
-            $ar[$i]['singleormult']
-        ));
+            $prop = Property::initID($i, $ar[$i]['id']);
+            $prop->update($ar[$i]);
+            array_push($properties, $prop);
           }
           $_SESSION['propertylist'] = $properties;
         }

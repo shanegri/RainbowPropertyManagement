@@ -5,18 +5,18 @@
       </div>
       <div class="col-sm-6">
         <h3 style="margin: 0;"><small><i>Description:</i></small></h3>
-        <p><?php echo $this->descriptionShort ?></p>
+        <p><?php echo $this->v('description') ?></p>
         <div>
           <h3 style="margin: 0; display: inline"><small><i>Address: </i></small></h3>
-          <p style="display:inline"><?php echo $this->address ?></p>
+          <p style="display:inline"><?php echo $this->v('address')  ?></p>
         </div>
         <div>
           <h3 style="margin: 0; display: inline"><small><i>Cost: $ </i></small></h3>
-          <p style="display:inline"><?php echo $this->cost ?></p>
+          <p style="display:inline"><?php echo $this->v('cost') ?></p>
         </div>
         <div>
           <h3 style="margin: 0; display: inline"><small><i>Type: </i></small></h3>
-          <p style="display:inline"><?php echo $this->type ?></p>
+          <p style="display:inline"><?php echo $this->v('type')  ?></p>
         </div>
         <div>
             <a href="../../properties.php?property=<?php echo $this->arIndex ?>"><button>More Information</button></a>

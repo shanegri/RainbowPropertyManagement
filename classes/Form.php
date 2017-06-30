@@ -7,6 +7,7 @@ class Form {
 	private $store = array();
 	private $name;
 
+	//Name represents table name
 	public function __construct($name){
 		$this->name = $name;
 	}
@@ -44,14 +45,17 @@ class Form {
 		return $this->store[$name];
 	}
 
-	public function insert(){
+	//No id creates new row, w/ id updates existing data
+	public function insert($id = null){
 		$db = Database::getInstance();
-		$query = "INSERT INTO test () values ()";
-		$result = $db->query($query);
-		$id = $db->lastId();
-
-		foreach($store as $form){
-			$q = "UPDATE test SET "
+		if($id === null){
+			$query = "INSERT INTO ".$this->name." () values ()";
+			$result = $db->query($query);
+			$id = $db->lastId();
+		}
+		foreach($this->store as $form){
+			$q = "UPDATE ".$this->name." SET " .$form->key."='".$form->value."' WHERE id=".$id;
+			$db->query($q);
 		}
 
 		//unset($_SESSION['form']);
@@ -68,7 +72,7 @@ class FormInput {
 	public static $DATE = 3;
 	public static $DRPDWN = 4;
 
-	private $value = "";
+	var $value = "";
 	private $error = "";
 
 	var $key;
@@ -88,7 +92,7 @@ class FormInput {
 	public function isValid(){
 	switch($this->type){
 	case FormInput::$INT:
-		if(is_numeric($this->value)){
+		if(is_numeric($this->value) || strlen($this->value) === 0){
 			$this->error = "";
 			return true;
 		} else {

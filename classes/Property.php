@@ -1,66 +1,62 @@
 <?php
-//include('./php/properties/preview.php');
-//include('./php/properties/expanded.php');
-include_once('Database.php');
-include_once('PropertyProcessor.php');
+include('Form.php');
 
-class Property extends PropertyProcessor {
+class Property extends Form {
 
-  var $id;
-  var $address;
-  var $description;
-  var $descriptionShort;
-  var $cost;
-  var $arIndex;
-  var $yearBuilt;
-  var $numBed;
-  var $numBath;
-  var $unitNum;
-  var $type;
-  var $singleormult;
-  var $sqrFeet;
-  var $util = 1;
-  var $images = array();
-  var $prevImage = "";
+	var $arIndex = 0;
+	var $id = 0;
 
-  public function __construct($arIndex, $id, $address, $description, $cost, $numBed, $numBath, $yearBuilt, $sqrFeet, $unitNum, $type, $singleormult){
-    $this->id = $id;
-    $this->address = $address;
-    $this->description = $description;
-    $this->descriptionShort = $this->shortenDescription($description);
-    $this->cost = $cost;
-    $this->arIndex = $arIndex;
-    $this->numBed = $numBed;
-    $this->numBath = $numBath;
-    $this->yearBuilt = $yearBuilt;
-    $this->sqrFeet = $sqrFeet;
-    $this->unitNum = $unitNum;
-    $this->type = $type;
-    $this->singleormult = $singleormult;
-    $this->updateFolders();
-    $this->populateImages();
-    $this->setPrevImage();
-  }
+	var $images = array();
+	var $prevImage;
 
-  public function echoPreview(){
-//  printList($this->arIndex, $this->address, $this->descriptionShort, $this->cost);
-    include('./php/properties/preview.php');
-  }
+public function __construct(){
+	parent::__construct('properties');
+	$this->addInput('description', 'Description', FormInput::$TXTAR, 700, null);
+	$this->addInput('numBedroom', 'Number of Bedrooms', FormInput::$INT, null, null);
+	$this->addInput('numBathroom', 'Number of Bathrooms', FormInput::$INT, null, null);
+	$this->addInput('cost', 'Cost', FormInput::$INT, null, null);
+	$this->addInput('yearBuilt', 'Year Built', FormInput::$INT, null, null);
+	$this->addInput('sqrFeet', 'Square Feet', FormInput::$INT, null, null);
+	$this->addInput('unitNum', 'Unit Number', FormInput::$INT, null, null);
+	$this->addInput('address', 'Address', FormInput::$STR, 100, null);
+	$this->addInput('type', 'House or Apartment', FormInput::$DRPDWN, array("House", "Apartment"), null);
+	$this->addInput('singleormult', 'Family Size', FormInput::$DRPDWN, array("Single", "Multiple"), null);
+	$this->addInput('util', 'Utilities', FormInput::$STR, 20, null);
 
-  public function echoExpanded(){
-  //printExpandedView($this->address, $this->description, $this->cost);
-    include('./php/properties/expanded.php');
-  }
+}
 
-  private function shortenDescription($orgD){
+public static function init(){
+	$instance = new self();
+	return $instance;
+}
+
+public static function initID($arIndex, $id){
+	$instance = new self();
+	$instance->arIndex = $arIndex;
+	$instance->id = $id;
+	$instance->updateFolders();
+  $instance->populateImages();
+  $instance->setPrevImage();
+	return $instance;
+}
+
+public function echoPreview(){
+	include('./php/properties/preview.php');
+}
+
+public function echoExpanded(){
+	include('./php/properties/expanded.php');
+}
+
+private function shortenDescription($orgD){
     if(strLen($orgD) > 252){
       return substr($orgD, 0 , 252) . "...";
     } else {
       return $orgD;
     }
-  }
+}
 
-  private function deleteProperty(){
+private function deleteProperty(){
     $db = Database::getInstance();
     $query = "DELETE FROM properties WHERE id='$this->id'";
     $files= scandir("./images/Properties/".$this->id);
@@ -74,18 +70,17 @@ class Property extends PropertyProcessor {
     } else {
       return false;
     }
-  }
+}
 
-  public function setPrevImage(){
+public function setPrevImage(){
     if(sizeof($this->images) != 0){
       $this->prevImage = $this->images[0];
     } else {
       $this->prevImage = "././images/temp.png";
     }
-  }
+}
 
-
-  public function populateImages(){
+public function populateImages(){
     $this->updateFolders();
     $files= scandir("./images/Properties/".$this->id);
     $files = array_diff($files, [".", ".."]);
@@ -95,10 +90,10 @@ class Property extends PropertyProcessor {
     }
     $this->images = $files;
     $this->setPrevImage();
-  }
+}
 
 
-   public function updateFolders(){
+public function updateFolders(){
     if (file_exists("././images/properties/".$this->id)){
     } else {
       mkdir("././images/properties/".$this->id);
@@ -106,20 +101,20 @@ class Property extends PropertyProcessor {
     }
   }
 
-  public function renameImages(){
+public function renameImages(){
     $files = $this->images;
     $target_dir = "././images/properties/".$this->id ."/";
     for($i = 0 ; $i < sizeof($files) ; $i++){
       $ext = pathinfo($files[$i])['extension'];
       rename($files[$i], $target_dir.$i.'.'.$ext);
     }
-  }
+}
 
-
+public function v($key){
+  return $this->getValue($key)->value;
+}
 
 
 
 }
-
-
- ?>
+?>
