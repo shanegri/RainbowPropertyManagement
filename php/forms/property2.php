@@ -3,8 +3,9 @@
 <form method="post">
 <?php
 
-$prop = new Property2();
+$prop = Property2::init();
 $prop->showInput('description');
+
 ?>
 <br>
 <button type="submit" value="submit">Submit</button>
