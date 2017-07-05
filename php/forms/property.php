@@ -13,11 +13,14 @@ if(isset($_SESSION['form'])){
 if(isset($_POST['submit'])){
 	$prop->update($_POST);
 	if($prop->validate()){
-		$prop->insert();
+		$f =  $prop->insert();
 		if(isset($_SESSION['propertylist'])){
 			unset($_SESSION['propertylist']);
 		}
-		header('location:properties.php');
+		if($f){header('location:properties.php');} else {
+			echo 'Error';
+		}
+
 	}
 }
 
@@ -57,6 +60,6 @@ if(isset($_POST['submit'])){
 <button type="submit" value="submit" name="submit">Submit</button>
 </div>
 </form>
-  
+
 </div>
 </div>

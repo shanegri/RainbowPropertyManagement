@@ -47,19 +47,19 @@ class Form {
 
 	//No id creates new row, w/ id updates existing data
 	public function insert($id = null){
+		$r = true;
 		$db = Database::getInstance();
 		if($id === null){
-			$query = "INSERT INTO ".$this->name." () values ()";
-			$result = $db->query($query);
+			$q = "INSERT INTO ".$this->name." () values ()";
+			if(!$db->query($q)){$r = false;}
 			$id = $db->lastId();
 		}
 		foreach($this->store as $form){
 			$q = "UPDATE ".$this->name." SET " .$form->key."='".$form->value."' WHERE id=".$id;
-			$db->query($q);
+		  if(!$db->query($q)){$r = false;}
 		}
 
-		//unset($_SESSION['form']);
-		//header('location:index.php');
+		return $r;
 	}
 }
 
@@ -116,7 +116,8 @@ class FormInput {
 	}
 
 	public function updateValue($value){
-		$this->value = mysql_escape_string($value);
+	//	$this->value = mysql_escape_string($value);
+	$this->value = $value;
 		$this->error = "";
 	}
 

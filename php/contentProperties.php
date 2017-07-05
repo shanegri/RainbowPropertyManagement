@@ -1,4 +1,4 @@
-<div class="container-fluid body">
+ 
   <div class="row">
     <!--Main Content-->
     <div class="col-sm-8 body">
@@ -23,7 +23,7 @@
         //Gets properties from db
         if(!isset($_SESSION['propertylist'])){
           $db = Database::getInstance();
-          $ar = $db->fetch("SELECT * FROM Properties");
+          $ar = $db->fetch("SELECT * FROM properties");
           $ar = array_reverse($ar);
           $properties = array();
           for($i = 0; $i < sizeof($ar) ; $i++){

@@ -76,17 +76,17 @@ public function setPrevImage(){
     if(sizeof($this->images) != 0){
       $this->prevImage = $this->images[0];
     } else {
-      $this->prevImage = "././images/temp.png";
+      $this->prevImage = "././Images/temp.png";
     }
 }
 
 public function populateImages(){
     $this->updateFolders();
-    $files= scandir("./images/Properties/".$this->id);
+    $files= scandir("./Images/Properties/".$this->id);
     $files = array_diff($files, [".", ".."]);
     $files = array_values($files);
     for($i = 0 ; $i < sizeOf($files) ; $i++){
-      $files[$i] = "././images/properties/".$this->id."/".$files[$i];
+      $files[$i] = "././Images/Properties/".$this->id."/".$files[$i];
     }
     $this->images = $files;
     $this->setPrevImage();
@@ -94,16 +94,16 @@ public function populateImages(){
 
 
 public function updateFolders(){
-    if (file_exists("././images/properties/".$this->id)){
+    if (file_exists("././Images/Properties/".$this->id)){
     } else {
-      mkdir("././images/properties/".$this->id);
+      mkdir("././Images/Properties/".$this->id);
       $this->updateFolders();
     }
   }
 
 public function renameImages(){
     $files = $this->images;
-    $target_dir = "././images/properties/".$this->id ."/";
+    $target_dir = "././Images/Properties/".$this->id ."/";
     for($i = 0 ; $i < sizeof($files) ; $i++){
       $ext = pathinfo($files[$i])['extension'];
       rename($files[$i], $target_dir.$i.'.'.$ext);

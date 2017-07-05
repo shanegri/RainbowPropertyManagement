@@ -1,6 +1,6 @@
 Database Name: rpm
 
-table: Properties {
+table: properties {
   id
   description 700 varchar
   numBedroom
@@ -20,5 +20,5 @@ table: users {
   username 255 varchar
   password 255 varchar
   email 255 varchar
-  
+
 }

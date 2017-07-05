@@ -50,7 +50,7 @@
 
         //move image from temp dir to server dir
         if($post){
-          $target_dir = "././images/properties/".$prop->id."/" . $file_new_name . '_'.$file['name']. '.' . $file_ext;
+          $target_dir = "././Images/Properties/".$prop->id."/" . $file_new_name . '_'.$file['name']. '.' . $file_ext;
           if(move_uploaded_file($file['tmp_name'], $target_dir)){
             echo '<b>Upload Succesful</b>';
           } else {

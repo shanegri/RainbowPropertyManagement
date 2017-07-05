@@ -10,7 +10,7 @@ if(!isset($_GET['swo']) && isset($_SESSION['form']) && !isset($_GET['addProperty
 
 
 //REMOVE BEFORE COMMITING
-$_SESSION['id'] = 1;
+//$_SESSION['id'] = 1;
 
 
  ?>
