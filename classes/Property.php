@@ -96,7 +96,9 @@ public function populateImages(){
 public function updateFolders(){
     if (file_exists("././Images/Properties/".$this->id)){
     } else {
-      mkdir("././Images/Properties/".$this->id);
+			$oldmask = umask(0);
+      mkdir("././Images/Properties/".$this->id, 0777);
+			umask($oldmask);
       $this->updateFolders();
     }
   }

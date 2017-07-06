@@ -2,6 +2,8 @@
 include_once('./classes/Database.php');
 include_once('./classes/Property.php');
 include_once('./classes/Form.php');
+include_once('./classes/FormData.php');
+
 session_start();
 
 if(!isset($_GET['swo']) && isset($_SESSION['form']) && !isset($_GET['addProperty'])){
@@ -9,8 +11,12 @@ if(!isset($_GET['swo']) && isset($_SESSION['form']) && !isset($_GET['addProperty
 }
 
 
+if(!isset($_GET['log']) && isset($_SESSION['formData'])){
+  unset($_SESSION['formData']);
+}
+
 //REMOVE BEFORE COMMITING
-//$_SESSION['id'] = 1;
+$_SESSION['id'] = 1;
 
 
  ?>

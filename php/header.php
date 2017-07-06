@@ -45,7 +45,7 @@
         <li><a href="contact.php">Contact</a></li>
         <?php
         if(isset($_SESSION['id'])){
-          echo '<li><a href="php/forms/logout.php">Logs</a></li>';
+          echo '<li><a href="form.php?log=true">Logs</a></li>';
           echo '<li><a href="php/forms/logout.php">Log Out</a></li>';
         }
          ?>

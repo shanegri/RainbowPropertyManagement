@@ -7,6 +7,7 @@ class Database {
   var $username = "root";
   var $pass = "pass";
   var $db;
+  var $conn;
 
 
   private function __construct(){
@@ -15,6 +16,12 @@ class Database {
     } catch(PDOException $e) {
         echo $e->getMessage();
     }
+
+    //For injection handeling
+   $this->conn = mysqli_connect('localhost', 'root', 'pass');
+   if($this->conn === null){
+     echo 'Error Connecting';
+   }
   }
 
   public function fetch($query){

@@ -16,13 +16,16 @@ class Form {
 	//Format key, display name, type, max length
 	//Length is used as array drop down values
 	//Mod value id
+	//Is required
 	public function addInput($key, $name, $type, $length = null, $mod = null){
 		if($length === null){ $length= 0; }
 		$this->store[$key] = new FormInput($key, $name, $type, $length, $mod);
 	}
 
 	public function showInput($key){
-		$this->store[$key]->showInput();
+		if(!in_array($key, $this->store)){
+			$this->store[$key]->showInput();
+		}
 	}
 
 	public function update($post){
@@ -90,35 +93,39 @@ class FormInput {
 	}
 
 	public function isValid(){
-	switch($this->type){
-	case FormInput::$INT:
-		if(is_numeric($this->value) || strlen($this->value) === 0){
-			$this->error = "";
-			return true;
-		} else {
-			$this->error = "Input Must be a number";
-			return false;
+		if($this->mod !== null){
+			if(strlen($this->value) === 0){
+				$this->error = "This field is required";
+				return false;
+			}
 		}
-	case FormInput::$TXTAR:
-	case FormInput::$STR:
-		if(strlen($this->value) < $this->length){
-			$this->error = "";
+		switch($this->type){
+		case FormInput::$INT:
+			if(is_numeric($this->value) || strlen($this->value) === 0){
+				$this->error = "";
+				return true;
+			} else {
+				$this->error = "Input Must be a number";
+				return false;
+			}
+		case FormInput::$TXTAR:
+		case FormInput::$STR:
+			if(strlen($this->value) < $this->length){
+				$this->error = "";
+				return true;
+			} else {
+				$this->error = "Input it too long";
+				return false;
+			}
+		default:
 			return true;
-		} else {
-			$this->error = "Input it too long";
-			return false;
 		}
-	default:
-		return true;
-	}
-
-
 	}
 
 	public function updateValue($value){
-	//	$this->value = mysql_escape_string($value);
+	$this->value = mysqli_real_escape_string(Database::getInstance()->conn, $value);
 	$this->value = $value;
-		$this->error = "";
+	$this->error = "";
 	}
 
 	public function showInput(){

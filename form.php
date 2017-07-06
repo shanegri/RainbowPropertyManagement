@@ -36,6 +36,11 @@
           $m = true;
         }
 
+        if(isset($_GET['log']) && !$m){
+          include_once('php/forms/logs.php');
+          $m = true;
+        }
+
 
         ?>
     </div>
