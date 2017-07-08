@@ -58,6 +58,7 @@
               $("#2 a:contains('Properties')").parent().addClass('active');
               $("#3 a:contains('About')").parent().addClass('active');
               $("#4 a:contains('Contact')").parent().addClass('active');
+              $("#5 a:contains('Logs')").parent().addClass('active');
           });
       </script>
     </div>
