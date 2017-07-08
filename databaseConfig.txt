@@ -22,3 +22,15 @@ table: users {
   email 255 varchar
 
 }
+
+table: WorkOrder [
+  id
+  fName varchar 20
+  lName varchar 20
+  request varchar 700
+  pEnter varchar 10
+  address varchar 100
+  zip
+  city varchar 20
+  date
+]
