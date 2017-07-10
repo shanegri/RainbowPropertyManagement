@@ -3,9 +3,6 @@
 if(isset($_SESSION['id'])){
   include('adminProperty.php');
 }
-
-
-
 ?>
 <div class="container-fluid card" style="width: 100%; padding: 20px;">
 <?php include('expandedSlide.php');?>

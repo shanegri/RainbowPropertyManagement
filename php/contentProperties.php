@@ -1,4 +1,4 @@
- 
+
   <div class="row">
     <!--Main Content-->
     <div class="col-sm-8 body">
@@ -86,7 +86,9 @@
         <hr>
       <?php include("widgets/submitWorkOrder.php") ?>
       <?php include("widgets/contactUs.php") ?>
-      <?php //include("widgets/newProperties.php") ?>
+      <?php include("widgets/newProperties.php") ?>
+      <?php include("widgets/Apply.php") ?>
+
     </div>
   </div>
 </div>

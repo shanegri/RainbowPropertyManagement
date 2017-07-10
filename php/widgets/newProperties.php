@@ -1,10 +1,4 @@
 <div class="widget card" style="text-align: center;">
-<h3>Newest Listing</h3>
-
-
-
-</div>
-
-
+<a href="properties.php?property=0"><h3>Newest Listing</h3></a>
 
 </div>

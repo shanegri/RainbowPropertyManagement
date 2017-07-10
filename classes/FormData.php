@@ -2,47 +2,76 @@
 
 class FormData {
 
-  var $arrayIndex;
   var $row;
+  var $type;
+  var $date;
 
-  public function __construct($arrayIndex, $row){
-    $this->arrayIndex = $arrayIndex;
+  public function __construct($row, $type){
     $this->row = $row;
+    $this->type = $type;
+    $this->date = $row['Date'];
   }
 
   public function show(){
     echo '
     <div class="row">
-      <div class="col-xs-6 item">
+      <div class="col-xs-3 item">
         <p>'.$this->row['Date'].'</p>
       </div>
       <div class="col-xs-3 item">
-        <p>type</p>
+        <p>Type: '.$this->type.'</p>
       </div>
-      <div class="col-xs-3 item">
-        <a href="form.php?log=true&id='.$this->arrayIndex.'" >Download</a>
+      <div class="col-xs-4 item">
+        <a style="float:right" href="form.php?log=true&id='.$this->date.'" >Download</a>
+      </div>
+      <div class="col-xs-2 item">
+        <a style="float: right" href="form.php?log=true&id='.$this->date.'" >Delete</a>
       </div>
     </div>
     ';
   }
 
   public function generateDoc(){
+    switch ($this->type) {
+      case 'Work Order':
+      echo $this->genWorkOrder();
+      break;
+      case 'Contact Form':
+      echo $this->genContactForm();
+      break;
+    }
+  }
+
+  private function genWorkOrder(){
     $row = $this->row;
     $c = 'Date Uploaded: ' . $row['Date'] .PHP_EOL;
     $c .= 'First Name: ' . $row['fName'] . PHP_EOL;
     $c .= 'Last Name: ' . $row['lName'] .PHP_EOL;
     $c .= 'Request: '.PHP_EOL;
-
     $r = $row['request'];
-    if(strlen($r) > 20){
-      $len = strlen($r) > 20;
-      for($i = 0; $i < $len; $i += 20){
-      
-      }
-    } else {
-      $c .= $r.PHP_EOL;
+    $r = str_split($r, 100);
+    foreach($r as $line){
+      $c .= $line . PHP_EOL;
     }
-    echo $c;
+    $c .= 'Address: ' . $row['address'] . PHP_EOL;
+    $c .= 'Zip: ' . $row['zip'] . PHP_EOL;
+    $c .= 'City: ' . $row['city'] . PHP_EOL;
+    return $c;
+  }
+
+  private function genContactForm(){
+    $row = $this->row;
+    $c = 'Date Uploaded: ' . $row['Date'] .PHP_EOL;
+    $c .= 'First Name: ' . $row['fName'] . PHP_EOL;
+    $c .= 'Last Name: ' . $row['lName'] .PHP_EOL;
+    $c .= 'Message: '.PHP_EOL;
+    $r = $row['message'];
+    $r = str_split($r, 100);
+    foreach($r as $line){
+      $c .= $line . PHP_EOL;
+    }
+    $c .= "Email Address: " . $row['email'] . PHP_EOL;
+    return $c;
   }
 
 

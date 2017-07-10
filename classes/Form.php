@@ -158,7 +158,8 @@ class FormInput {
 	?>
       <h3><small><?php echo $this->name ?></small></h3>
       <textarea name="<?php echo $this->key ?>" rows="8" cols="120" style="max-width: 100%"><?php echo $this->value ?></textarea>
-
+			<br>
+			<b style="color:red"><?php echo $this->error ?></b>
 	<?php
 	}
 

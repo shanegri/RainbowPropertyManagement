@@ -11,6 +11,11 @@
         <?php
         $l = isset($_SESSION['id']);
         $m = false;
+        if(isset($_GET['done'])){
+          include_once('php/forms/done.php');
+          $m = true;
+        }
+
         if(isset($_GET['login']) && !$m){
           include_once('php/forms/login.php');
           $m = true;
@@ -40,6 +45,8 @@
           include_once('php/forms/logs.php');
           $m = true;
         }
+
+
 
 
         ?>

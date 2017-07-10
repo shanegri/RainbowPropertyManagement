@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
   $Form->update($_POST);
   if($Form->validate()){
 		if($Form->insert()){
-			echo 'Done';
+			header('location:form.php?swo=true&done');
 		} else {
 			echo 'Error';
 		}
@@ -38,8 +38,6 @@ $Form->showInput('pEnter');
 $Form->showInput('address');
 $Form->showInput('zip');
 $Form->showInput('city');
-
-
 
 
 ?>

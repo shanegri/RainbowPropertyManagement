@@ -11,14 +11,14 @@ class Property extends Form {
 
 public function __construct(){
 	parent::__construct('properties');
-	$this->addInput('description', 'Description', FormInput::$TXTAR, 700, null);
+	$this->addInput('description', 'Description', FormInput::$TXTAR, 700, true);
 	$this->addInput('numBedroom', 'Number of Bedrooms', FormInput::$INT, null, null);
 	$this->addInput('numBathroom', 'Number of Bathrooms', FormInput::$INT, null, null);
-	$this->addInput('cost', 'Cost', FormInput::$INT, null, null);
+	$this->addInput('cost', 'Cost', FormInput::$INT, null, true);
 	$this->addInput('yearBuilt', 'Year Built', FormInput::$INT, null, null);
 	$this->addInput('sqrFeet', 'Square Feet', FormInput::$INT, null, null);
 	$this->addInput('unitNum', 'Unit Number', FormInput::$INT, null, null);
-	$this->addInput('address', 'Address', FormInput::$STR, 100, null);
+	$this->addInput('address', 'Address', FormInput::$STR, 100, true);
 	$this->addInput('type', 'House or Apartment', FormInput::$DRPDWN, array("House", "Apartment"), null);
 	$this->addInput('singleormult', 'Family Size', FormInput::$DRPDWN, array("Single", "Multiple"), null);
 	$this->addInput('util', 'Utilities', FormInput::$STR, 20, null);

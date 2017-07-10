@@ -34,3 +34,12 @@ table: WorkOrder [
   city varchar 20
   date
 ]
+
+table: Contact {
+  id
+  fName varchar 20
+  lName varchar 20
+  message varchar 700
+  email  varchar 50
+  date
+}
