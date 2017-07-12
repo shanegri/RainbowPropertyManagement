@@ -59,12 +59,13 @@ private function shortenDescription($orgD){
 private function deleteProperty(){
     $db = Database::getInstance();
     $query = "DELETE FROM properties WHERE id='$this->id'";
-    $files= scandir("./images/Properties/".$this->id);
+    $files= scandir("./Images/Properties/".$this->id);
     $files = array_diff($files, [".", ".."]);
     foreach($files as $file){
-      unlink("././images/properties/".$this->id."/".$file);
+
+      unlink("././Images/Properties/".$this->id."/".$file);
     }
-    rmdir("./images/Properties/".$this->id);
+    rmdir("./Images/Properties/".$this->id);
     if($db->query($query)){
       return true;
     } else {
@@ -106,11 +107,42 @@ public function updateFolders(){
 public function renameImages(){
     $files = $this->images;
     $target_dir = "././Images/Properties/".$this->id ."/";
+		$tochange = array();
     for($i = 0 ; $i < sizeof($files) ; $i++){
-      $ext = pathinfo($files[$i])['extension'];
-      rename($files[$i], $target_dir.$i.'.'.$ext);
+      $e = explode('.', $files[$i]);
+			$name = $e[3];
+			$ext = $e[4];
+			rename($files[$i], $i);
+			$tochange[$i] = $target_dir.$i.'.'.$name.'.'.$ext;
     }
+		foreach($tochange as $key => $val){
+			rename($key, $val);
+		}
 }
+
+public function setIcon($toSet){
+	$files = $this->images;
+	if($toSet != $files[0]){
+		for($i = 0 ; $i < sizeof($files); $i++){
+			if($files[$i] === $toSet) {$num = $i;}
+		}
+		$target_dir = "././Images/Properties/".$this->id ."/";
+		$tempE = explode('.', $files[0]);
+		$tempName = $tempE[3];
+		$tempExe = $tempE[4];
+		$tempDIR = $target_dir .'t'.$tempExe;
+		rename($files[0], $tempDIR);
+		$e = explode('.', $toSet);
+		$name = $e[3];
+		$ext = $e[4];
+		rename($toSet, $target_dir.'0.'.$name.'.'.$ext);
+		rename($tempDIR, $target_dir . $num .'.'. $tempName .'.'.$tempExe);
+		$this->setPrevImage();
+	}
+}
+
+
+
 
 public function v($key){
   return $this->getValue($key);

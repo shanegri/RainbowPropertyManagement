@@ -3,11 +3,14 @@
   <div class="text-center">
     <form method="post">
           <button type="submit" name="delete" value="<?php echo $imTag; ?>">Delete</button>
+          <button type="submit" name="setIcon" value="<?php echo $imTag; ?>">Set Icon</button>
+
     </form>
   </div>
   <div class="row">
     <div class="col-xs-12 propertyPicPreview" style="background-image: url('<?php echo $imTag?>')">
     </div>
+    <?php //echo $imTag; ?>
   </div>
 </div>
 

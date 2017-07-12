@@ -67,6 +67,8 @@
             $properties[$i]->echoPreview();
           }
         } else {
+          $properties[$_GET['property']]->populateImages();
+
           $properties[$_GET['property']]->echoExpanded();
         }
 

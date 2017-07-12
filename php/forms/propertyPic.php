@@ -14,15 +14,22 @@
 
       //Gets property to be modified
       $prop = $_SESSION['propertylist'][$_GET['updatepic']];
+      $prop->populateImages();
 
       //Handel Image Deletions
       if(isset($_POST['delete'])){
         $id_delete = $_POST['delete'];
+        unset($_POST['delete']);
         unlink($id_delete);
         $prop->populateImages();
         $prop->renameImages();
         echo '<b>Image Deleted</b>';
       }
+
+      if(isset($_POST['setIcon'])){
+        $prop->setIcon($_POST['setIcon']);
+      }
+
 
       //Handel Image Uploads
       $post = true;
@@ -31,14 +38,21 @@
         $acc_ext = array('jpg', 'png', 'jpeg', 'gif');
         $file_new_name = sizeof($prop->images);
         $file = $_FILES['file'];
+        $size = $file['size'];
         $file_ext = explode('.', $file['name']);
+
+        if(sizeof($prop->images) > 15){
+          $post = false;
+          echo '<b style="color: red">Max File Limit Reached</b>';
+        }
 
         //Ensure File exists + breakoff extension
         if(isset($file_ext[1])){
           $file_ext = $file_ext[1];
-        //  echo $file_ext;
         } else {
-          echo '<b style="color: red">Please Select a file</b>';
+          if($post){
+            echo '<b style="color: red">Please Select a file</b>';
+          }
           $post = false;
         }
 
@@ -48,10 +62,17 @@
           echo '<b style="color: red">Incorrect File Type</b>';
         }
 
+        //Check size
+        if($post && $size > 2097152){
+          $post = false;
+          echo '<b style="color: red">File Too Large</b>';
+        }
+
         //move image from temp dir to server dir
         if($post){
-          $target_dir = "././Images/Properties/".$prop->id."/" . $file_new_name . '_'.$file['name']. '.' . $file_ext;
+          $target_dir = "././Images/Properties/".$prop->id."/" . $file_new_name . '.' .$file['name'];
           if(move_uploaded_file($file['tmp_name'], $target_dir)){
+            chmod($target_dir, 0777);
             echo '<b>Upload Succesful</b>';
           } else {
             echo '<b style="color: red">Upload Failed</b>';
@@ -64,8 +85,16 @@
     <?php
       //Print Images
       $prop->populateImages();
-      foreach($prop->images as $i){
-        displayIm($i);
+
+      for($i = 0 ; $i < sizeof($prop->images) ; $i++){
+        if($i === 0){
+          echo '<b>Icon</b>';
+          displayIm($prop->images[$i]);
+          echo '<br>';
+        } else {
+          displayIm($prop->images[$i]);
+        }
+
       }
       ?>
 
