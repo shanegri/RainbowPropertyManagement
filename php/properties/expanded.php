@@ -16,7 +16,11 @@ if(isset($_SESSION['id'])){
     <h3><small><i>Address:</i></small></h3> <p > <?php echo $this->v('address') ?></p>
     <h3><small><i>Type:</i></small></h3><p><?php echo $this->v('type') ?></p>
     <h3><small><i>Size:</i></small></h3><p><?php echo $this->v('singleormult') ?></p>
-    <h3><small><i>Unit Number</i></small></h3><p><?php echo $this->v('unitNum')  ?></p>
+    <?php
+    if($this->v('type') != 'House'){
+        echo" <h3><small><i>Unit Number</i></small></h3><p>".$this->v('unitNum')."</p>";
+    }
+     ?>
   </div>
 </div>
 <div class="row facts">
@@ -25,12 +29,15 @@ if(isset($_SESSION['id'])){
     <h3><small><i>Number Of Bathrooms</i></small></h3><p><?php echo $this->v('numBathroom') ?></p>
   </div>
   <div class="col-sm-6">
-    <h3><small><i>Sqr Feet</i></small></h3><p><?php echo $this->v('sqrFeet') ?></p>
     <h3><small><i>Cost Per Month: </i></small></h3><p><?php echo $this->v('cost') ?></p>
-    <h3><small><i>Year Built: </i></small></h3><p><?php echo $this->v('yearBuilt') ?></p>
+    <?php
+    if($this->v('yearBuilt') != '' && $this->v('yearBuilt') != '0'){
+        echo" <h3><small><i>Year Built</i></small></h3><p>".$this->v('yearBuilt')."</p>";
+    }
+    if($this->v('sqrFeet') != '' && $this->v('sqrFeet') != '0'){
+        echo" <h3><small><i>Square Feet</i></small></h3><p>".$this->v('sqrFeet')."</p>";
+    }
+     ?>
   </div>
-
 </div>
-
-
 </div>

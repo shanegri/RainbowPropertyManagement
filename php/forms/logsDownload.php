@@ -12,5 +12,5 @@ $f = $_SESSION['formData'][$_GET['id']];
 echo $f->generateDoc();
 
 exit();
-header('location: ././form.php?log=true');
+header('location: ././form.php?log&page='.$_SESSION['page']);
 ?>

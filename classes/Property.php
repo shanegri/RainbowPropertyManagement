@@ -5,7 +5,6 @@ class Property extends Form {
 
 	var $arIndex = 0;
 	var $id = 0;
-
 	var $images = array();
 	var $prevImage;
 
@@ -22,14 +21,15 @@ public function __construct(){
 	$this->addInput('type', 'House or Apartment', FormInput::$DRPDWN, array("House", "Apartment"), null);
 	$this->addInput('singleormult', 'Family Size', FormInput::$DRPDWN, array("Single", "Multiple"), null);
 	$this->addInput('util', 'Utilities', FormInput::$STR, 20, null);
-
 }
 
+//Creates new instance w/o id or array index
 public static function init(){
 	$instance = new self();
 	return $instance;
 }
 
+//Creates new instance w/ id and array index
 public static function initID($arIndex, $id){
 	$instance = new self();
 	$instance->arIndex = $arIndex;
@@ -48,6 +48,7 @@ public function echoExpanded(){
 	include('./php/properties/expanded.php');
 }
 
+//shortens description for preview card
 private function shortenDescription($orgD){
     if(strLen($orgD) > 252){
       return substr($orgD, 0 , 252) . "...";
@@ -62,7 +63,6 @@ private function deleteProperty(){
     $files= scandir("./Images/Properties/".$this->id);
     $files = array_diff($files, [".", ".."]);
     foreach($files as $file){
-
       unlink("././Images/Properties/".$this->id."/".$file);
     }
     rmdir("./Images/Properties/".$this->id);
@@ -73,6 +73,7 @@ private function deleteProperty(){
     }
 }
 
+//Sets prev image to image at array index 0
 public function setPrevImage(){
     if(sizeof($this->images) != 0){
       $this->prevImage = $this->images[0];
@@ -81,6 +82,7 @@ public function setPrevImage(){
     }
 }
 
+//Scans for images within image folder
 public function populateImages(){
     $this->updateFolders();
     $files= scandir("./Images/Properties/".$this->id);
@@ -93,7 +95,7 @@ public function populateImages(){
     $this->setPrevImage();
 }
 
-
+//Checks if image folder exists, if not, creates it
 public function updateFolders(){
     if (file_exists("././Images/Properties/".$this->id)){
     } else {
@@ -104,6 +106,7 @@ public function updateFolders(){
     }
   }
 
+//Renames images to suffixs are in sequential order
 public function renameImages(){
     $files = $this->images;
     $target_dir = "././Images/Properties/".$this->id ."/";
@@ -120,6 +123,7 @@ public function renameImages(){
 		}
 }
 
+//switches image at $toSet to array index 0
 public function setIcon($toSet){
 	$files = $this->images;
 	if($toSet != $files[0]){
@@ -141,9 +145,7 @@ public function setIcon($toSet){
 	}
 }
 
-
-
-
+//Returns value for that key
 public function v($key){
   return $this->getValue($key);
 }

@@ -1,15 +1,37 @@
 <?php
+include_once('Database.php');
 
 class FormData {
 
   var $row;
   var $type;
   var $date;
+  var $index;
+  var $id;
 
   public function __construct($row, $type){
     $this->row = $row;
     $this->type = $type;
     $this->date = $row['Date'];
+    $this->id = $row['id'];
+  }
+
+  public function setArrayIndex($i){
+    $this->index = $i;
+  }
+
+  public function del(){
+    $d = Database::getInstance();
+    if($this->type === "Work Order"){
+      $q = "DELETE FROM WorkOrder WHERE id=".$this->id;
+    } else {
+      $q = "DELETE FROM Contact WHERE id=".$this->id;
+    }
+    if($d->query($q)){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public function show(){
@@ -22,10 +44,12 @@ class FormData {
         <p>Type: '.$this->type.'</p>
       </div>
       <div class="col-xs-4 item">
-        <a style="float:right" href="form.php?log=true&id='.$this->date.'" >Download</a>
+        <a style="float:right" href="form.php?log&page=0&id='.$this->index.'" >Download</a>
       </div>
       <div class="col-xs-2 item">
-        <a style="float: right" href="form.php?log=true&id='.$this->date.'" >Delete</a>
+        <a style="float: right" href="form.php?log&page=0&d='.$this->index .'"
+        onclick="return confirm(\'Are you sure?\');"
+        >Delete</a>
       </div>
     </div>
     ';

@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
 	<div class="col-xs-6">
 		<?php
 		$prop->showInput('numBedroom');
-		$prop->showInput('numBedroom');
+		$prop->showInput('numBathroom');
 		$prop->showInput('cost');
 		$prop->showInput('yearBuilt');
 		$prop->showInput('sqrFeet');
@@ -48,6 +48,6 @@ if(isset($_POST['submit'])){
 </div>
 
 </form>
-  
+
 </div>
 </div>

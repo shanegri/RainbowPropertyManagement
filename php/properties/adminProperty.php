@@ -26,7 +26,7 @@ if(isset($_POST['picture'])){
  ?>
 <div class="container-fluid card" style=" font-size: 12px; margin-bottom: 10px;">
   <form method="post">
-    <button type="submit" name="delete">Delete</button>
+    <button type="submit" name="delete" onclick="return confirm('Are you sure?')">Delete</button>
     <button type="submit" name=edit>Edit</button>
     <button type="submit" name="picture">Add / Remove Pictures</button>
   </form>

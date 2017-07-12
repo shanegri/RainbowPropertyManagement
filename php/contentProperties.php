@@ -6,6 +6,15 @@
       <h3><small>Available properties</small></h3>
         <hr></hr>
       <?php
+        if(isset($_GET['property'])){
+          echo '
+          <div class="container-fluid" style="margin-left: 0; width: 50px; height: 40px; font-size: 12px;">
+              <div class="row card text-center">
+                <a href="properties.php"><button type="button" name="button">Back</button></a>
+              </div>
+          </div>
+          ';
+        }
         if(!isset($_GET['page']) && !isset($_GET['property'])){
           header('location:properties.php?page=0');
         }
