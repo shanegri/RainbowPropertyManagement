@@ -4,11 +4,13 @@ session_start();
 
 //Deny access to users not logged in
 if(!isset($_SESSION['id'])){ header('location: ././index.php'); }
+$f = $_SESSION['formData'][$_GET['id']];
 
-header('Content-disposition: attachment; filename=testing.txt');
+
+header('Content-disposition: attachment; filename='.$f->genName().'.txt');
 header('Content-type: text/plain');
 
-$f = $_SESSION['formData'][$_GET['id']];
+
 echo $f->generateDoc();
 
 exit();

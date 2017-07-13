@@ -9,7 +9,7 @@
 
 <?php
 $pp = 50;
-
+include('php/traverseNav.php');
 
 if(isset($_SESSION['formData'])){
   $data = $_SESSION['formData'];
@@ -68,8 +68,13 @@ if(isset($_GET['d'])){
   $r = $data[$_GET['d']]->del();
   if ($r) { unset($_SESSION['formData']);header('location:form.php?log');} else {echo '<b>Failed</b>';}
 }
-include('traverseNav.php');
 ?>
+<div style=" margin: 0 auto; width: 80%">
+<?php
+showNav(sizeof($data), $pp);
+?>
+</div>
+
 
 <div class="container-fluid card" style="width: 80%; padding: 20px;">
 
@@ -78,8 +83,6 @@ for($i = $pp * $_GET['page'] ; $i < sizeof($data) && ($i <  $_GET['page'] * $pp 
   $data[$i]->show();
   $data[$i]->setArrayIndex($i);
 }
-
-
 
 ?>
 

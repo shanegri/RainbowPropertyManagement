@@ -10,6 +10,8 @@ table: properties {
   sqrFeet
   unitNum
   address 100 varchar
+  city 20 varchar
+  zip 
   type 20 varchar
   singleormult 20 varchar
   util 20 varchar

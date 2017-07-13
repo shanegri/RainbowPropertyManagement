@@ -6,10 +6,12 @@
       <h3><small>Available properties</small></h3>
         <hr></hr>
       <?php
+      include('traverseNav.php');
+      $pp = 10;
         if(isset($_GET['property'])){
           echo '
           <div class="container-fluid" style="margin-left: 0; width: 50px; height: 40px; font-size: 12px;">
-              <div class="row card text-center">
+              <div class="row text-center">
                 <a href="properties.php"><button type="button" name="button">Back</button></a>
               </div>
           </div>
@@ -19,8 +21,8 @@
           header('location:properties.php?page=0');
         }
 
-        if(!isset($_SESSION['propPage'])){
-          $_SESSION['propPage'] = 0;
+        if(!isset($_SESSION['page'])){
+          $_SESSION['page'] = 0;
         }
 
         //Admin features
@@ -46,33 +48,33 @@
 
         //Redirects if page is out of range
         if(isset($_GET['page'])){
-          if($_GET['page'] < 0 || $_GET['page'] > floor(sizeof($properties)/10)){
+          if($_GET['page'] < 0 || $_GET['page'] > floor(sizeof($properties)/$pp)){
             header('location:properties.php?page=0');
           }
         }
 
-        //Handel page traversal (10 properties per page)
+        //Handel page traversal ($pp properties per page)
         if(isset($_POST['traverse'])){
           if($_POST['traverse'] == 'prev'){
-            if($_SESSION['propPage'] != 0){
-              $_SESSION['propPage']--;
+            if($_SESSION['page'] != 0){
+              $_SESSION['page']--;
             }
           } else {
-            if($_SESSION['propPage'] != floor(sizeof($properties)/10)){
-              $_SESSION['propPage']++;
+            if($_SESSION['page'] != floor(sizeof($properties)/$pp)){
+              $_SESSION['page']++;
             }
           }
           unset($_POST['traverse']);
-          header('location:properties.php?page='.$_SESSION['propPage']);
+          header('location:properties.php?page='.$_SESSION['page']);
         }
         //Prints page nav
         if(isset($_GET['page'])){
-          include('properties/traverseNav.php');
+          showNav(sizeof($properties), $pp);
         }
 
         //Prints page
         if(!isset($_GET['property'])){
-          for($i = $_GET['page'] * 10; $i < sizeof($_SESSION['propertylist']) && $i < ($_GET['page'] * 10) + 10; $i++){
+          for($i = $_GET['page'] * $pp; $i < sizeof($_SESSION['propertylist']) && $i < ($_GET['page'] * $pp) + $pp; $i++){
             $properties[$i]->echoPreview();
           }
         } else {
@@ -83,7 +85,7 @@
 
         //Prints page nav
         if(isset($_GET['page'])){
-          include('properties/traverseNav.php');
+          showNav(sizeof($properties), $pp);
         }
 
 
@@ -95,6 +97,10 @@
     <div class="col-sm-4">
       <h3 class="text-center"><small>Links</small></h3>
         <hr>
+      <?php
+      if(isset($_GET['property'])){
+        include("widgets/mapLocation.php");
+      }?>
       <?php include("widgets/submitWorkOrder.php") ?>
       <?php include("widgets/contactUs.php") ?>
       <?php include("widgets/newProperties.php") ?>

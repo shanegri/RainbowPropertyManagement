@@ -3,9 +3,10 @@
     <form method="post">
       <?php
       if(isset($_POST['submit'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
         $db = Database::getInstance();
+        $username = mysqli_escape_string($db->conn, $_POST['username']);
+        $password = mysqli_escape_string($db->conn, $_POST['password']);
+        $password = hash('sha256', $password);
         $query = "SELECT * FROM users";
         $result = $db->fetch($query);
         $correctLogIn = false;

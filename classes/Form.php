@@ -61,7 +61,6 @@ class Form {
 			$q = "UPDATE ".$this->name." SET " .$form->key."='".$form->value."' WHERE id=".$id;
 		  if(!$db->query($q)){$r = false;}
 		}
-
 		return $r;
 	}
 }
@@ -71,9 +70,10 @@ class FormInput {
 
 	public static $INT = 0;
 	public static $STR = 1;
-	public static $TXTAR= 2;
+	public static $TXTAR = 2;
 	public static $DATE = 3;
 	public static $DRPDWN = 4;
+
 
 	var $value = "";
 	private $error = "";
@@ -143,6 +143,9 @@ class FormInput {
 			case FormInput::$DRPDWN:
 				$this->showDropDown();
 				break;
+			case FormInput::$DATE:
+				$this->showDate();
+				break;
 		}
 	}
 
@@ -185,6 +188,10 @@ class FormInput {
         ?>
     </select>
 	<?php
+	}
+
+	private function showDate(){
+		//TODO Add Date Input
 	}
 
 	public function getValue(){

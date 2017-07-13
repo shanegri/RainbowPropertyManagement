@@ -11,6 +11,7 @@ if(!isset($_SESSION['form'])){
 	$Form->addInput("lName", "Last Name", FormInput::$STR, 20, true);
 	$Form->addInput("request", "Work Order Request", FormInput::$TXTAR, 700, true);
 	$Form->addInput("pEnter", "Permission to enter", FormInput::$DRPDWN, array("Yes", "No"), true);
+	$Form->addInput("email", "Email", FormInput::$STR, 50, true);
 	$Form->addInput("address", "Address", FormInput::$STR, 100, true);
 	$Form->addInput("zip", "Zip Code", FormInput::$INT, null, true);
 	$Form->addInput("city", "City", FormInput::$STR, 20, true);
@@ -35,6 +36,7 @@ $Form->showInput('fName');
 $Form->showInput('lName');
 $Form->showInput('request');
 $Form->showInput('pEnter');
+$Form->showInput('email');
 $Form->showInput('address');
 $Form->showInput('zip');
 $Form->showInput('city');

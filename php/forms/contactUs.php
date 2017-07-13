@@ -9,7 +9,7 @@ if(!isset($_SESSION['form'])){
 	$Form = new Form('Contact');
 	$Form->addInput("fName", "First Name", FormInput::$STR, 20, true);
   $Form->addInput("lName", "Last Name", FormInput::$STR, 20, true);
-	$Form->addInput("email", "Email Address", FormInput::$STR, 20, true);
+	$Form->addInput("email", "Email Address", FormInput::$STR, 50, true);
 	$Form->addInput("message", "Message", FormInput::$TXTAR, 700, true);
 
 

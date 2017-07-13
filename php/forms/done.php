@@ -10,6 +10,7 @@
 
 <div class="text-center">
   <h3>Done.</h3>
+  <h3><small>An email confirmation will be sent to you</small></h3>
   <a href="index.php"> Link To Home</a>
 </div>
 

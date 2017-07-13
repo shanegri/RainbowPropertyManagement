@@ -16,7 +16,7 @@ if(!isset($_GET['log']) && isset($_SESSION['formData'])){
 }
 
 //REMOVE BEFORE COMMITING
-$_SESSION['id'] = 1;
+//$_SESSION['id'] = 1;
 
 
  ?>

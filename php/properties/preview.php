@@ -5,7 +5,7 @@
       </div>
       <div class="col-sm-6">
         <h3 style="margin: 0;"><small><i>Description:</i></small></h3>
-        <p><?php echo $this->v('description') ?></p>
+        <p><?php echo $this->shortDescription ?></p>
         <div>
           <h3 style="margin: 0; display: inline"><small><i>Address: </i></small></h3>
           <p style="display:inline"><?php echo $this->v('address')  ?></p>

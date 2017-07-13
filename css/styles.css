@@ -46,12 +46,13 @@ body {
   max-width: 1070px;
   min-height: 1080px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .card{
   box-shadow: 2px 2px 6px #bbbaba;
   border: 1px solid rgb(221, 220, 216);
-  border-radius: 12px;
+  border-radius: 3px;
   background: white;
 }
 
@@ -64,11 +65,12 @@ body {
 }
 
 .propertyPreview button {
+  position: relative;
   margin-top: 7px;
   width: 48%;
   height: 50px;
   border: none;
-  background: rgb(207, 241, 242)
+  background: rgb(207, 241, 242);
 }
 
 .propertyPreview button:hover {
@@ -184,8 +186,6 @@ body {
 .widget {
   margin-top: 20px;
   background: white;
-  border: 1px solid rgb(221, 220, 216);
-  border-radius: 12px;
 }
 
 .loginBox {
@@ -208,9 +208,10 @@ hr {
 }
 
 button {
-  border-radius: 20px;
+  border-radius: 10px;
   background: white;
   margin: 1px;
+  color: black;
 }
 
 button:hover {
@@ -237,7 +238,7 @@ button:hover {
 .navbar-default .navbar-nav > .active > a:focus {
     color: rgb(40, 40, 40);
     /*background:  rgb(192, 246, 243);*/
-    background: -webkit-linear-gradient(left, #a1ccc8 0%,#c0f6f3 9%,#c0f6f3 93%,#c0f6f3 93%,#addbd7 100%); 
+    background: -webkit-linear-gradient(left, #a1ccc8 0%,#c0f6f3 9%,#c0f6f3 93%,#c0f6f3 93%,#addbd7 100%);
 }
 
 
@@ -258,9 +259,7 @@ button:hover {
 
 @media only screen and (max-width: 768px){
 
-.page {
-  max-width: 100%;
-}
+
 
 .logo {
 

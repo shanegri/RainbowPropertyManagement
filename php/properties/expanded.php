@@ -14,6 +14,8 @@ if(isset($_SESSION['id'])){
   </div>
   <div class="col-sm-6 facts">
     <h3><small><i>Address:</i></small></h3> <p > <?php echo $this->v('address') ?></p>
+    <h3><small><i>Zip:</i></small></h3> <p > <?php echo $this->v('zip') ?></p>
+    <h3><small><i>City:</i></small></h3> <p > <?php echo $this->v('city') ?></p>
     <h3><small><i>Type:</i></small></h3><p><?php echo $this->v('type') ?></p>
     <h3><small><i>Size:</i></small></h3><p><?php echo $this->v('singleormult') ?></p>
     <?php

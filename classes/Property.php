@@ -7,6 +7,7 @@ class Property extends Form {
 	var $id = 0;
 	var $images = array();
 	var $prevImage;
+	var $shortDescription;
 
 public function __construct(){
 	parent::__construct('properties');
@@ -21,6 +22,8 @@ public function __construct(){
 	$this->addInput('type', 'House or Apartment', FormInput::$DRPDWN, array("House", "Apartment"), null);
 	$this->addInput('singleormult', 'Family Size', FormInput::$DRPDWN, array("Single", "Multiple"), null);
 	$this->addInput('util', 'Utilities', FormInput::$STR, 20, null);
+	$this->addInput('city', 'City', FormInput::$STR, 20, true);
+	$this->addInput('zip', 'Zip', FormInput::$INT, null, true);
 }
 
 //Creates new instance w/o id or array index
@@ -41,6 +44,7 @@ public static function initID($arIndex, $id){
 }
 
 public function echoPreview(){
+	$this->shortDescription = $this->shortenDescription($this->v('description'));
 	include('./php/properties/preview.php');
 }
 

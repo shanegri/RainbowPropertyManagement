@@ -80,6 +80,7 @@ class FormData {
     $c .= 'Address: ' . $row['address'] . PHP_EOL;
     $c .= 'Zip: ' . $row['zip'] . PHP_EOL;
     $c .= 'City: ' . $row['city'] . PHP_EOL;
+    $c .= 'Email: ' . $row['email'] . PHP_EOL;
     return $c;
   }
 
@@ -96,6 +97,10 @@ class FormData {
     }
     $c .= "Email Address: " . $row['email'] . PHP_EOL;
     return $c;
+  }
+
+  public function genName(){
+    return $this->date . "_". $this->type;
   }
 
 

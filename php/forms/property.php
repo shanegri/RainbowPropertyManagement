@@ -45,7 +45,10 @@ if(isset($_POST['submit'])){
 	<div class="col-xs-6">
 		<?php
 		$prop->showInput('unitNum');
+		echo '<h3 style="display:inline;"><small><I>Displays if Apartment</I></small></h3>';
 		$prop->showInput('address');
+		$prop->showInput('zip');
+		$prop->showInput('city');
 		$prop->showInput('type');
 		$prop->showInput('singleormult');
 		$prop->showInput('util');
