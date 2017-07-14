@@ -43,9 +43,13 @@ public static function initID($arIndex, $id){
 	return $instance;
 }
 
-public function echoPreview(){
+public function echoPreview($p = null){
 	$this->shortDescription = $this->shortenDescription($this->v('description'));
-	include('./php/properties/preview.php');
+	if($p === null){
+		include('./php/properties/preview.php');
+	} else {
+		include('./php/properties/previewWidget.php');
+	}
 }
 
 public function echoExpanded(){

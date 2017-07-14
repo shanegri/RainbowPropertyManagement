@@ -2,7 +2,7 @@
 <html>
         <?php include_once("php/headIncludes.php") ?>
   <body>
-    <div class="head" id="5">
+    <div class="head" id="4">
         <!-- Header -->
         <?php include_once("php/header.php") ?>
     </div>
@@ -44,6 +44,11 @@
         if(isset($_GET['log']) && !$m){
           include_once('php/forms/logs.php');
           $m = true;
+          ?>
+          <script>
+          document.getElementById('4').id = '5';
+          </script>
+          <?php
         }
 
 
