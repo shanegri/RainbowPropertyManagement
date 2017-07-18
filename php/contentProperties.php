@@ -107,7 +107,10 @@
       }?>
       <?php include("widgets/submitWorkOrder.php") ?>
       <?php include("widgets/contactUs.php") ?>
-      <?php include("widgets/newProperties.php") ?>
+      <?php
+      if(!isset($_GET['property'])){
+        include("widgets/newProperties.php");
+      }?>
       <?php include("widgets/Apply.php") ?>
 
     </div>

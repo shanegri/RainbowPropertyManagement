@@ -51,6 +51,11 @@
           <?php
         }
 
+        if(isset($_GET['apply']) && !$m){
+          include_once('php/forms/apply.php');
+          $m = true;
+        }
+
 
 
 

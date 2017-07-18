@@ -71,6 +71,7 @@ class FormInput {
 	public static $INT = 0;
 	public static $STR = 1;
 	public static $TXTAR = 2;
+	public static $EMAIL = 21;
 	public static $DATE = 3;
 	public static $DRPDWN = 4;
 
@@ -108,6 +109,11 @@ class FormInput {
 				$this->error = "Input Must be a number";
 				return false;
 			}
+		case FormInput::$EMAIL:
+			if(!filter_var($this->value, FILTER_VALIDATE_EMAIL)){
+				$this->error = "Not a valid email address";
+				return false;
+			}
 		case FormInput::$TXTAR:
 		case FormInput::$STR:
 			if(strlen($this->value) < $this->length){
@@ -130,6 +136,7 @@ class FormInput {
 
 	public function showInput(){
 		switch ($this->type) {
+			case FormInput::$EMAIL:
 			case FormInput::$INT:
 			case FormInput::$STR:
 				$this->showTextInput();
@@ -152,9 +159,9 @@ class FormInput {
 	private function showTextInput(){
 	?>
 		<h3><small><?php echo $this->name ?> </small></h3>
-        <input type="text" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
-     	<b style="color:red"><?php echo $this->error ?></b>
-    <?php
+    <input type="text" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
+    <b style="color:red"><?php echo $this->error ?></b>
+		<?php
 	}
 
 	private function showTextAreaInput(){
@@ -188,10 +195,6 @@ class FormInput {
         ?>
     </select>
 	<?php
-	}
-
-	private function showDate(){
-		//TODO Add Date Input
 	}
 
 	public function getValue(){

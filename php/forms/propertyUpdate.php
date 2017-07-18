@@ -12,6 +12,8 @@ if(isset($_POST['submit'])){
   if($prop->validate()){
     $prop->insert($prop->id);
     header('location:properties.php?property='.$prop->arIndex);
+  } else {
+
   }
 }
 
