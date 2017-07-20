@@ -1,7 +1,8 @@
 <?php
 include_once('Database.php');
+include_once('iLog.php');
 
-class FormData {
+class FormData implements iLog{
 
   var $row;
   var $type;
@@ -38,24 +39,23 @@ class FormData {
     echo '
     <div class="row">
       <div class="col-xs-3 item">
-        <p>'.$this->row['Date'].'</p>
+        <p>'.$this->date.'</p>
       </div>
       <div class="col-xs-3 item">
-        <p>Type: '.$this->type.'</p>
+        <p>Type:'.$this->type.'</p>
       </div>
       <div class="col-xs-4 item">
-        <a style="float:right" href="form.php?log&page=0&id='.$this->index.'" >Download</a>
+        <a style="float:right" href="form.php?log&page=0&id='.$this->index.'">Download</a>
       </div>
       <div class="col-xs-2 item">
-        <a style="float: right" href="form.php?log&page=0&d='.$this->index .'"
-        onclick="return confirm(\'Are you sure?\');"
+        <a style="float: right" href="form.php?log&page=0&d='.$this->index.'"        onclick="return confirm(\'Are you sure?\');"
         >Delete</a>
       </div>
     </div>
     ';
   }
 
-  public function generateDoc(){
+  public function genDoc(){
     switch ($this->type) {
       case 'Work Order':
       echo $this->genWorkOrder();

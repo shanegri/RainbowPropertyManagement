@@ -87,6 +87,7 @@ class FormInput {
 
 	public function __construct($key, $name, $type, $length, $mod){
 		$this->name = $name;
+		if($mod != null) {$this->name .= "*"; }
 		$this->type = $type;
 		$this->length = $length;
 		$this->key = $key;

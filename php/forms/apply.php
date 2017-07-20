@@ -9,25 +9,32 @@
 <?php
 
 if(!isset($_SESSION['form'])){
-	$Form = new Form('Apply');
-  $Form->addInput("dateDesire", "Desired Date of Occupancy*", FormInput::$DATE, null, true);
-  $Form->addInput("typeSize", "Type and Size of Apartment Wanted*",FormInput::$STR, 50, true);
-
-  $Form->addInput("name", "Full Name*", FormInput::$STR, 40, true);
-
-
+	$Form = new ApplicationForm();
 	$_SESSION['form'] = $Form;
 } else {
   $Form = $_SESSION['form'];
 }
 
+if(isset($_POST['inc'])){
+	$Form->ApplicationUpdate($_POST);
+	$Form->inc($_POST['inc']);
+}
+if(isset($_POST['dec'])){
+	$Form->ApplicationUpdate($_POST);
+	$Form->dec($_POST['dec']);
+}
+
 if(isset($_POST['submit'])){
-  $Form->update($_POST);
-  if($Form->validate()){
-		if($Form->insert()){
-			header('location: contact.php?done');
+  $Form->ApplicationUpdate($_POST);
+  if($Form->ApplicationValidate()){
+		$s = base64_encode(serialize($Form));
+		$db = Database::getInstance();
+		$q = "INSERT INTO Application (AppFormObjects) values ('.$s.')";
+		$r = $db->query($q);
+		if($r){
+			 echo 'good';
 		} else {
-			echo 'Error';
+			echo 'not good';
 		}
 	}
 }
@@ -36,6 +43,7 @@ $Form->showInput('dateDesire');
 $Form->showInput('typeSize');
 ?> <h3 class="text-center"><small>PERSONAL INFORMATION</small></h3> <hr> <?php
 $Form->showInput('name');
+$Form->showResidenceHistory();
 
 
 

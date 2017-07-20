@@ -11,7 +11,7 @@ table: properties {
   unitNum
   address 100 varchar
   city 20 varchar
-  zip 
+  zip
   type 20 varchar
   singleormult 20 varchar
   util 20 varchar
@@ -44,4 +44,10 @@ table: Contact {
   message varchar 700
   email  varchar 50
   date
+}
+
+table: Application {
+  id
+  AppFormObjects MediumBlob
+  Date
 }

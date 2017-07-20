@@ -11,18 +11,31 @@
 $pp = 50;
 include('php/traverseNav.php');
 
+//inits data if not set
 if(isset($_SESSION['formData'])){
   $data = $_SESSION['formData'];
 } else {
+  echo 'test';
   $db = Database::getInstance();
   $data = array();
-  $query = "SELECT * FROM WorkOrder";
+  $query = "SELECT * FROM Application";
   $res = $db->fetch($query);
   for($i = 0 ; $i < sizeof($res) ; $i++){
-    $f = new FormData($res[$i], 'Work Order');
+    $f = unserialize(base64_decode($res[$i]['AppFormObjects']));
+    $f->date = $res[$i]['Date'];
     $data[$f->date] = $f;
   }
   $size = sizeof($data);
+
+  $query = "SELECT * FROM WorkOrder";
+  $res = $db->fetch($query);
+  for($i = $size ; $i < sizeof($res) + $size ; $i++){
+    $f = new FormData($res[$i- $size], 'Work Order');
+    $data[$f->date] = $f;
+  }
+  $size = sizeof($data);
+
+
   $query = "SELECT * FROM Contact";
   $res = $db->fetch($query);
   for($i = $size ; $i < sizeof($res) + $size ; $i++){
@@ -35,21 +48,25 @@ if(isset($_SESSION['formData'])){
   foreach($data as $f){
     array_push($d, $f);
   }
-  $data = array(); $data = $d;
-  $_SESSION['formData'] = $data;
+  $data = $d;
+  $_SESSION['formData'] = $d;
 }
+
 if(isset($_GET['id'])){
   header('location: php/forms/logsDownload.php?id='.$_GET['id']);
 }
 
+//Redirect to page if none is set
 if(!isset($_GET['page'])){
   header('location: form.php?log&page=0');
 }
 
+//Sets page # if non is set
 if(!isset($_SESSION['page'])){
   $_SESSION['page'] = 0;
 }
 
+//Handels Page traverals
 if(isset($_POST['traverse'])){
   if($_POST['traverse'] == 'prev'){
     if($_SESSION['page'] != 0){
@@ -64,6 +81,7 @@ if(isset($_POST['traverse'])){
   header('location:form.php?log&page='.$_SESSION['page']);
 }
 
+//Handels deletions
 if(isset($_GET['d'])){
   $r = $data[$_GET['d']]->del();
   if ($r) { unset($_SESSION['formData']);header('location:form.php?log');} else {echo '<b>Failed</b>';}
@@ -80,8 +98,8 @@ showNav(sizeof($data), $pp);
 
 <?php
 for($i = $pp * $_GET['page'] ; $i < sizeof($data) && ($i <  $_GET['page'] * $pp +$pp); $i++){
-  $data[$i]->show();
   $data[$i]->setArrayIndex($i);
+  $data[$i]->show();
 }
 
 ?>
