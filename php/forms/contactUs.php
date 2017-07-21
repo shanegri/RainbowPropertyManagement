@@ -3,9 +3,12 @@
 
 <form method="post">
 <?php
+if(!isset($_GET['contact'])){
+	header('location:contact.php?contact');
+}
 
 
-if(!isset($_SESSION['form'])){
+if(!isset($_SESSION['contactForm'])){
 	$Form = new Form('Contact');
 	$Form->addInput("fName", "First Name", FormInput::$STR, 20, true);
   $Form->addInput("lName", "Last Name", FormInput::$STR, 20, true);
@@ -13,9 +16,9 @@ if(!isset($_SESSION['form'])){
 	$Form->addInput("message", "Message", FormInput::$TXTAR, 700, true);
 
 
-	$_SESSION['form'] = $Form;
+	$_SESSION['contactForm'] = $Form;
 } else {
-  $Form = $_SESSION['form'];
+  $Form = $_SESSION['contactForm'];
 }
 
 if(isset($_POST['submit'])){

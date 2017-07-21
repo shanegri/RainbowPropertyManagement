@@ -5,7 +5,7 @@
 <?php
 
 
-if(!isset($_SESSION['form'])){
+if(!isset($_SESSION['swoForm'])){
 	$Form = new Form('WorkOrder');
 	$Form->addInput("fName", "First Name", FormInput::$STR, 20, true);
 	$Form->addInput("lName", "Last Name", FormInput::$STR, 20, true);
@@ -16,9 +16,9 @@ if(!isset($_SESSION['form'])){
 	$Form->addInput("zip", "Zip Code", FormInput::$INT, null, true);
 	$Form->addInput("city", "City", FormInput::$STR, 20, true);
 
-	$_SESSION['form'] = $Form;
+	$_SESSION['swoForm'] = $Form;
 } else {
-  $Form = $_SESSION['form'];
+  $Form = $_SESSION['swoForm'];
 }
 
 if(isset($_POST['submit'])){

@@ -243,10 +243,11 @@ button:hover {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
+    transition: background .2s ease-out;
     color: rgb(40, 40, 40);
-    /*background:  rgb(192, 246, 243);*/
-    background: -webkit-linear-gradient(left, #a1ccc8 0%,#c0f6f3 9%,#c0f6f3 93%,#c0f6f3 93%,#addbd7 100%);
-}
+    background:  rgb(192, 246, 243);
+    box-shadow: 0px 0px 2px black;
+  }
 
 
 .navbar.navbar-default {

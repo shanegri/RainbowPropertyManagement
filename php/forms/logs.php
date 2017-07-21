@@ -12,10 +12,9 @@ $pp = 50;
 include('php/traverseNav.php');
 
 //inits data if not set
-if(isset($_SESSION['formData'])){
-  $data = $_SESSION['formData'];
+if(isset($_SESSION['logData'])){
+  $data = $_SESSION['logData'];
 } else {
-  echo 'test';
   $db = Database::getInstance();
   $data = array();
   $query = "SELECT * FROM Application";
@@ -49,7 +48,7 @@ if(isset($_SESSION['formData'])){
     array_push($d, $f);
   }
   $data = $d;
-  $_SESSION['formData'] = $d;
+  $_SESSION['logData'] = $d;
 }
 
 if(isset($_GET['id'])){
@@ -84,7 +83,7 @@ if(isset($_POST['traverse'])){
 //Handels deletions
 if(isset($_GET['d'])){
   $r = $data[$_GET['d']]->del();
-  if ($r) { unset($_SESSION['formData']);header('location:form.php?log');} else {echo '<b>Failed</b>';}
+  if ($r) { unset($_SESSION['logData']);header('location:form.php?log');} else {echo '<b>Failed</b>';}
 }
 ?>
 <div style=" margin: 0 auto; width: 80%">

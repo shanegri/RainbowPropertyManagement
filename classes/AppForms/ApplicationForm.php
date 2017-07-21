@@ -56,6 +56,7 @@ class ApplicationForm extends Form implements iLog {
   }
 
   //Redifines update and validate to handel sub forms
+  //@param $p = $_POST['submit'] form data
   public function ApplicationUpdate($p){
     $this->update($p);
     foreach($this->ResidenceHistory as $f){ $f->update($p); }

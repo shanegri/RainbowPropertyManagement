@@ -6,7 +6,7 @@ session_start();
 
 //Deny access to users not logged in
 if(!isset($_SESSION['id'])){ header('location: ././index.php'); }
-$f = $_SESSION['formData'][$_GET['id']];
+$f = $_SESSION['logData'][$_GET['id']];
 
 
 header('Content-disposition: attachment; filename='.$f->genName().'.txt');

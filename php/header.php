@@ -42,7 +42,14 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="properties.php?page=0">Properties</a></li>
         <li><a href="about.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toogle" data-toggle="dropdown"> Contact<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="contact.php?contact" >Contact</a></li>
+          <li><a href="form.php?swo=true" >Work Order</a></li>
+          <li><a href="form.php?apply" >Apply to Rent</a></li>
+        </ul>
+        </li>
         <?php
         if(isset($_SESSION['id'])){
           echo '<li><a href="form.php?log=true">Logs</a></li>';
@@ -58,6 +65,11 @@
               $("#2 a:contains('Properties')").parent().addClass('active');
               $("#3 a:contains('About')").parent().addClass('active');
               $("#4 a:contains('Contact')").parent().addClass('active');
+              $("#4 a:contains(' Contact')").parent().addClass('active');
+              $("#6 a:contains(' Contact')").parent().addClass('active');
+              $("#6 a:contains('Work Order')").parent().addClass('active');
+              $("#7 a:contains(' Contact')").parent().addClass('active');
+              $("#7 a:contains('Apply to Rent')").parent().addClass('active');
               $("#5 a:contains('Logs')").parent().addClass('active');
           });
       </script>

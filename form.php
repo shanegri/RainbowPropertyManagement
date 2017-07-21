@@ -39,6 +39,11 @@
         if(isset($_GET['swo']) && !$m){
           include_once('php/forms/SubmitWorkOrder.php');
           $m = true;
+          ?>
+          <script>
+          document.getElementById('4').id = '6';
+          </script>
+          <?php
         }
 
         if(isset($_GET['log']) && !$m){
@@ -54,6 +59,11 @@
         if(isset($_GET['apply']) && !$m){
           include_once('php/forms/apply.php');
           $m = true;
+          ?>
+          <script>
+          document.getElementById('4').id = '7';
+          </script>
+          <?php
         }
 
 

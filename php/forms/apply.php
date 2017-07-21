@@ -8,11 +8,11 @@
 <form method="post">
 <?php
 
-if(!isset($_SESSION['form'])){
+if(!isset($_SESSION['applyForm'])){
 	$Form = new ApplicationForm();
-	$_SESSION['form'] = $Form;
+	$_SESSION['applyForm'] = $Form;
 } else {
-  $Form = $_SESSION['form'];
+  $Form = $_SESSION['applyForm'];
 }
 
 if(isset($_POST['inc'])){
