@@ -36,15 +36,71 @@ if(isset($_POST['submit'])){
 		} else {
 			echo 'not good';
 		}
+	} else {
+		echo 'Not Valid';
 	}
 }
 
+echo '<div class="row">';
+echo '<div class="col-xs-6">';
 $Form->showInput('dateDesire');
+echo '</div>';
+echo '<div class="col-xs-6">';
 $Form->showInput('typeSize');
-?> <h3 class="text-center"><small>PERSONAL INFORMATION</small></h3> <hr> <?php
-$Form->showInput('name');
+echo '</div>';
+echo '</div>';
+echo '<h3 class="text-center"style="background: grey"><small style="color: white;">PERSONAL INFORMATION</small></h3>';
+
+	echo '<h3><small>Primary Applicant</small></h3>';
+
+	echo '<div class="row">';
+
+	echo '<div class="col-xs-4">';
+	$Form->showInput('name');
+	$Form->showInput('homePhone');
+	echo '</div>';
+
+	echo '<div class="col-xs-4">';
+	$Form->showInput('social');
+	$Form->showInput('workPhone');
+	$Form->showInput('email');
+	echo '</div>';
+
+	echo '<div class="col-xs-4">';
+	$Form->showInput('dob');
+	$Form->showInput('cellPhone');
+	echo '</div></div>';
+
+	echo '<h3><small>Co-Applicant</small></h3>';
+
+	echo '<div class="row">';
+
+	echo '<div class="col-xs-4">';
+	$Form->showInput('nameCO');
+	$Form->showInput('homePhoneCO');
+	echo '</div>';
+
+	echo '<div class="col-xs-4">';
+	$Form->showInput('socialCO');
+	$Form->showInput('workPhoneCO');
+	$Form->showInput('emailCO');
+	echo '</div>';
+
+	echo '<div class="col-xs-4">';
+	$Form->showInput('dobCO');
+	$Form->showInput('cellPhoneCO');
+	$Form->showInput('relationCO');
+	echo '</div></div>';
+
+	$Form->showResidentCount();
+
+echo '<h3 class="text-center"style="background: grey"><small style="color: white;">RESIDENCE HISTORY</small></h3>';
+
 $Form->showResidenceHistory();
 
+echo '<h3 class="text-center"style="background: grey"><small style="color: white;">EMPLOYMENT HISTORY</small></h3>';
+
+$Form->showEmploymentCount();
 
 
 

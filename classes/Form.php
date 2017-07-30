@@ -161,7 +161,8 @@ class FormInput {
 	?>
 		<h3><small><?php echo $this->name ?> </small></h3>
     <input type="text" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
-    <b style="color:red"><?php echo $this->error ?></b>
+		<br>
+	  <b style="color:red"><?php echo $this->error ?></b>
 		<?php
 	}
 
@@ -177,8 +178,10 @@ class FormInput {
 	private function showDateInput(){
 	?>
 		<h3><small><?php echo $this->name ?> </small></h3>
-        <input type="date" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
-    <?php
+    <input type="date" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
+		<br>
+		<b style="color:red"><?php echo $this->error ?></b>
+		<?php
 	}
 
 	private function showDropDown(){

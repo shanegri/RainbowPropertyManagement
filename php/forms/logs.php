@@ -22,6 +22,7 @@ if(isset($_SESSION['logData'])){
   for($i = 0 ; $i < sizeof($res) ; $i++){
     $f = unserialize(base64_decode($res[$i]['AppFormObjects']));
     $f->date = $res[$i]['Date'];
+    $f->id = $res[$i]['id'];
     $data[$f->date] = $f;
   }
   $size = sizeof($data);
