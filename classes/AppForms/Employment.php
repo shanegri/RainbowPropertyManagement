@@ -59,7 +59,16 @@ class Employment extends Form implements iIncrementalForm {
   }
 
   public function genDoc(){
-      return $this->getValue('name'.$this->id);
+      $out = PHP_EOL. "EMPLOYMENT HISTORY" .PHP_EOL .PHP_EOL;
+      $out .= $this->showData('employer'.$this->id);
+      $out .= $this->showData('address'.$this->id);
+      $out .= $this->showData('telephone'.$this->id);
+      $out .= $this->showData('payment'.$this->id);
+      $out .= $this->showData('position'.$this->id);
+      $out .= $this->showData('supervisor'.$this->id);
+      $out .= $this->showData('dateStart'.$this->id);
+      $out .= $this->showData('dateEnd'.$this->id);
+      return $out .= PHP_EOL;
   }
 
 

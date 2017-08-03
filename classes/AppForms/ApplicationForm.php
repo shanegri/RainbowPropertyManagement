@@ -141,9 +141,16 @@ class ApplicationForm extends Form implements iLog {
   }
   public function setArrayIndex($i){ $this->index = $i; }
   public function genDoc(){
-    $t = "";
+    $t = "DATE POSTED =" .$this->date . PHP_EOL . PHP_EOL;
+
+    foreach($this->getStore() as $f){
+      $t .= $f->showData();
+    }
+    foreach($this->Resident as $f){ $t .= $f->genDoc(); }
     foreach($this->ResidenceHistory as $f){ $t .= $f->genDoc(); }
-    return $t . " doc";
+    foreach($this->Employment as $f){ $t .= $f->genDoc(); }
+
+    return $t;
   }
   public function genName(){
     return $this->date . "Application";

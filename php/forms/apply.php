@@ -32,9 +32,9 @@ if(isset($_POST['submit'])){
 		$q = "INSERT INTO Application (AppFormObjects) values ('.$s.')";
 		$r = $db->query($q);
 		if($r){
-			 echo 'good';
+			 header("location: contact.php?done");
 		} else {
-			echo 'not good';
+			echo 'Upload Failed. Please Try Again.';
 		}
 	} else {
 		echo 'Not Valid';

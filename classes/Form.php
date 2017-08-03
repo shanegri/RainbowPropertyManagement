@@ -28,6 +28,18 @@ class Form {
 		}
 	}
 
+	public function getStore(){
+		return $this->store;
+	}
+
+	public function showData($key){
+		if(!in_array($key, $this->store)){
+			return $this->store[$key]->showData();
+		} else {
+			return "Key Not Found";
+		}
+	}
+
 	public function update($post){
 		foreach($post as $key=>$value){
 			if(array_key_exists($key, $this->store)){
@@ -203,6 +215,12 @@ class FormInput {
 
 	public function getValue(){
 		return $this->value;
+	}
+
+	public function showData(){
+			$out = $this->name . " = ";
+			$out .= $this->value . PHP_EOL . PHP_EOL;
+			return $out;
 	}
 
 
