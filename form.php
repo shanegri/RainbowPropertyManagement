@@ -1,6 +1,6 @@
+<?php include_once("php/headInit.php") ?>
 <!DOCTYPE html>
 <html>
-        <?php include_once("php/headIncludes.php") ?>
   <body>
     <div class="head" id="4">
         <!-- Header -->

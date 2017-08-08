@@ -20,7 +20,8 @@
         </div>
         <div>
             <a href="../../properties.php?property=<?php echo $this->arIndex ?>"><button>More Information</button></a>
-            <button>Apply</button>
+            <a href="form.php?apply"><button>Apply</button></a>
+
         </div>
     </div>
     </div>

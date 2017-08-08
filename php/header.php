@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style media="screen">
-      p {
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rainbow Property Management</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <!-- jQuery library -->
+  <script src="js/jquery-3.2.1.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!--Custom css-->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+</head>
+
+<div>
 <div class="headContent">
 <div class="container-fluid" >
   <div class="row" >
     <!--Logo-->
-    <div class="col-xs-7 col-sm-9">
-      <a href="index.php" ><img src="Images/LOGO_D.png" class="img-fluid logo" alt="Logo"></a>
+    <div class="col-xs-12 col-sm-9">
+      <a href="index.php" ><img src="Images/RPM Logo.png" class="img-fluid logo" alt="Logo"></a>
     </div>
     <!--Contact Info-->
-    <div class="col-xs-5 col-sm-3">
+    <div class="hidden-xs col-sm-3">
       <div class="container-fluid  contact-info">
         <p>123 Temp Ave.</p>
         <p>City city</p>
@@ -77,7 +88,5 @@
   </nav>
 </div>
 </div>
-
-
-</body>
+</div>
 </html>
