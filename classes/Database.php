@@ -10,6 +10,8 @@ class Database {
   var $conn;
 
 
+
+
   private function __construct(){
     try {
       $this->db = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username,$this->pass);
@@ -25,12 +27,20 @@ class Database {
   }
 
   public function fetch($query){
-    $results = $this->db->query($query);
-    return $results->fetchAll();
+    if($this->db != null){
+      $results = $this->db->query($query);
+      return $results->fetchAll();
+    } else {
+      echo "Connection Error";
+    }
   }
 
   public function query($query){
-    return $this->db->query($query);
+    if($this->db != null){
+      return $this->db->query($query);
+    } else {
+      echo "Connection Error";
+    }
   }
 
   public static function getInstance(){

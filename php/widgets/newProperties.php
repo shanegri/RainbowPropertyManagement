@@ -15,9 +15,10 @@ if(!isset($_SESSION['propertylist'])){
   $_SESSION['propertylist'] = $properties;
 }
 $properties = $_SESSION['propertylist'];
-
 $prop = $_SESSION['propertylist'][0];
-$prop->echoPreview('Preview');
+if($prop != null){
+  $prop->echoPreview('Preview');
+}
 
 
 
