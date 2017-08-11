@@ -6,6 +6,7 @@ include_once('./classes/FormData.php');
 include_once('./classes/AppForms/ApplicationForm.php');
 include_once("./classes/iLog.php");
 include_once("./js/redirect.php");
+ob_start();
 
 session_start();
 

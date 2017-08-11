@@ -6,40 +6,41 @@ class Database {
   var $dbname = "rpm";
   var $username = "root";
   var $pass = "pass";
-  var $db;
   var $conn;
 
-
-
-
   private function __construct(){
-    try {
-      $this->db = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username,$this->pass);
-    } catch(PDOException $e) {
-        echo $e->getMessage();
-    }
-
     //For injection handeling
-   $this->conn = mysqli_connect('localhost', 'root', 'pass');
-   if($this->conn === null){
+   $this->conn = mysqli_connect($this->host, $this->username, $this->pass, $this->dbname);
+   if(!$this->conn){
      echo 'Error Connecting';
+   } else {
+     echo 'Procedural Connected';
    }
   }
 
   public function fetch($query){
-    if($this->db != null){
-      $results = $this->db->query($query);
-      return $results->fetchAll();
-    } else {
-      echo "Connection Error";
+    if(!$this->conn){
+      echo 'Fetch Error';
+      return false;
     }
+    $result = mysqli_query($this->conn, $query);
+    $retVal = array();
+    while($row = mysqli_fetch_assoc($result)){
+      array_push($retVal, $row);
+    }
+    return $retVal;
   }
 
   public function query($query){
-    if($this->db != null){
-      return $this->db->query($query);
+    if(!$this->conn){
+      echo 'Fetch Error';
+      return false;
+    }
+    $result = mysqli_query($this->conn, $query);
+    if(!$result){
+      return false;
     } else {
-      echo "Connection Error";
+      return true;
     }
   }
 
@@ -52,7 +53,11 @@ class Database {
   }
 
   public function lastId(){
-    return $this->db->lastInsertId();
+    if(!$this->conn){
+      return false;
+    } else {
+      return $this->conn->insert_id;
+    }
   }
 
 }
