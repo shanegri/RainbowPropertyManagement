@@ -1,6 +1,5 @@
-<div class="container-fluid body">
-  <div class="row">
-
+<div class="mobile-fit container-fluid body">
+  <div class="row" style="padding: 0px;">
     <!-- about col -->
     <div class="col-sm-5">
       <?php include_once('php/widgets/About.php') ?>

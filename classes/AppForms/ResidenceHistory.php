@@ -32,22 +32,22 @@ class ResidenceHistory extends Form implements iIncrementalForm {
 
   private function showForms(){
     echo '<div class="row">';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('address'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('lanlord'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('telephoneLan'.$this->id);
     echo '</div>';
     echo '</div>';
 
     echo '<div class="row">';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('dateStart'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('dateEnd'.$this->id);
     echo '</div>';
     echo '<div class="col-xs-4">';

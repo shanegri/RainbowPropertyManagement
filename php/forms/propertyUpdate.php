@@ -1,4 +1,4 @@
-<div style="padding: 20px;">
+<div class="mobile-fit">
 <div class="container-fluid card propertyForm">
 <form method="post">
 <?php
@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
 	<?php $prop->showInput('description'); ?>
 </div>
 <div class="row">
-	<div class="col-xs-6">
+	<div class="col-sm-6">
 		<?php
 		$prop->showInput('numBedroom');
 		$prop->showInput('numBathroom');
@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
 		$prop->showInput('sqrFeet');
 		?>
 	</div>
-	<div class="col-xs-6">
+	<div class="col-sm-6">
 		<?php
     $prop->showInput('unitNum');
 		echo '<h3 style="display:inline;"><small><I>Displays if Apartment</I></small></h3>';

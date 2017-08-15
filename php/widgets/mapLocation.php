@@ -10,7 +10,7 @@
     $zip = $prop->v('zip');
     $search = $address . " " . $city ." ". $zip;
   } else {
-    $search = '483 Harrison Ave. 14223';
+    $search = '1514 Main st. Niagara Falls NY';
     echo '<h3 class="text-center" style="margin: 2px;"><small>Our Location</small></h3>';
   }
   ?>

@@ -1,6 +1,4 @@
-
-<div style="padding: 20px;">
-
+<div class="mobile-ft">
   <div class="container-fluid card propertyForm">
   <a href="././properties.php?property=<?php echo $_GET['updatepic']?>">Back</a>
     <form method="post" enctype="multipart/form-data">

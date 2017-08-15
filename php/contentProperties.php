@@ -1,4 +1,4 @@
-
+<div class="mobile-fit">
   <div class="row">
     <!--Main Content-->
     <div class="col-sm-8 body">
@@ -115,4 +115,6 @@
 
     </div>
   </div>
+</div>
+
 </div>

@@ -1,4 +1,4 @@
-<div style="padding: 20px;">
+<div class="mobile-fit">
 <div class="container-fluid card propertyForm">
 
 <form method="post">

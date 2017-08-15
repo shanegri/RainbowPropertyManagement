@@ -30,10 +30,10 @@
     <!--Contact Info-->
     <div class="hidden-xs col-sm-3">
       <div class="container-fluid  contact-info">
-        <p>123 Temp Ave.</p>
-        <p>City city</p>
-        <p>1234-123-1234</p>
-        <p>temp@temp.temp</p>
+        <p>1514 Main st.</p>
+        <p>Niagara Falls, NY 14305</p>
+        <p>(716) 284-7368</p>
+        <p>RPM1514@yahoo.com</p>
       </div>
     </div>
   </div>

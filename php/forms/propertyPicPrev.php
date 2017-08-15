@@ -4,7 +4,6 @@
     <form method="post">
           <button type="submit" name="delete" onclick="return confirm('Are you sure?')"value="<?php echo $imTag; ?>">Delete</button>
           <button type="submit" name="setIcon" value="<?php echo $imTag; ?>">Set Icon</button>
-
     </form>
   </div>
   <div class="row">

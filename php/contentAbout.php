@@ -1,8 +1,7 @@
-<div class="container-fluid body">
-  <div class="row">
-
+<div class="mobile-fit container-fluid body">
+  <div class="row" >
     <!--Main Content-->
-    <div class="col-sm-8 body" >
+    <div class="col-sm-8">
       <h2> <small>About</small></h2>
       <hr>
     <?php include_once("widgets/About.php") ?>

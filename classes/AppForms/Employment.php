@@ -20,22 +20,22 @@ class Employment extends Form implements iIncrementalForm {
 
   public function showForm(){
     echo '<div class="row">';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('employer'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('address'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('telephone'.$this->id);
     echo '</div>';
     echo '</div>';
 
     echo '<div class="row">';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('payment'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('position'.$this->id);
     echo '</div>';
     echo '<div class="col-xs-4">';
@@ -44,13 +44,13 @@ class Employment extends Form implements iIncrementalForm {
     echo '</div>';
 
     echo '<div class="row">';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('dateStart'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('dateEnd'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
 
     echo '</div>';
     echo '</div>';

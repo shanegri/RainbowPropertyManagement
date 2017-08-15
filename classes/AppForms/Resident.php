@@ -15,13 +15,13 @@ class Resident extends Form implements iIncrementalForm {
 
   public function showForm(){
     echo '<div class="row">';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('name'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('relation'.$this->id);
     echo '</div>';
-    echo '<div class="col-xs-4">';
+    echo '<div class="col-sm-4">';
     $this->showInput('dob'.$this->id);
     echo '</div>';
     echo '</div>';
