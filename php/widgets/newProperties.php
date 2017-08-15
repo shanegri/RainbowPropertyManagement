@@ -10,12 +10,20 @@ if(!isset($_SESSION['propertylist'])){
   for($i = 0; $i < sizeof($ar) ; $i++){
     $prop = Property::initID($i, $ar[$i]['id']);
     $prop->update($ar[$i]);
-    array_push($properties, $prop);
+    if(isset($_SESSION['id'])){
+      array_push($properties, $prop);
+    } else if (!$prop->isHidden){
+      array_push($properties, $prop);
+    }
   }
   $_SESSION['propertylist'] = $properties;
 }
 $properties = $_SESSION['propertylist'];
-$prop = $_SESSION['propertylist'][0];
+if(isset($_SESSION['propertylist'][0])){
+  $prop = $_SESSION['propertylist'][0];
+} else {
+  $prop = null;
+}
 if($prop != null){
   $prop->echoPreview('Preview');
 }

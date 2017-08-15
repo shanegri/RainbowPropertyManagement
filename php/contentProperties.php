@@ -40,7 +40,11 @@
           for($i = 0; $i < sizeof($ar) ; $i++){
             $prop = Property::initID($i, $ar[$i]['id']);
             $prop->update($ar[$i]);
-            array_push($properties, $prop);
+            if(isset($_SESSION['id'])){
+              array_push($properties, $prop);
+            } else if (!$prop->isHidden){
+              array_push($properties, $prop);
+            }
           }
           $_SESSION['propertylist'] = $properties;
         }

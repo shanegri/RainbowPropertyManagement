@@ -4,6 +4,9 @@
       <div class="row propPrevCropWid" style="background-image: url('<?php echo $this->prevImage; ?>');">
       </div>
       <div class="row" style="padding: 7px;">
+        <?php if($this->isHidden == true){
+          echo '<h3><small>HIDDEN<small></h3>';
+        }?>
         <h3 style="margin: 0;"><small><i>Description:</i></small></h3>
         <p><?php echo $this->shortDescription ?></p>
         <div>

@@ -8,6 +8,7 @@ class Property extends Form {
 	var $images = array();
 	var $prevImage;
 	var $shortDescription;
+	var $isHidden;
 
 public function __construct(){
 	parent::__construct('properties');
@@ -24,6 +25,17 @@ public function __construct(){
 	$this->addInput('util', 'Utilities', FormInput::$STR, 20, null);
 	$this->addInput('city', 'City', FormInput::$STR, 20, true);
 	$this->addInput('zip', 'Zip', FormInput::$INT, null, true);
+	$this->addInput('isHidden', 'isHidden', FormInput::$INT, null, null);
+}
+
+//Redifines update to handel visibility
+public function update($post){
+	parent::update($post);
+	if($this->v('isHidden') == 1){
+		$this->isHidden = true;
+	} else {
+		$this->isHidden = false;
+	}
 }
 
 //Creates new instance w/o id or array index
@@ -156,6 +168,19 @@ public function setIcon($toSet){
 //Returns value for that key
 public function v($key){
   return $this->getValue($key);
+}
+
+public function hideUnHide($val){
+  $db = Database::getInstance();
+  $q = "UPDATE properties SET isHidden = ".$val." WHERE id=".$this->id;
+  $res = $db->query($q);
+  if($res){
+		ob_end_clean();
+    unset($_SESSION['propertylist']);
+		header("Refresh:0");
+  } else {
+    echo 'Server Error';
+  }
 }
 
 

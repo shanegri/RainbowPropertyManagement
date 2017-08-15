@@ -14,7 +14,7 @@ class Database {
    if(!$this->conn){
      echo 'Error Connecting';
    } else {
-     echo 'Procedural Connected';
+//     echo 'Procedural Connected';
    }
   }
 

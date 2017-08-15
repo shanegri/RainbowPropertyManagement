@@ -1,10 +1,12 @@
 <?php
-
 if(isset($_SESSION['id'])){
   include('adminProperty.php');
 }
 ?>
 <div class="container-fluid card" style="width: 100%; padding: 20px;">
+<?php if($this->isHidden == true){
+  echo '<h3>HIDDEN</h3>';
+}?>
 <?php include('expandedSlide.php');?>
 <hr>
 <div class="row">

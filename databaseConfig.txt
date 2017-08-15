@@ -15,6 +15,7 @@ table: properties {
   type 20 varchar
   singleormult 20 varchar
   util 20 varchar
+  isHidden (Either 1 or 0)
 }
 
 table: users {

@@ -24,6 +24,9 @@
           $_SESSION['id'] = $userC['id'];
           $_SESSION['email'] = $userC['email'];
           $_SESSION['username'] = $userC['username'];
+          if(isset($_SESSION['propertylist'])){
+            unset($_SESSION['propertylist']);
+          }
           header('location:index.php');
         } else {
           echo '<b style="color: red">Incorrect Username or Password</b>';
