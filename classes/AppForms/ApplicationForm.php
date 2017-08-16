@@ -3,6 +3,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/Form.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/ResidenceHistory.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/Resident.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/Employment.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/Vehicle.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/OtherIncome.php');
 
 
 class ApplicationForm extends Form implements iLog {
@@ -10,6 +12,9 @@ class ApplicationForm extends Form implements iLog {
   private $ResidenceHistory;
   private $Employment;
   private $Resident;
+  private $Vehicle;
+  private $OtherIncome;
+
   var $date;
   var $index;
   var $type;
@@ -37,6 +42,11 @@ class ApplicationForm extends Form implements iLog {
     $this->addInput("emailCO", "Email", FormInput::$EMAIL, 100, true);
     $this->addInput("relationCO", "Relationship", FormInput::$STR, 40, true);
 
+    //Personal Other
+    $this->addInput("pets", "How Many Pets Do You or Other Occupants Own?", FormInput::$INT, 3, null);
+    $this->addInput("petsType", "Kind of Pet, Breed, Weight and Age,", FormInput::$STR, 50, null);
+    $this->addInput("howHear", "How Did You Hear About Out Property?", FormInput::$STR, 50, null);
+
     //Banking and credit information
     $this->addInput("bankName", "Bank Name & Branch", FormInput::$STR, 50, null);
     $this->addInput("bankTelephone", "Telephone", FormInput::$INT, 20, null);
@@ -48,16 +58,21 @@ class ApplicationForm extends Form implements iLog {
       $this->addInput("creditRef1", "CREDIT REFRENCE 1", FormInput::$STR, 50, null);
       $this->addInput("creditRef1Tel", "Telephone", FormInput::$INT, 20, null);
       $this->addInput("creditRef1Address", "Address", FormInput::$STR, 100, null);
-      $this->addInput("credRef1AccNum", "Account Number", FormInput::$INT, 20, null);
+      $this->addInput("creditRef1AccNum", "Account Number", FormInput::$INT, 20, null);
       //Credit Refrence 2
       $this->addInput("creditRef2", "CREDIT REFRENCE 2", FormInput::$STR, 50, null);
       $this->addInput("creditRef2Tel", "Telephone", FormInput::$INT, 20, null);
       $this->addInput("creditRef2Address", "Address", FormInput::$STR, 100, null);
-      $this->addInput("credRef2AccNum", "Account Number", FormInput::$INT, 20, null);
+      $this->addInput("creditRef2AccNum", "Account Number", FormInput::$INT, 20, null);
 
   //Other Infomation
     //Vehicles
+    $this->addInput("totalNumberVehicles", "Total Number of Vehicles", FormInput::$INT, 3, true);
     //Income
+    $this->addInput("grossIncome", "Total Gross Monthly Income $", FormInput::$INT, 5, true);
+    $this->addInput("incomeComments", "Comments:", FormInput::$TXTAR, 200, true);
+      //Other Source 1
+
 
     //Yes No Questions
     $this->addInput("beenSued", "Been Sued for non-payment of rent?", FormInput::$DRPDWN, array("No", "Yes"), null);
@@ -84,8 +99,11 @@ class ApplicationForm extends Form implements iLog {
     $this->ResidenceHistory = array();
     $this->Employment = array();
     $this->Resident = array();
+    $this->Vehicle = array();
+    $this->OtherIncome = array();
     array_push($this->ResidenceHistory, new ResidenceHistory(0));
     array_push($this->Employment, new Employment(0));
+    array_push($this->Vehicle, new Vehicle(0));
   }
   public function inc($type){
     switch($type){
@@ -94,6 +112,10 @@ class ApplicationForm extends Form implements iLog {
       case "Resident": array_push($this->Resident, new Resident(sizeof($this->Resident)));
       break;
       case "Employment": array_push($this->Employment, new Employment(sizeof($this->Employment)));
+      break;
+      case "Vehicle": array_push($this->Vehicle, new Vehicle(sizeof($this->Vehicle)));
+      break;
+      case "OtherIncome": array_push($this->OtherIncome, new OtherIncome(sizeof($this->OtherIncome)));
       break;
     }
   }
@@ -110,6 +132,14 @@ class ApplicationForm extends Form implements iLog {
       case "Employment":
         if(sizeof($this->Employment) != 1){
         unset($this->Employment[sizeof($this->Employment) - 1]);
+      } break;
+      case "Vehicle":
+        if(sizeof($this->Vehicle) != 1){
+        unset($this->Vehicle[sizeof($this->Vehicle) - 1]);
+      } break;
+      case "OtherIncome":
+        if(sizeof($this->OtherIncome) != 1){
+        unset($this->OtherIncome[sizeof($this->OtherIncome) - 1]);
       } break;
     }
   }
@@ -131,7 +161,19 @@ class ApplicationForm extends Form implements iLog {
     echo '<br><br>';
     echo '<button name="inc" value="Resident">Add  a Resident</button>';
     echo '<button name="dec" value="Resident">Remove a Resident</button>';
+  }
 
+  public function showVehicles(){
+    foreach($this->Vehicle as $f){ $f->showForm(); }
+    echo '<br><br>';
+    echo '<button name="inc" value="Vehicle">Add  a Vehicle</button>';
+    echo '<button name="dec" value="Vehicle">Remove a Vehicle</button>';
+  }
+  public function showOtherIncomeSources(){
+    foreach($this->OtherIncome as $f){ $f->showForm(); }
+    echo '<br><br>';
+    echo '<button name="inc" value="OtherIncome">Add  an Income Source</button>';
+    echo '<button name="dec" value="OtherIncome">Remove an Income Source</button>';
   }
 
   //Redifines update and validate to handel sub forms
@@ -141,6 +183,8 @@ class ApplicationForm extends Form implements iLog {
     foreach($this->ResidenceHistory as $f){ $f->update($p); }
     foreach($this->Employment as $f){ $f->update($p); }
     foreach($this->Resident as $f){ $f->update($p); }
+    foreach($this->Vehicle as $f){ $f->update($p); }
+    foreach($this->OtherIncome as $f){ $f->update($p); }
   }
   public function ApplicationValidate(){
     $r = true;
@@ -148,6 +192,8 @@ class ApplicationForm extends Form implements iLog {
     foreach($this->ResidenceHistory as $f){ if(!$f->validate()){$r = false ; } }
     foreach($this->Employment as $f){  if(!$f->validate()){$r = false ; } }
     foreach($this->Resident as $f){  if(!$f->validate()){$r = false ; } }
+    foreach($this->Vehicle as $f){  if(!$f->validate()){$r = false ; } }
+    foreach($this->OtherIncome as $f){  if(!$f->validate()){$r = false ; } }
     return $r;
   }
 
@@ -187,14 +233,30 @@ class ApplicationForm extends Form implements iLog {
     $ar = ["nameCO","dobCO","homePhoneCO","workPhoneCO","cellPhoneCO","emailCO","relationCO"];
     $t .= $this->addJsonArray("Co-Applicant", $ar );
 
+    foreach($this->Resident as $f){ $t .= $f->genDoc(); }
+    $t .= $this->showData("pets");
+    $t .= $this->showData("petsType");
+    $t .= $this->showData("howHear");
+
+    foreach($this->ResidenceHistory as $f){ $t .= $f->genDoc(); }
+    foreach($this->Employment as $f){ $t .= $f->genDoc(); }
+
     $ar = ["bankName","bankTelephone","checkingAccNum","savingsAccNum","locanAccNum","monthlyPayment"];
     $t .= $this->addJsonArray("Banking", $ar );
 
-    $ar = ["creditRef1","creditRef1Tel","creditRef1Address","credRef1AccNum"];
+    $ar = ["creditRef1","creditRef1Tel","creditRef1Address","creditRef1AccNum"];
     $t .= $this->addJsonArray("Credit Refrence 1", $ar );
 
-    $ar = ["creditRef2","creditRef2Tel","creditRef2Address","credRef2AccNum"];
+    $ar = ["creditRef2","creditRef2Tel","creditRef2Address","creditRef2AccNum"];
     $t .= $this->addJsonArray("Credit Refrence 2", $ar );
+
+    $t.=$this->showData("totalNumberVehicles");
+    foreach($this->Vehicle as $f){ $t .= $f->genDoc(); }
+
+    $t.= $this->showData("grossIncome");
+    foreach($this->OtherIncome as $f){ $t .= $f->genDoc(); }
+    $t.= $this->showData("incomeComments");
+
 
     $ar = ["beenSued","beenEvicted","brokenRental","beenSuedPropDamage", "declaredBankruptcy"];
     $t .= $this->addJsonArray("Yes / No Questions", $ar );
@@ -202,10 +264,6 @@ class ApplicationForm extends Form implements iLog {
     $ar = ["emergencyName","emergencyAddress","emergencyHomePhone","emergencyWorkPhone", "emergencyRelationship"];
     $t .= $this->addJsonArray("In Case of Emergency", $ar );
 
-
-    foreach($this->Resident as $f){ $t .= $f->genDoc(); }
-    foreach($this->ResidenceHistory as $f){ $t .= $f->genDoc(); }
-    foreach($this->Employment as $f){ $t .= $f->genDoc(); }
     $t.= $this->showData("emailCO" , true);
     return $t."}";
   }

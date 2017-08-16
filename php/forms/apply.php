@@ -42,6 +42,8 @@ if(isset($_POST['submit'])){
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<div class="row">';
 echo '<div class="col-sm-6">';
 $Form->showInput('dateDesire');
@@ -93,6 +95,17 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 
 	$Form->showResidentCount();
 
+	echo '<hr><div class="row">';
+	echo '<div class="col-sm-6">';
+	$Form->showInput("pets");
+	echo '</div>';
+	echo '<div class="col-sm-6">';
+	$Form->showInput("petsType");
+	echo '</div>';
+	echo '</div>';
+	$Form->showInput("howHear");
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<h3 class="text-center"style="background: grey"><small style="color: white;">RESIDENCE HISTORY</small></h3>';
 
 $Form->showResidenceHistory();
@@ -101,6 +114,7 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 
 $Form->showEmploymentCount();
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<h3 class="text-center"style="background: grey"><small style="color: white;">BANKING AND CREDIT REFRENCES</small></h3>';
 echo '<div class="row">';
 	echo '<div class="col-sm-4">';
@@ -125,7 +139,7 @@ echo '<div class="row">';
 	echo '</div>';
 	echo '<div class="col-sm-6">';
 	$Form->showInput('creditRef1Address');
-	$Form->showInput('credRef1AccNum');
+	$Form->showInput('creditRef1AccNum');
 echo '</div></div><hr>';
 
 echo '<div class="row">';
@@ -135,11 +149,27 @@ echo '<div class="row">';
 	echo '</div>';
 	echo '<div class="col-sm-6">';
 	$Form->showInput('creditRef2Address');
-	$Form->showInput('credRef2AccNum');
+	$Form->showInput('creditRef2AccNum');
 echo '</div></div>';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<h3 class="text-center"style="background: grey"><small style="color: white;">OTHER INFORMATION</small></h3>';
 
-echo '<h3><small>HAVE YOU OR CO-APPLICANT EVER:</small></h3>';
+echo '<div class="text-center">';
+	$Form->showInput("totalNumberVehicles");
+	$Form->showVehicles();
+echo '</div>';
+
+echo '<hr><div class="text-center">';
+	$Form->showInput("grossIncome");
+	echo '<h3><small> If there are other sources of income you would like us to consider, please list income, source and person (Banker, Employer, etc.) who we could
+contact for confirmation. You do NOT have to reveal alimony, child support or spouse\'s annual income unless you want us to consider it in this application.
+</small></h3>';
+	$Form->showOtherIncomeSources();
+	$Form->showInput("incomeComments");
+echo '</div>';
+
+echo '<hr><h3><small>HAVE YOU OR CO-APPLICANT EVER:</small></h3>';
 echo '<div class="row">';
 	echo '<div class="col-sm-6">';
 	$Form->showInput('beenSued');
@@ -168,7 +198,6 @@ echo '<div class="row">';
 	echo '<div class="col-sm-4">';
 	$Form->showInput('emergencyRelationship');
 echo '</div></div>';
-
 
 echo '<hr><div class="text-center">';
 	echo '<h3><small>I hereby make application for an apartment and certify that

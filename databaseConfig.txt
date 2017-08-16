@@ -26,7 +26,7 @@ table: users {
 
 }
 
-table: WorkOrder [
+table: WorkOrder {
   id
   fName varchar 20
   lName varchar 20
@@ -37,7 +37,7 @@ table: WorkOrder [
   city varchar 20
   email varchar 50
   Date
-]
+}
 
 table: Contact {
   id
