@@ -1,8 +1,4 @@
-<style media="screen">
-.item {
-  border: 2px solid red;
-}
-</style>
+
 
 <div class="mobile-fit" >
 <div class="container-fluid" >
@@ -20,17 +16,10 @@ if(isset($_SESSION['logData'])){
   $query = "SELECT * FROM Application";
   $res = $db->fetch($query);
   for($i = 0 ; $i < sizeof($res) ; $i++){
-    $f = unserialize(base64_decode($res[$i]['AppFormObjects']));
-    $f->date = $res[$i]['Date'];
-    $f->id = $res[$i]['id'];
-    $data[$f->date] = $f;
-  }
-  $size = sizeof($data);
-
-  for($i = 0 ; $i < sizeof($res) ; $i++){
     $l = new ApplicationFormLog($res[$i]['JSON']);
-    $l->date = $res[$i]['Date'] + $res[$i]['id'];
+    $l->date = $res[$i]['Date'];
     $l->id = $res[$i]['id'];
+    $l->initAppObject($res[$i]['AppFormObjects']);
     $data[$l->date] = $l;
   }
   $size = sizeof($data);

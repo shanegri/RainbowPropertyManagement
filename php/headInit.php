@@ -32,7 +32,7 @@ if(!isset($_GET['log']) && isset($_SESSION['logData'])){
 }
 
 //REMOVE BEFORE COMMITING
-$_SESSION['id'] = 1;
+//$_SESSION['id'] = 1;
 
 
  ?>

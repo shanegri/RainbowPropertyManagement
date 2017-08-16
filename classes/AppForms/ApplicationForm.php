@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/Vehicle.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/AppForms/OtherIncome.php');
 
 
-class ApplicationForm extends Form implements iLog {
+class ApplicationForm extends Form {
 
   private $ResidenceHistory;
   private $Employment;
@@ -194,27 +194,7 @@ class ApplicationForm extends Form implements iLog {
     return $r;
   }
 
-  public function show(){
-    echo '
-    <div class="row">
-      <div class="col-xs-3 item">
-        <p>'.$this->date.'</p>
-      </div>
-      <div class="col-xs-3 item">
-        <p>Type:'.$this->type.'</p>
-      </div>
-      <div class="col-xs-4 item">
-        <a style="float:right" href="form.php?log&page=0&id='.$this->index.'">Download</a>
-      </div>
-      <div class="col-xs-2 item">
-        <a style="float: right" href="form.php?log&page=0&d='.$this->index.'"        onclick="return confirm(\'Are you sure?\');"
-        >Delete</a>
-      </div>
-    </div>
-    ';
-  }
-  public function setArrayIndex($i){ $this->index = $i; }
-  public function genDoc(){
+  public function genJSON(){
     $t = "{".nLine;
     $t .= $this->showData("dateDesire");
     $t .= $this->showData("typeSize").nLine;
@@ -259,18 +239,7 @@ class ApplicationForm extends Form implements iLog {
     $t.= $this->showData("emailCO" , true);
     return $t."}";
   }
-  public function genName(){
-    return $this->date . "Application";
-  }
-  public function del(){
-    $d = Database::getInstance();
-    $q = 'DELETE FROM Application Where id='.$this->id;
-    if($d->query($q)){
-      return true;
-    } else {
-      return false;
-    }
-  }
+
 
   public function addJsonArray($title, $values){
     $t = '"'.$title.'" :{'.nLine;

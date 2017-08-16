@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
   if($Form->ApplicationValidate()){
 		$s = base64_encode(serialize($Form));
 		$db = Database::getInstance();
-		$JSONdata = $Form->genDoc();
+		$JSONdata = $Form->genJSON();
 		$q = "INSERT INTO Application (AppFormObjects, JSON) values ('$s','$JSONdata')";
 		$r = $db->query($q);
 		if($r){
@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
 			echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application.</h3></div>';
 		}
 	} else {
-		echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application.</h3></div>';
+		echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application for errors.</h3></div>';
 	}
 }
 ?>

@@ -19,10 +19,6 @@ class FormData extends aLog{
     $this->id = $row['id'];
   }
 
-  public function setArrayIndex($i){
-    $this->index = $i;
-  }
-
   public function del(){
     $d = Database::getInstance();
     if($this->type === "Work Order"){

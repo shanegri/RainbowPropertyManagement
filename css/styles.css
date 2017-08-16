@@ -212,6 +212,12 @@ p {
   width: 80%;
 }
 
+/*for each log item*/
+.item {
+  text-align: right;
+  border: 2px solid red;
+}
+
 hr {
   border: 1px solid rgb(182, 182, 182);
 }
@@ -296,4 +302,8 @@ button:hover {
 
 .slideIm {
   height: 300px;
+}
+
+.logCol {
+  margin-bottom: 20px;
 }
