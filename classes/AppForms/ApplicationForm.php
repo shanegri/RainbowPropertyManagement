@@ -14,6 +14,7 @@ class ApplicationForm extends Form implements iLog {
   private $Resident;
   private $Vehicle;
   private $OtherIncome;
+  public $visitedPages = array();
 
   var $date;
   var $index;
@@ -71,9 +72,6 @@ class ApplicationForm extends Form implements iLog {
     //Income
     $this->addInput("grossIncome", "Total Gross Monthly Income $", FormInput::$INT, 5, true);
     $this->addInput("incomeComments", "Comments:", FormInput::$TXTAR, 200, true);
-      //Other Source 1
-
-
     //Yes No Questions
     $this->addInput("beenSued", "Been Sued for non-payment of rent?", FormInput::$DRPDWN, array("No", "Yes"), null);
     $this->addInput("beenEvicted", "Been evicted or asked to move out?", FormInput::$DRPDWN, array("No", "Yes"), null);
@@ -90,7 +88,6 @@ class ApplicationForm extends Form implements iLog {
   //Agreement
   $this->addInput("agreement", "Applicant and Co-applicant Agreement", FormInput::$DRPDWN, array("No", "Yes"), true);
 
-
   $this->subFormInit();
   }
 
@@ -102,6 +99,7 @@ class ApplicationForm extends Form implements iLog {
     $this->Vehicle = array();
     $this->OtherIncome = array();
     array_push($this->ResidenceHistory, new ResidenceHistory(0));
+    array_push($this->Resident, new Resident(0));
     array_push($this->Employment, new Employment(0));
     array_push($this->Vehicle, new Vehicle(0));
   }
@@ -138,7 +136,7 @@ class ApplicationForm extends Form implements iLog {
         unset($this->Vehicle[sizeof($this->Vehicle) - 1]);
       } break;
       case "OtherIncome":
-        if(sizeof($this->OtherIncome) != 1){
+        if(sizeof($this->OtherIncome) != 0){
         unset($this->OtherIncome[sizeof($this->OtherIncome) - 1]);
       } break;
     }
@@ -156,13 +154,12 @@ class ApplicationForm extends Form implements iLog {
     echo '<button name="dec" value="Employment">Remove a Employment</button>';
   }
   public function showResidentCount(){
-    echo '<h3 class="text-center"><small>Other Residents</small></h3><hr>';
+    echo '<h3 class="text-center"><small>All Other Residents</small></h3><br>';
     foreach($this->Resident as $f){ $f->showForm(); }
     echo '<br><br>';
     echo '<button name="inc" value="Resident">Add  a Resident</button>';
     echo '<button name="dec" value="Resident">Remove a Resident</button>';
   }
-
   public function showVehicles(){
     foreach($this->Vehicle as $f){ $f->showForm(); }
     echo '<br><br>';
@@ -195,11 +192,6 @@ class ApplicationForm extends Form implements iLog {
     foreach($this->Vehicle as $f){  if(!$f->validate()){$r = false ; } }
     foreach($this->OtherIncome as $f){  if(!$f->validate()){$r = false ; } }
     return $r;
-  }
-
-  //Redifined So inserts cannot be accidently made
-  public function insert($i = null){
-    return true;
   }
 
   public function show(){

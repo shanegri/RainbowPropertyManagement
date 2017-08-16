@@ -55,7 +55,7 @@ class Employment extends Form implements iIncrementalForm {
     echo '</div>';
     echo '</div>';
 
-    echo '<hr>';
+    echo '<br>';
   }
 
   public function genDoc(){

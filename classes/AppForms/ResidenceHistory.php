@@ -21,12 +21,11 @@ class ResidenceHistory extends Form implements iIncrementalForm {
     if($this->id == 0){
       echo '<h3><small>Current Residence</small></h3>';
       $this->showForms();
-      echo '<hr>';
+      echo '<br>';
     } else {
       echo '<h3><small>Previous Residence</small></h3>';
       $this->showForms();
-      echo '<hr>';
-
+      echo '<br>';
     }
   }
 

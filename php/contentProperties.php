@@ -12,13 +12,13 @@
           echo '
           <div class="container-fluid" style="margin-left: 0; width: 50px; height: 40px; font-size: 12px;">
               <div class="row text-center">
-                <a href="properties.php"><button type="button" name="button">Back</button></a>
+                <a href="properties?page=0"><button type="button" name="button">Back</button></a>
               </div>
           </div>
           ';
         }
         if(!isset($_GET['page']) && !isset($_GET['property'])){
-          header('location:properties.php?page=0');
+          header('location:properties?page=0');
         }
 
         if(!isset($_SESSION['page'])){

@@ -14,6 +14,9 @@ session_start();
 
 if(isset($_SESSION['applyForm']) && !isset($_GET['apply'])){
   unset($_SESSION['applyForm']);
+  if(isset($_SESSION['applicationFormSubmited'])){
+    unset($_SESSION['applicationFormSubmited']);
+  }
 }
 
 if(isset($_SESSION['contactForm']) && !isset($_GET['contact'])){

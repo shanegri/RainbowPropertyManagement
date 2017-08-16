@@ -1,6 +1,6 @@
 <div class="mobile-ft">
   <div class="container-fluid card propertyForm">
-  <a href="././properties.php?property=<?php echo $_GET['updatepic']?>">Back</a>
+  <button><a href="././properties?property=<?php echo $_GET['updatepic']?>">Back</a></button>
     <form method="post" enctype="multipart/form-data">
         <h3><small>Select Image to Upload</small></h3>
         <input type="file" name="file">

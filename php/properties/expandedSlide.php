@@ -1,13 +1,19 @@
 
-<div class="container-fluid slideshow">
-
+<div class="slideshow">
 
 <?php
 $images = $this->images;
 for($i = 0 ; $i < sizeof($images) ; $i++){
 	?>
-	<div class="slide col-xs-12 fadeS">
+	<div class="slide" >
 	<img class="slideIm" src="<?php echo $images[$i]?>	">
+	</div>
+	<?php
+}
+if(sizeof($images) == 0){
+	?>
+	<div class="slide" >
+	<img class="slideIm" src="../../images/temp.png">
 	</div>
 	<?php
 }
@@ -16,8 +22,8 @@ for($i = 0 ; $i < sizeof($images) ; $i++){
 
 </div>
 
-<div class="arrow text-center" style="margin-bottom: 50px;">
-<a onclick="reverse()" style="float: left; border-radius: 5px;">&#x2190;</a>
+<div class="arrow text-center" >
+<a onclick="reverse()" style="float: left; border-radius: 5px; margin-left: 20px;">&#x2190;</a>
   <?php
 	$images = $this->images;
 	for($i = 0 ; $i < sizeof($images); $i++){
@@ -26,14 +32,16 @@ for($i = 0 ; $i < sizeof($images) ; $i++){
 	<?php
 }
 
+if(sizeof($images) == 0){
+	?>
+	<span class="dot" onclick="goto(0)"></span>
+	<?php
+}
 ?>
-<a onclick="advance()" style="float: right; border-radius: 5px;">&#x2192;</a>
+
+<a onclick="advance()" style="float: right; border-radius: 5px;  margin-right: 20px">&#x2192;</a>
 </div>
 
-
-<div style="text-align:center">
-
-</div>
 
 <script>
 

@@ -4,7 +4,7 @@
 <form method="post">
 <?php
 if(!isset($_GET['contact'])){
-	header('location:contact.php?contact');
+	header('location:contact?contact');
 }
 
 
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
   $Form->update($_POST);
   if($Form->validate()){
 		if($Form->insert()){
-			header('location: contact.php?done');
+			header('location: contact?done');
 		} else {
 			echo 'Error';
 		}

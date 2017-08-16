@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
   $Form->update($_POST);
   if($Form->validate()){
 		if($Form->insert()){
-			header('location:form.php?swo=true&done');
+			header('location:form?swo=true&done');
 		} else {
 			echo 'Error';
 		}

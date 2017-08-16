@@ -27,7 +27,7 @@
           if(isset($_SESSION['propertylist'])){
             unset($_SESSION['propertylist']);
           }
-          header('location:index.php');
+          header('location:index');
         } else {
           echo '<b style="color: red">Incorrect Username or Password</b>';
         }

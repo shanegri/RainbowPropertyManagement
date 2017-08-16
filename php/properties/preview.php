@@ -24,8 +24,8 @@
           <p style="display:inline"><?php echo $this->v('type')  ?></p>
         </div>
         <div>
-            <a href="../../properties.php?property=<?php echo $this->arIndex ?>"><button>More Information</button></a>
-            <a href="form.php?apply"><button>Apply</button></a>
+            <a href="../../properties?property=<?php echo $this->arIndex ?>"><button>More Information</button></a>
+            <a href="form?apply"><button>Apply</button></a>
 
         </div>
     </div>

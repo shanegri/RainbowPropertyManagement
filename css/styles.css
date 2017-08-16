@@ -98,26 +98,29 @@ p {
 }
 
 .slideshow {
-  height: 400px;
   width: 100%;
+  padding-top: 20px;
 }
 
 .slide {
   display: none;
-  height: 400px;
   width: 100%;
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  -webkit-animation-name: fadeS;
+  -webkit-animation-duration: .7s;
+  animation-name: fadeS;
+  animation-duration: .7s;
 }
 
 .slideIm{
+  height: 400px;
   object-fit: cover;
-  height: 100%;
 }
 .arrow {
   font-size: 50px;
-
+  background: #f9f9f9;
 }
 
 .arrow a {
@@ -127,15 +130,10 @@ p {
 }
 .arrow a:hover{
   cursor: pointer;
-  background: #e1e3e8;
+  background: #f2f2f2;
 }
 
-.fadeS {
-  -webkit-animation-name: fadeS;
-  -webkit-animation-duration: .7s;
-  animation-name: fadeS;
-  animation-duration: .7s;
-}
+
 
 @-webkit-keyframes fadeS {
   from {opacity: .4}
@@ -151,7 +149,6 @@ p {
   cursor:pointer;
   height: 13px;
   width: 13px;
-  margin: 0 2px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -295,4 +292,8 @@ button:hover {
 
 .page {
   padding:3px;
+}
+
+.slideIm {
+  height: 300px;
 }

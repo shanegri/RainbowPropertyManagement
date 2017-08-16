@@ -6,7 +6,7 @@ if(isset($_POST['delete'])){
     if(isset($_SESSION['propertylist'])){
       unset($_SESSION['propertylist']);
     }
-    header("location:./properties.php");
+    header("location:./properties");
   //  redirect('properties.php');
   } else {
     echo 'fail';
@@ -15,14 +15,11 @@ if(isset($_POST['delete'])){
 
 //Handel Edit Button
 if(isset($_POST['edit'])){
-  header('location:./form.php?addProperty=true&update='.$this->arIndex);
-// redirect('form.php?addProperty=true&update='.$this->arIndex);
-
+  header('location:./form?addProperty=true&update='.$this->arIndex);
 }
 
 if(isset($_POST['picture'])){
-  header('location:./form.php?addProperty=true&updatepic='.$this->arIndex);
-//  redirect('form.php?addProperty=true&updatepic='.$this->arIndex);
+  header('location:./form?addProperty=true&updatepic='.$this->arIndex);
 }
 
 if(isset($_POST['unhide'])){

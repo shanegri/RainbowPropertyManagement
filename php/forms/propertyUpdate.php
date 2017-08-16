@@ -1,17 +1,23 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
 <form method="post">
+<button type="submit" name="back">Back</button>
 <?php
 
 
 $prop = $_SESSION['propertylist'][$_GET['update']];
 
 
+if(isset($_POST['back'])){
+  unset($_SESSION['propertylist']);
+  header("location:././properties?property=".$_GET['update']);
+}
+
 if(isset($_POST['submit'])){
   $prop->update($_POST);
   if($prop->validate()){
     $prop->insert($prop->id);
-    header('location:properties.php?property='.$prop->arIndex);
+    header('location:properties?property='.$prop->arIndex);
   } else {
 
   }

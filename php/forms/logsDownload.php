@@ -7,7 +7,7 @@ include_once('../../classes/AppForms/ApplicationFormLog.php');
 session_start();
 
 //Deny access to users not logged in
-if(!isset($_SESSION['id'])){ header('location: ././index.php'); }
+if(!isset($_SESSION['id'])){ header('location: ././index'); }
 $f = $_SESSION['logData'][$_GET['id']];
 
 
@@ -18,5 +18,5 @@ header('Content-type: text/plain');
 echo $f->genDoc();
 
 exit();
-header('location: ././form.php?log&page='.$_SESSION['page']);
+header('location: ././form?log&page='.$_SESSION['page']);
 ?>

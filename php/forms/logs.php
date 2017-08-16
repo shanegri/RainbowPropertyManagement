@@ -61,12 +61,12 @@ if(isset($_SESSION['logData'])){
 }
 
 if(isset($_GET['id'])){
-  header('location: php/forms/logsDownload.php?id='.$_GET['id']);
+  header('location: php/forms/logsDownload?id='.$_GET['id']);
 }
 
 //Redirect to page if none is set
 if(!isset($_GET['page'])){
-  header('location: form.php?log&page=0');
+  header('location: form?log&page=0');
 }
 
 //Sets page # if non is set
@@ -86,13 +86,13 @@ if(isset($_POST['traverse'])){
     }
   }
   unset($_POST['traverse']);
-  header('location:form.php?log&page='.$_SESSION['page']);
+  header('location:form?log&page='.$_SESSION['page']);
 }
 
 //Handels deletions
 if(isset($_GET['d'])){
   $r = $data[$_GET['d']]->del();
-  if ($r) { unset($_SESSION['logData']);header('location:form.php?log');} else {echo '<b>Failed</b>';}
+  if ($r) { unset($_SESSION['logData']);header('location:form?log');} else {echo '<b>Failed</b>';}
 }
 ?>
 <div style=" margin: 0 auto; width: 80%">

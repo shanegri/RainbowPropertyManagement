@@ -50,21 +50,21 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="properties.php?page=0">Properties</a></li>
-        <li><a href="about.php">About</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="properties?page=0">Properties</a></li>
+        <li><a href="about">About</a></li>
         <li class="dropdown">
         <a class="dropdown-toogle" data-toggle="dropdown"> Contact<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="contact.php?contact" >Contact</a></li>
-          <li><a href="form.php?swo=true" >Work Order</a></li>
-          <li><a href="form.php?apply" >Apply to Rent</a></li>
+          <li><a href="contact?contact" >Contact</a></li>
+          <li><a href="form?swo=true" >Work Order</a></li>
+          <li><a href="form?apply&page=0" >Apply to Rent</a></li>
         </ul>
         </li>
         <?php
         if(isset($_SESSION['id'])){
-          echo '<li><a href="form.php?log=true">Logs</a></li>';
-          echo '<li><a href="php/forms/logout.php">Log Out</a></li>';
+          echo '<li><a href="form?log=true">Logs</a></li>';
+          echo '<li><a href="php/forms/logout">Log Out</a></li>';
         }
          ?>
       </ul>

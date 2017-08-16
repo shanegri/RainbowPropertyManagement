@@ -3,13 +3,14 @@ if(isset($_SESSION['id'])){
   include('adminProperty.php');
 }
 ?>
-<div class="container-fluid card" style="width: 100%; padding: 20px;">
+<div class="container-fluid card" style="width: 100%; padding: 0px;">
 <?php if($this->isHidden == true){
   echo '<h3>HIDDEN</h3>';
 }?>
 <?php include('expandedSlide.php');?>
-<hr>
-<div class="row">
+<hr style="margin-top: 0px;">
+<div style="padding: 10px; padding-top: 0px;">
+<div class="row" >
   <div class="col-sm-6 facts">
     <h3><small><i>Description</i></small></h3>
     <p><?php echo $this->v('description');  ?></p>
@@ -43,5 +44,6 @@ if(isset($_SESSION['id'])){
     }
      ?>
   </div>
+</div>
 </div>
 </div>

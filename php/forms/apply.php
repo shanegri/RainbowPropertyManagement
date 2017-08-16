@@ -2,8 +2,7 @@
 <div class="container-fluid card propertyForm">
 
 <h3 class="text-center"><i><small>Please use a desktop or laptop to complete this form.</small></i></h3>
-<h3 class="text-center"><i><small>Fill all required information. Thank you for your interest in our aparments.</small></i></h3>
-<hr>
+<h3 class="text-center"><i><small>Fill all required information. Thank you for your interest in our apartments.</small></i></h3>
 <h3><i><small>* = Required</small></i></h3>
 <form method="post">
 <?php
@@ -13,6 +12,53 @@ if(!isset($_SESSION['applyForm'])){
 	$_SESSION['applyForm'] = $Form;
 } else {
   $Form = $_SESSION['applyForm'];
+}
+
+if(!isset($_GET['page'])){
+	ob_clean();
+	header("location:form?apply&page=0");
+} else {
+	if($_GET['page'] < 0){
+		ob_clean();
+		header("location:form?apply&page=0");
+	} else if ($_GET['page'] > 5){
+		ob_clean();
+		header("location:form?apply&page=5");
+	}
+}
+
+if(!in_array($_GET['page']."apply", $Form->visitedPages)){
+	 $Form->visitedPages[] =$_GET['page']."apply";
+}
+
+if(isset($_POST['goto'])){
+	ob_clean();
+	if(isset($_SESSION['applicationFormSubmited'])){
+		$Form->ApplicationValidate();
+	}
+	$Form->ApplicationUpdate($_POST);
+	$goto = $_POST['goto'];
+	unset($_POST['goto']);
+	header("location:form?apply&page=".$goto);
+}
+
+if(isset($_POST['incPage'])){
+	unset($_POST['incPage']);
+	$Form->ApplicationUpdate($_POST);
+	if(isset($_SESSION['applicationFormSubmited'])){
+		$Form->ApplicationValidate();
+	}
+	$currentPage = $_GET['page'] + 1;
+	header("location:form?apply&page=".$currentPage);
+}
+if(isset($_POST['decPage'])){
+	unset($_POST['incPage']);
+	$Form->ApplicationUpdate($_POST);
+	if(isset($_SESSION['applicationFormSubmited'])){
+		$Form->ApplicationValidate();
+	}
+	$currentPage = $_GET['page'] - 1;
+	header("location:form?apply&page=".$currentPage);
 }
 
 if(isset($_POST['inc'])){
@@ -25,6 +71,7 @@ if(isset($_POST['dec'])){
 }
 
 if(isset($_POST['submit'])){
+	$_SESSION['applicationFormSubmited'] = true;
   $Form->ApplicationUpdate($_POST);
   if($Form->ApplicationValidate()){
 		$s = base64_encode(serialize($Form));
@@ -33,7 +80,8 @@ if(isset($_POST['submit'])){
 		$q = "INSERT INTO Application (AppFormObjects, JSON) values ('$s','$JSONdata')";
 		$r = $db->query($q);
 		if($r){
-			 header("location: contact.php?done");
+			unset($_SESSION['applicationFormSubmited']);
+			header("location: contact?done");
 		} else {
 			echo 'Upload Failed. Please Try Again.';
 		}
@@ -41,182 +89,88 @@ if(isset($_POST['submit'])){
 		echo 'Not Valid';
 	}
 }
+?>
+<style media="screen">
+.applyNav {
+	text-align: center;
+	vertical-align: middle;
+	border:1px solid #cdd0d6;
+	border-radius: 2px;
+	height: 50px;
+	line-height: 20px;
+	padding: 0px;
+}
+
+.visited {
+	background: #e8f8ff;
+}
+.active {
+	background: #ccf5ff;
+}
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-echo '<div class="row">';
-echo '<div class="col-sm-6">';
-$Form->showInput('dateDesire');
-echo '</div>';
-echo '<div class="col-sm-6">';
-$Form->showInput('typeSize');
-echo '</div>';
-echo '</div>';
-echo '<h3 class="text-center"style="background: grey"><small style="color: white;">PERSONAL INFORMATION</small></h3>';
+.pageTrav {
+	height: 75px;
+	width: 125px;
+}
 
-	echo '<h3><small>Primary Applicant</small></h3>';
+.navButton {
+	border-radius: 0px;
+	width: 100%;
+	height: 98%;
+	border: none;
+}
+</style>
+<div class="row">
+	<div class="col-sm-2 applyNav">
+		<button id="0apply" class="navButton" type="submit" name="goto" value="0">
+		<p>Personal Information</p> </button>
+	</div>
 
-	echo '<div class="row">';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('name');
-	$Form->showInput('homePhone');
-	echo '</div>';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('workPhone');
-	$Form->showInput('email');
-	echo '</div>';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('dob');
-	$Form->showInput('cellPhone');
-	echo '</div></div>';
-
-	echo '<h3><small>Co-Applicant</small></h3>';
-
-	echo '<div class="row">';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('nameCO');
-	$Form->showInput('homePhoneCO');
-	echo '</div>';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('workPhoneCO');
-	$Form->showInput('emailCO');
-	echo '</div>';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('dobCO');
-	$Form->showInput('cellPhoneCO');
-	$Form->showInput('relationCO');
-	echo '</div></div>';
-
-	$Form->showResidentCount();
-
-	echo '<hr><div class="row">';
-	echo '<div class="col-sm-6">';
-	$Form->showInput("pets");
-	echo '</div>';
-	echo '<div class="col-sm-6">';
-	$Form->showInput("petsType");
-	echo '</div>';
-	echo '</div>';
-	$Form->showInput("howHear");
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-echo '<h3 class="text-center"style="background: grey"><small style="color: white;">RESIDENCE HISTORY</small></h3>';
-
-$Form->showResidenceHistory();
-
-echo '<h3 class="text-center"style="background: grey"><small style="color: white;">EMPLOYMENT HISTORY</small></h3>';
-
-$Form->showEmploymentCount();
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-echo '<h3 class="text-center"style="background: grey"><small style="color: white;">BANKING AND CREDIT REFRENCES</small></h3>';
-echo '<div class="row">';
-	echo '<div class="col-sm-4">';
-	$Form->showInput('bankName');
-	$Form->showInput('bankTelephone');
-	echo '</div>';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('checkingAccNum');
-	$Form->showInput('savingsAccNum');
-	echo '</div>';
-
-	echo '<div class="col-sm-4">';
-	$Form->showInput('locanAccNum');
-	$Form->showInput('monthlyPayment');
-echo '</div></div><hr>';
-
-echo '<div class="row">';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('creditRef1');
-	$Form->showInput('creditRef1Tel');
-	echo '</div>';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('creditRef1Address');
-	$Form->showInput('creditRef1AccNum');
-echo '</div></div><hr>';
-
-echo '<div class="row">';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('creditRef2');
-	$Form->showInput('creditRef2Tel');
-	echo '</div>';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('creditRef2Address');
-	$Form->showInput('creditRef2AccNum');
-echo '</div></div>';
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-echo '<h3 class="text-center"style="background: grey"><small style="color: white;">OTHER INFORMATION</small></h3>';
-
-echo '<div class="text-center">';
-	$Form->showInput("totalNumberVehicles");
-	$Form->showVehicles();
-echo '</div>';
-
-echo '<hr><div class="text-center">';
-	$Form->showInput("grossIncome");
-	echo '<h3><small> If there are other sources of income you would like us to consider, please list income, source and person (Banker, Employer, etc.) who we could
-contact for confirmation. You do NOT have to reveal alimony, child support or spouse\'s annual income unless you want us to consider it in this application.
-</small></h3>';
-	$Form->showOtherIncomeSources();
-	$Form->showInput("incomeComments");
-echo '</div>';
-
-echo '<hr><h3><small>HAVE YOU OR CO-APPLICANT EVER:</small></h3>';
-echo '<div class="row">';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('beenSued');
-	$Form->showInput('beenEvicted');
-	$Form->showInput('declaredBankruptcy');
-	echo '</div>';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('brokenRental');
-	$Form->showInput('beenSuedPropDamage');
-echo '</div></div><hr>';
-
-echo '<div class="row">';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('emergencyName');
-	echo '</div>';
-	echo '<div class="col-sm-6">';
-	$Form->showInput('emergencyAddress');
-echo '</div></div>';
-echo '<div class="row">';
-	echo '<div class="col-sm-4">';
-	$Form->showInput('emergencyHomePhone');
-	echo '</div>';
-	echo '<div class="col-sm-4">';
-	$Form->showInput('emergencyWorkPhone');
-	echo '</div>';
-	echo '<div class="col-sm-4">';
-	$Form->showInput('emergencyRelationship');
-echo '</div></div>';
-
-echo '<hr><div class="text-center">';
-	echo '<h3><small>I hereby make application for an apartment and certify that
-	this information is correct. I authorize you to contact any
-	references that I have listed. I also authorize you to obtain
-	my consumer credit report from your credit reporting agency,
-	which will appear as an inquiry on my file.</small></h3>';
-	$Form->showInput('agreement');
-echo '</div>';
-
+	<div class="col-sm-2 applyNav">
+		<button id="1apply" class="navButton" type="submit" name="goto" value="1">
+		<p>Residence History</p> </button>
+	</div>
+	<div class="col-sm-2 applyNav">
+		<button id="2apply" class="navButton" type="submit" name="goto" value="2">
+		<p>Employment History</p> </button>
+	</div>
+	<div class="col-sm-2 applyNav">
+		<button id="3apply" class="navButton" type="submit" name="goto" value="3">
+		<p>Banking</p> </button>
+	</div>
+	<div class="col-sm-2 applyNav">
+		<button id="4apply" class="navButton" type="submit" name="goto" value="4">
+		<p>Other</p> </button>
+	</div>
+	<div class="col-sm-2 applyNav">
+		<button id="5apply" class="navButton" type="submit" name="goto" value="5">
+		<p>Submit</p> </button>
+	</div>
+</div>
+<?php
+$pages = ["p0personalinformation", "p1residencehistory", "p2employmenthistory", "p3banking", "p4otherinformation", "p5submit"];
+include_once("applyPages/".$pages[$_GET['page']].".php");
 
 ?>
-<br>
-<br>
-<div class="text-center">
-<h3><i><small>Please review before submitting. You will not be able to make changes after submission.</small></i></h3>
-<button type="submit" name="submit">Submit</button>
-</div>
+<br><br>
+
+<button class="pageTrav" name="decPage">BACK</button>
+<button class="pageTrav" name="incPage" style="float: right;">NEXT</button>
 </form>
+
+
+<?php
+echo '<script type="text/javascript">';
+foreach($Form->visitedPages as $key){
+	echo '$( "#'.$key.'" ).addClass(\'visited\');';
+}
+echo '</script>';
+?>
+
+<script type="text/javascript">
+	$( "#<?php echo $_GET['page'] . "apply"; ?>" ).addClass('active');
+</script>
 
 
 </div>

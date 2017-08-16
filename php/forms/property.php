@@ -1,5 +1,6 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
+	<h3 class="text-center"><small>Create a New Property</small></h3>
 <form method="post">
 <?php
 
@@ -14,13 +15,13 @@ if(isset($_POST['submit'])){
 	$prop->update($_POST);
 	if($prop->validate()){
 		$f =  $prop->insert();
+		unset($_SESSION['form']);
 		if(isset($_SESSION['propertylist'])){
 			unset($_SESSION['propertylist']);
 		}
-		if($f){header('location:properties.php');} else {
+		if($f){header('location:properties');} else {
 			echo 'Error';
 		}
-
 	}
 }
 
