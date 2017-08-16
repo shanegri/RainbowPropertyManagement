@@ -10,7 +10,7 @@ if(!isset($_SESSION['swoForm'])){
 	$Form->addInput("fName", "First Name", FormInput::$STR, 20, true);
 	$Form->addInput("lName", "Last Name", FormInput::$STR, 20, true);
 	$Form->addInput("request", "Work Order Request", FormInput::$TXTAR, 700, true);
-	$Form->addInput("pEnter", "Permission to enter", FormInput::$DRPDWN, array("Yes", "No"), true);
+	$Form->addInput("pEnter", "Permission to enter", FormInput::$DRPDWN, array("Yes", "No"), null);
 	$Form->addInput("email", "Email", FormInput::$EMAIL, 50, true);
 	$Form->addInput("address", "Address", FormInput::$STR, 100, true);
 	$Form->addInput("zip", "Zip Code", FormInput::$INT, null, true);

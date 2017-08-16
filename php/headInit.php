@@ -4,7 +4,9 @@ include_once('./classes/Property.php');
 include_once('./classes/Form.php');
 include_once('./classes/FormData.php');
 include_once('./classes/AppForms/ApplicationForm.php');
+include_once('./classes/AppForms/ApplicationFormLog.php');
 include_once("./classes/iLog.php");
+include_once("./classes/aLog.php");
 include_once("./js/redirect.php");
 ob_start();
 
@@ -27,7 +29,7 @@ if(!isset($_GET['log']) && isset($_SESSION['logData'])){
 }
 
 //REMOVE BEFORE COMMITING
-//$_SESSION['id'] = 1;
+$_SESSION['id'] = 1;
 
 
  ?>

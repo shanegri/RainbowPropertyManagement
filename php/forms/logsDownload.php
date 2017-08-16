@@ -1,6 +1,8 @@
 <?php
 include_once('../../classes/FormData.php');
 include_once('../../classes/AppForms/ApplicationForm.php');
+include_once('../../classes/AppForms/ApplicationFormLog.php');
+
 
 session_start();
 

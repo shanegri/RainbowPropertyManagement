@@ -4,8 +4,8 @@
 }
 </style>
 
-
-<div style="padding-top: 50px;" style="width: 80%">
+<div class="mobile-fit" >
+<div class="container-fluid" >
 
 <?php
 $pp = 50;
@@ -24,6 +24,14 @@ if(isset($_SESSION['logData'])){
     $f->date = $res[$i]['Date'];
     $f->id = $res[$i]['id'];
     $data[$f->date] = $f;
+  }
+  $size = sizeof($data);
+
+  for($i = 0 ; $i < sizeof($res) ; $i++){
+    $l = new ApplicationFormLog($res[$i]['JSON']);
+    $l->date = $res[$i]['Date'] + $res[$i]['id'];
+    $l->id = $res[$i]['id'];
+    $data[$l->date] = $l;
   }
   $size = sizeof($data);
 
@@ -94,7 +102,7 @@ showNav(sizeof($data), $pp);
 </div>
 
 
-<div class="container-fluid card" style="width: 80%; padding: 20px;">
+<div class="container-fluid card" style="padding: 20px;">
 
 <?php
 for($i = $pp * $_GET['page'] ; $i < sizeof($data) && ($i <  $_GET['page'] * $pp +$pp); $i++){
@@ -106,5 +114,6 @@ for($i = $pp * $_GET['page'] ; $i < sizeof($data) && ($i <  $_GET['page'] * $pp 
 
 
 
+</div>
 </div>
 </div>

@@ -1,8 +1,10 @@
 <?php
-include_once('Database.php');
-include_once('iLog.php');
 
-class FormData implements iLog{
+include_once('iLog.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/aLog.php');
+
+
+class FormData extends aLog{
 
   var $row;
   var $type;
@@ -35,25 +37,6 @@ class FormData implements iLog{
     }
   }
 
-  public function show(){
-    echo '
-    <div class="row">
-      <div class="col-xs-3 item">
-        <p>'.$this->date.'</p>
-      </div>
-      <div class="col-xs-3 item">
-        <p>Type:'.$this->type.'</p>
-      </div>
-      <div class="col-xs-4 item">
-        <a style="float:right" href="form.php?log&page=0&id='.$this->index.'">Download</a>
-      </div>
-      <div class="col-xs-2 item">
-        <a style="float: right" href="form.php?log&page=0&d='.$this->index.'"        onclick="return confirm(\'Are you sure?\');"
-        >Delete</a>
-      </div>
-    </div>
-    ';
-  }
 
   public function genDoc(){
     switch ($this->type) {

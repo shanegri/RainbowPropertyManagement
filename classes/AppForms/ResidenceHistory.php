@@ -64,16 +64,15 @@ class ResidenceHistory extends Form implements iIncrementalForm {
   }
 
   public function genDoc(){
-      $out = PHP_EOL . "RESIDENCE HISTORY".PHP_EOL . PHP_EOL;
+      $out = '"'.$this->id.'":{'.PHP_EOL;
       $out .= $this->showData('address'.$this->id);
       $out .= $this->showData('lanlord'.$this->id);
       $out .= $this->showData('telephoneLan'.$this->id);
       $out .= $this->showData('dateStart'.$this->id);
       $out .= $this->showData('dateEnd'.$this->id);
       $out .= $this->showData('monthlyCost'.$this->id);
-      $out .= $this->showData('monthlyCost'.$this->id);
-      $out .= $this->showData('reason'.$this->id);
-
+      $out .= $this->showData('reason'.$this->id, true);
+      $out .= "},".PHP_EOL.PHP_EOL;
       return $out;
   }
 

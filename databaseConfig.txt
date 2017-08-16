@@ -35,7 +35,8 @@ table: WorkOrder [
   address varchar 100
   zip
   city varchar 20
-  date
+  email varchar 50
+  Date
 ]
 
 table: Contact {
@@ -44,7 +45,7 @@ table: Contact {
   lName varchar 20
   message varchar 700
   email  varchar 50
-  date
+  Date
 }
 
 table: Application {

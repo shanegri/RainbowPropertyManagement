@@ -32,13 +32,14 @@ class Form {
 		return $this->store;
 	}
 
-	public function showData($key){
+	public function showData($key, $end = null){
 		if(!in_array($key, $this->store)){
-			return $this->store[$key]->showData();
+			return $this->store[$key]->genJSON($end);
 		} else {
 			return "Key Not Found";
 		}
 	}
+
 
 	public function update($post){
 		foreach($post as $key=>$value){
@@ -136,6 +137,15 @@ class FormInput {
 				$this->error = "Input it too long";
 				return false;
 			}
+		case FormInput::$DRPDWN:
+			if($this->mod !== null){
+				if($this->value !== "Yes"){
+					$this->error = "This Box Must Be Checked";
+					return false;
+				}
+			} else {
+				return true;
+			}
 		default:
 			return true;
 		}
@@ -172,7 +182,7 @@ class FormInput {
 	private function showTextInput(){
 	?>
 		<h3><small><?php echo $this->name ?> </small></h3>
-    <input type="text" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
+    <input <?php if($this->type !== FormInput::$INT) {echo 'maxlength="'.($this->length-1).'"';}?> type="text" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
 		<br>
 	  <b style="color:red"><?php echo $this->error ?></b>
 		<?php
@@ -181,7 +191,7 @@ class FormInput {
 	private function showTextAreaInput(){
 	?>
       <h3><small><?php echo $this->name ?></small></h3>
-      <textarea name="<?php echo $this->key ?>" rows="8" cols="120" style="max-width: 100%"><?php echo $this->value ?></textarea>
+      <textarea <?php echo 'maxlength="'.($this->length-1).'"';?> name="<?php echo $this->key ?>" rows="8" cols="120" style="max-width: 100%"><?php echo $this->value ?></textarea>
 			<br>
 			<b style="color:red"><?php echo $this->error ?></b>
 	<?php
@@ -210,17 +220,22 @@ class FormInput {
         }
         ?>
     </select>
+		<b style="color:red"><?php echo $this->error ?></b>
 	<?php
 	}
+
 
 	public function getValue(){
 		return $this->value;
 	}
 
-	public function showData(){
-			$out = $this->name . " = ";
-			$out .= $this->value . PHP_EOL . PHP_EOL;
-			return $out;
+
+	public function genJSON($end = null){
+		if($end === null){
+			return '"'.$this->name.'":"'.$this->value.'",'.PHP_EOL;
+		} else {
+			return '"'.$this->name.'":"'.$this->value.'"'.PHP_EOL;
+		}
 	}
 
 

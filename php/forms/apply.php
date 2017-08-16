@@ -29,7 +29,8 @@ if(isset($_POST['submit'])){
   if($Form->ApplicationValidate()){
 		$s = base64_encode(serialize($Form));
 		$db = Database::getInstance();
-		$q = "INSERT INTO Application (AppFormObjects) values ('.$s.')";
+		$JSONdata = $Form->genDoc();
+		$q = "INSERT INTO Application (AppFormObjects, JSON) values ('$s','$JSONdata')";
 		$r = $db->query($q);
 		if($r){
 			 header("location: contact.php?done");
@@ -61,7 +62,6 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 	echo '</div>';
 
 	echo '<div class="col-sm-4">';
-	$Form->showInput('social');
 	$Form->showInput('workPhone');
 	$Form->showInput('email');
 	echo '</div>';
@@ -81,7 +81,6 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 	echo '</div>';
 
 	echo '<div class="col-sm-4">';
-	$Form->showInput('socialCO');
 	$Form->showInput('workPhoneCO');
 	$Form->showInput('emailCO');
 	echo '</div>';
@@ -102,6 +101,83 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 
 $Form->showEmploymentCount();
 
+echo '<h3 class="text-center"style="background: grey"><small style="color: white;">BANKING AND CREDIT REFRENCES</small></h3>';
+echo '<div class="row">';
+	echo '<div class="col-sm-4">';
+	$Form->showInput('bankName');
+	$Form->showInput('bankTelephone');
+	echo '</div>';
+
+	echo '<div class="col-sm-4">';
+	$Form->showInput('checkingAccNum');
+	$Form->showInput('savingsAccNum');
+	echo '</div>';
+
+	echo '<div class="col-sm-4">';
+	$Form->showInput('locanAccNum');
+	$Form->showInput('monthlyPayment');
+echo '</div></div><hr>';
+
+echo '<div class="row">';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('creditRef1');
+	$Form->showInput('creditRef1Tel');
+	echo '</div>';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('creditRef1Address');
+	$Form->showInput('credRef1AccNum');
+echo '</div></div><hr>';
+
+echo '<div class="row">';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('creditRef2');
+	$Form->showInput('creditRef2Tel');
+	echo '</div>';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('creditRef2Address');
+	$Form->showInput('credRef2AccNum');
+echo '</div></div>';
+echo '<h3 class="text-center"style="background: grey"><small style="color: white;">OTHER INFORMATION</small></h3>';
+
+echo '<h3><small>HAVE YOU OR CO-APPLICANT EVER:</small></h3>';
+echo '<div class="row">';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('beenSued');
+	$Form->showInput('beenEvicted');
+	$Form->showInput('declaredBankruptcy');
+	echo '</div>';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('brokenRental');
+	$Form->showInput('beenSuedPropDamage');
+echo '</div></div><hr>';
+
+echo '<div class="row">';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('emergencyName');
+	echo '</div>';
+	echo '<div class="col-sm-6">';
+	$Form->showInput('emergencyAddress');
+echo '</div></div>';
+echo '<div class="row">';
+	echo '<div class="col-sm-4">';
+	$Form->showInput('emergencyHomePhone');
+	echo '</div>';
+	echo '<div class="col-sm-4">';
+	$Form->showInput('emergencyWorkPhone');
+	echo '</div>';
+	echo '<div class="col-sm-4">';
+	$Form->showInput('emergencyRelationship');
+echo '</div></div>';
+
+
+echo '<hr><div class="text-center">';
+	echo '<h3><small>I hereby make application for an apartment and certify that
+	this information is correct. I authorize you to contact any
+	references that I have listed. I also authorize you to obtain
+	my consumer credit report from your credit reporting agency,
+	which will appear as an inquiry on my file.</small></h3>';
+	$Form->showInput('agreement');
+echo '</div>';
 
 
 ?>

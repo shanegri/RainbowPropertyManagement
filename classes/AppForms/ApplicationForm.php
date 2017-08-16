@@ -22,7 +22,6 @@ class ApplicationForm extends Form implements iLog {
 
     //Primary Applicant
     $this->addInput("name", "Full Name", FormInput::$STR, 40, true);
-    $this->addInput("social", "Social Security Number", FormInput::$INT, 9, true);
     $this->addInput("dob", "Date of Birth", FormInput::$DATE, null, true);
     $this->addInput("homePhone", "Home Phone", FormInput::$INT, 20, null);
     $this->addInput("workPhone", "Work Phone", FormInput::$INT, 20, null);
@@ -31,7 +30,6 @@ class ApplicationForm extends Form implements iLog {
 
     //Co-Applicant
     $this->addInput("nameCO", "Full Name", FormInput::$STR, 40, true);
-    $this->addInput("socialCO", "Social Security Number", FormInput::$INT, 9, true);
     $this->addInput("dobCO", "Date of Birth", FormInput::$DATE, null, true);
     $this->addInput("homePhoneCO", "Home Phone", FormInput::$INT, 20, null);
     $this->addInput("workPhoneCO", "Work Phone", FormInput::$INT, 20, null);
@@ -39,7 +37,46 @@ class ApplicationForm extends Form implements iLog {
     $this->addInput("emailCO", "Email", FormInput::$EMAIL, 100, true);
     $this->addInput("relationCO", "Relationship", FormInput::$STR, 40, true);
 
-    $this->subFormInit();
+    //Banking and credit information
+    $this->addInput("bankName", "Bank Name & Branch", FormInput::$STR, 50, null);
+    $this->addInput("bankTelephone", "Telephone", FormInput::$INT, 20, null);
+    $this->addInput("checkingAccNum", "Checking Account Number", FormInput::$INT, 20, null);
+    $this->addInput("savingsAccNum", "Savings Account Number", FormInput::$INT, 20, null);
+    $this->addInput("locanAccNum", "Locan Account Number", FormInput::$INT, 20, null);
+    $this->addInput("monthlyPayment", "Monthly Payment $", FormInput::$INT, 20, null);
+      //Credit Refrence 1
+      $this->addInput("creditRef1", "CREDIT REFRENCE 1", FormInput::$STR, 50, null);
+      $this->addInput("creditRef1Tel", "Telephone", FormInput::$INT, 20, null);
+      $this->addInput("creditRef1Address", "Address", FormInput::$STR, 100, null);
+      $this->addInput("credRef1AccNum", "Account Number", FormInput::$INT, 20, null);
+      //Credit Refrence 2
+      $this->addInput("creditRef2", "CREDIT REFRENCE 2", FormInput::$STR, 50, null);
+      $this->addInput("creditRef2Tel", "Telephone", FormInput::$INT, 20, null);
+      $this->addInput("creditRef2Address", "Address", FormInput::$STR, 100, null);
+      $this->addInput("credRef2AccNum", "Account Number", FormInput::$INT, 20, null);
+
+  //Other Infomation
+    //Vehicles
+    //Income
+
+    //Yes No Questions
+    $this->addInput("beenSued", "Been Sued for non-payment of rent?", FormInput::$DRPDWN, array("No", "Yes"), null);
+    $this->addInput("beenEvicted", "Been evicted or asked to move out?", FormInput::$DRPDWN, array("No", "Yes"), null);
+    $this->addInput("brokenRental", "Broken a Rental Agreement or Lease?", FormInput::$DRPDWN, array("No", "Yes"), null);
+    $this->addInput("beenSuedPropDamage", "Been sued for damage to rental property?", FormInput::$DRPDWN, array("No", "Yes"), null);
+    $this->addInput("declaredBankruptcy", "Declared Bankruptcy?", FormInput::$DRPDWN, array("No", "Yes"), null);
+    //In-case of emergency
+    $this->addInput("emergencyName", "In Case of Personal Emergency, Notify", FormInput::$STR, 20, true);
+    $this->addInput("emergencyAddress", "Address", FormInput::$STR, 50, true);
+    $this->addInput("emergencyHomePhone", "Home Phone", FormInput::$INT, 20, true);
+    $this->addInput("emergencyWorkPhone", "Work Phone", FormInput::$INT, 20, null);
+    $this->addInput("emergencyRelationship", "Relationship", FormInput::$STR, 20, null);
+
+  //Agreement
+  $this->addInput("agreement", "Applicant and Co-applicant Agreement", FormInput::$DRPDWN, array("No", "Yes"), true);
+
+
+  $this->subFormInit();
   }
 
   //Sub form handeling
@@ -119,7 +156,6 @@ class ApplicationForm extends Form implements iLog {
     return true;
   }
 
-  //TODO Implement form deletion and text generation
   public function show(){
     echo '
     <div class="row">
@@ -141,16 +177,37 @@ class ApplicationForm extends Form implements iLog {
   }
   public function setArrayIndex($i){ $this->index = $i; }
   public function genDoc(){
-    $t = "DATE POSTED =" .$this->date . PHP_EOL . PHP_EOL;
+    $t = "{".PHP_EOL;
+    $t .= $this->showData("dateDesire");
+    $t .= $this->showData("typeSize").PHP_EOL;
 
-    foreach($this->getStore() as $f){
-      $t .= $f->showData();
-    }
+    $ar = ["name","dob","homePhone","workPhone","cellPhone","email"];
+    $t .= $this->addJsonArray("Primary Applicant", $ar );
+
+    $ar = ["nameCO","dobCO","homePhoneCO","workPhoneCO","cellPhoneCO","emailCO","relationCO"];
+    $t .= $this->addJsonArray("Co-Applicant", $ar );
+
+    $ar = ["bankName","bankTelephone","checkingAccNum","savingsAccNum","locanAccNum","monthlyPayment"];
+    $t .= $this->addJsonArray("Banking", $ar );
+
+    $ar = ["creditRef1","creditRef1Tel","creditRef1Address","credRef1AccNum"];
+    $t .= $this->addJsonArray("Credit Refrence 1", $ar );
+
+    $ar = ["creditRef2","creditRef2Tel","creditRef2Address","credRef2AccNum"];
+    $t .= $this->addJsonArray("Credit Refrence 2", $ar );
+
+    $ar = ["beenSued","beenEvicted","brokenRental","beenSuedPropDamage", "declaredBankruptcy"];
+    $t .= $this->addJsonArray("Yes / No Questions", $ar );
+
+    $ar = ["emergencyName","emergencyAddress","emergencyHomePhone","emergencyWorkPhone", "emergencyRelationship"];
+    $t .= $this->addJsonArray("In Case of Emergency", $ar );
+
+
     foreach($this->Resident as $f){ $t .= $f->genDoc(); }
     foreach($this->ResidenceHistory as $f){ $t .= $f->genDoc(); }
     foreach($this->Employment as $f){ $t .= $f->genDoc(); }
-
-    return $t;
+    $t.= $this->showData("emailCO" , true);
+    return $t."}";
   }
   public function genName(){
     return $this->date . "Application";
@@ -163,7 +220,16 @@ class ApplicationForm extends Form implements iLog {
     } else {
       return false;
     }
+  }
 
+  public function addJsonArray($title, $values){
+    $t = '"'.$title.'" :{'.PHP_EOL;
+      for($i  = 0; $i < sizeof($values) -1; $i++){
+        $t .= $this->showData($values[$i]);
+      }
+      $t .= $this->showData($values[sizeof($values)-1], true);
+    $t .= "},".PHP_EOL.PHP_EOL;
+    return $t;
   }
 }
 
