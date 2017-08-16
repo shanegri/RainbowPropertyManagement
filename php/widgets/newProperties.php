@@ -16,6 +16,9 @@ if(!isset($_SESSION['propertylist'])){
       array_push($properties, $prop);
     }
   }
+  for($i = 0 ; $i < sizeof($properties) ; $i++){
+    $properties[$i]->arIndex = $i;
+  }
   $_SESSION['propertylist'] = $properties;
 }
 $properties = $_SESSION['propertylist'];
