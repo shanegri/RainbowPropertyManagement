@@ -35,12 +35,12 @@ class Vehicle extends Form implements iIncrementalForm {
     echo '</div>';
   }
   public function genDoc(){
-    $out = '"'.$this->id.'": {'.PHP_EOL;
+    $out = '"'.$this->id.'": {'.nLine;
       $out .= $this->showData("vehMakeModel".$this->id);
       $out .= $this->showData("vehYear".$this->id);
       $out .= $this->showData("vehColor".$this->id);
       $out .= $this->showData("vehTag".$this->id, true);
-    $out .= "}," . PHP_EOL .PHP_EOL;
+    $out .= "}," . nLine .nLine;
     return $out;
   }
 

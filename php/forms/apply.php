@@ -83,10 +83,10 @@ if(isset($_POST['submit'])){
 			unset($_SESSION['applicationFormSubmited']);
 			header("location: contact?done");
 		} else {
-			echo 'Upload Failed. Please Try Again.';
+			echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application.</h3></div>';
 		}
 	} else {
-		echo 'Not Valid';
+		echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application.</h3></div>';
 	}
 }
 ?>

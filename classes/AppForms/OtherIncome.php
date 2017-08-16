@@ -35,12 +35,12 @@ class OtherIncome extends Form implements iIncrementalForm {
     echo '</div>';
   }
   public function genDoc(){
-    $out = '"'.$this->id.'": {'.PHP_EOL;
+    $out = '"'.$this->id.'": {'.nLine;
       $out .= $this->showData("amt".$this->id);
       $out .= $this->showData("per".$this->id);
       $out .= $this->showData("source".$this->id);
       $out .= $this->showData("telephone".$this->id, true);
-    $out .= "}," . PHP_EOL .PHP_EOL;
+    $out .= "}," . nLine .nLine;
     return $out;
   }
 

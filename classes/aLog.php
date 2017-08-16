@@ -1,4 +1,6 @@
 <?php
+define("nLine", "\r\n");
+
 abstract class aLog implements iLog {
 
   var $date;

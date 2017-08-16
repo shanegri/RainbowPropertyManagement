@@ -63,7 +63,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
   }
 
   public function genDoc(){
-      $out = '"'.$this->id.'":{'.PHP_EOL;
+      $out = '"'.$this->id.'":{'.nLine;
       $out .= $this->showData('address'.$this->id);
       $out .= $this->showData('lanlord'.$this->id);
       $out .= $this->showData('telephoneLan'.$this->id);
@@ -71,7 +71,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
       $out .= $this->showData('dateEnd'.$this->id);
       $out .= $this->showData('monthlyCost'.$this->id);
       $out .= $this->showData('reason'.$this->id, true);
-      $out .= "},".PHP_EOL.PHP_EOL;
+      $out .= "},".nLine.nLine;
       return $out;
   }
 

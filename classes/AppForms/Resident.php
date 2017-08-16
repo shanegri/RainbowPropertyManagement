@@ -28,11 +28,11 @@ class Resident extends Form implements iIncrementalForm {
   }
 
   public function genDoc(){
-      $out = '"'.$this->id.'":{'.PHP_EOL;
+      $out = '"'.$this->id.'":{'.nLine;
       $out .= $this->showData('name'.$this->id);
       $out .= $this->showData('relation'.$this->id);
       $out .= $this->showData('dob'.$this->id, true);
-      $out .= "},".PHP_EOL.PHP_EOL;
+      $out .= "},".nLine.nLine;
       return $out;
   }
 

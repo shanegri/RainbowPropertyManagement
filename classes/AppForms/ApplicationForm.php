@@ -215,9 +215,9 @@ class ApplicationForm extends Form implements iLog {
   }
   public function setArrayIndex($i){ $this->index = $i; }
   public function genDoc(){
-    $t = "{".PHP_EOL;
+    $t = "{".nLine;
     $t .= $this->showData("dateDesire");
-    $t .= $this->showData("typeSize").PHP_EOL;
+    $t .= $this->showData("typeSize").nLine;
 
     $ar = ["name","dob","homePhone","workPhone","cellPhone","email"];
     $t .= $this->addJsonArray("Primary Applicant", $ar );
@@ -273,12 +273,12 @@ class ApplicationForm extends Form implements iLog {
   }
 
   public function addJsonArray($title, $values){
-    $t = '"'.$title.'" :{'.PHP_EOL;
+    $t = '"'.$title.'" :{'.nLine;
       for($i  = 0; $i < sizeof($values) -1; $i++){
         $t .= $this->showData($values[$i]);
       }
       $t .= $this->showData($values[sizeof($values)-1], true);
-    $t .= "},".PHP_EOL.PHP_EOL;
+    $t .= "},".nLine.nLine;
     return $t;
   }
 }
