@@ -1,13 +1,20 @@
 <?php
 include_once('classes/Database.php');
+require_once('PHPMailer/class.phpmailer.php');
+
 $db = Database::getInstance();
 
-$from = 'From: test@test.com';
-$m = mail('shgriffin16@gmail.com', 'test', 'test');
-if($m){
-	echo 'sent';
+$email = new PHPMailer();
+$email->From = 'automailer@rainbow.rent';
+$email->FromName = "Rainbow Property Management";
+$email->Subject = "Test Email";
+$email->AddAddress('shgriffin16@gmail.com');
+$email->Body = "Test Body";
+
+if($email->Send()){
+	echo 'Sent';
 } else {
-	echo 'not sent';
+	echo 'Not Sent';
 }
 
 ?>

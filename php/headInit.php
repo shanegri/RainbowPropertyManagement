@@ -1,4 +1,6 @@
 <?php
+require_once('./classes/Mailer.php');
+
 include_once('./classes/Database.php');
 include_once('./classes/Property.php');
 include_once('./classes/Form.php');

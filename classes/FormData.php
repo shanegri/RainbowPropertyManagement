@@ -78,9 +78,7 @@ class FormData extends aLog{
     return $c;
   }
 
-  public function genName(){
-    return $this->date . "_". $this->type;
-  }
+
 
 
 

@@ -1,6 +1,4 @@
-  public function setArrayIndex($i){
-    $this->index = $i;
-  }<?php
+<?php
 define("nLine", "\r\n");
 
 abstract class aLog implements iLog {
@@ -30,7 +28,9 @@ abstract class aLog implements iLog {
   }
   public function setArrayIndex($i){$this->index = $i;}
   abstract public function genDoc();
-  abstract public function genName();
+  public function genName(){
+    return $this->type . "_". $this->date;
+  }
   abstract public function del();
 
 

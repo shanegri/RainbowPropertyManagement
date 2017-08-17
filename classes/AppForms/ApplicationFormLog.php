@@ -34,9 +34,6 @@ class ApplicationFormLog extends aLog {
     //return $this->appForm->genJSON();
     return $out;
   }
-  public function genName(){
-    return $this->type;
-  }
   public function del(){
     $d = Database::getInstance();
     $q = 'DELETE FROM Application Where id='.$this->id;

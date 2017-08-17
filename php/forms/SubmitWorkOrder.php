@@ -25,6 +25,11 @@ if(isset($_POST['submit'])){
   $Form->update($_POST);
   if($Form->validate()){
 		if($Form->insert()){
+			// if(Mailer::sendToAdmin("WorkOrder", "Test Body")){
+			// 	echo 'Email Sent';
+			// } else {
+			// 	echo 'Email Not Sent';
+			// }
 			header('location:form?swo=true&done');
 		} else {
 			echo 'Error';
