@@ -117,14 +117,13 @@ p {
   text-align: center;
   line-height: 60px;
 }
-.propPrevButtonContainer > .left { float: left;}
-.propPrevButtonContainer > .right { float: right; }
+.propPrevButtonContainer > .left { float: left; width: 49.75%; }
+.propPrevButtonContainer > .right { float: right;   width: 50%;}
 .propPrevButtonContainer > .left,
 .propPrevButtonContainer > .right {
   text-decoration: none;
   color: white;
   height: 100%;
-  width: 50%;
   background: #89bdd3;
 }
 .propPrevButtonContainer > .left:hover,
@@ -132,6 +131,12 @@ p {
   -webkit-transition: background .2s; /* Safari */
   transition: background .2s;
   background: #9ad3de;
+}
+.propertyPicPreview {
+  height: 150px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 /*Properties end*/
 
