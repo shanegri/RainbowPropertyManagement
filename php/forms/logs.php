@@ -35,7 +35,7 @@ if(isset($_SESSION['logData'])){
   $query = "SELECT * FROM Contact";
   $res = $db->fetch($query);
   for($i = $size ; $i < sizeof($res) + $size ; $i++){
-    $f = new FormData($res[$i - $size], 'Contact Form');
+    $f = new FormData($res[$i - $size], 'Contact');
     $data[$f->date] = $f;
   }
   ksort($data);

@@ -26,7 +26,7 @@
         }
 
         //Admin features
-        if(isset($_SESSION['id'])){
+        if(isset($_SESSION['id']) && !isset($_GET['property'])){
           include('properties/adminBar.php');
         }
 

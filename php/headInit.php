@@ -33,6 +33,10 @@ if(!isset($_GET['log']) && isset($_SESSION['logData'])){
   unset($_SESSION['logData']);
 }
 
+if(!isset($_GET['addProperty']) && isset($_SESSION['propForm'])){
+  unset($_SESSION['propForm']);
+}
+
 //REMOVE BEFORE COMMITING
 //$_SESSION['id'] = 1;
 

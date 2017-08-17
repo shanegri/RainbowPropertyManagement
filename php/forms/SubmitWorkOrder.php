@@ -1,9 +1,7 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
-
 <form method="post">
 <?php
-
 
 if(!isset($_SESSION['swoForm'])){
 	$Form = new Form('WorkOrder');
@@ -25,12 +23,10 @@ if(isset($_POST['submit'])){
   $Form->update($_POST);
   if($Form->validate()){
 		if($Form->insert()){
-			// if(Mailer::sendToAdmin("WorkOrder", "Test Body")){
-			// 	echo 'Email Sent';
-			// } else {
-			// 	echo 'Email Not Sent';
-			// }
-			header('location:form?swo=true&done');
+			$FormData = new FormData($_POST, "Work Order");
+			$emailBody = $FormData->genDoc();
+			$emailType = $FormData->type;
+			Mailer::sendFormEmail($emailType, $emailBody, $_POST['email']);
 		} else {
 			echo 'Error';
 		}

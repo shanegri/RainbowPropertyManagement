@@ -81,7 +81,10 @@ if(isset($_POST['submit'])){
 		$r = $db->query($q);
 		if($r){
 			unset($_SESSION['applicationFormSubmited']);
-			header("location: contact?done");
+			$AppFormLog = new ApplicationFormLog($JSONdata);
+			$emailType = "Rental Application";
+			$emailBody = $AppFormLog->genDoc();
+			Mailer::sendFormEmail($emailType, $emailBody, $_POST['email']);
 		} else {
 			echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application.</h3></div>';
 		}

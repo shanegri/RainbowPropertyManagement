@@ -1,21 +1,23 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
+	<button><a href="././properties">Back</a></button>
+
 	<h3 class="text-center"><small>Create a New Property</small></h3>
 <form method="post">
 <?php
 
-if(isset($_SESSION['form'])){
-	$prop = $_SESSION['form'];
+if(isset($_SESSION['propForm'])){
+	$prop = $_SESSION['propForm'];
 } else {
 	$prop = Property::init();
-	$_SESSION['form']=  $prop;
+	$_SESSION['propForm']=  $prop;
 }
 
 if(isset($_POST['submit'])){
 	$prop->update($_POST);
 	if($prop->validate()){
 		$f =  $prop->insert();
-		unset($_SESSION['form']);
+		unset($_SESSION['propForm']);
 		if(isset($_SESSION['propertylist'])){
 			unset($_SESSION['propertylist']);
 		}

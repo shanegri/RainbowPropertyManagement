@@ -15,8 +15,16 @@ class FormData extends aLog{
   public function __construct($row, $type){
     $this->row = $row;
     $this->type = $type;
-    $this->date = $row['Date'];
-    $this->id = $row['id'];
+    if(isset($row['Date'])){
+      $this->date = $row['Date'];
+    } else {
+      //Enable server time caching
+      $this->row['Date'] = "0";
+      $this->date = "0";
+    }
+    if(isset($row['id'])){
+      $this->id = $row['id'];
+    }
   }
 
   public function del(){
@@ -37,10 +45,10 @@ class FormData extends aLog{
   public function genDoc(){
     switch ($this->type) {
       case 'Work Order':
-      echo $this->genWorkOrder();
+      return $this->genWorkOrder();
       break;
-      case 'Contact Form':
-      echo $this->genContactForm();
+      case 'Contact':
+      return $this->genContactForm();
       break;
     }
   }
