@@ -1,5 +1,3 @@
-
-
 <div class="widget card" style="text-align: center; max-height: 350px;">
   <?php
   $search;
@@ -11,7 +9,7 @@
     $search = $address . " " . $city ." ". $zip;
   } else {
     $search = '1514 Main st. Niagara Falls NY';
-    echo '<h3 class="text-center" style="margin: 2px;"><small>Our Location</small></h3>';
+    echo '<h2 class="text-center" style="font-size: 20px; margin: 2px;"><small style="color: white; ">Our Location</small></h2>';
   }
   ?>
 <div id="map" style="width:100%;height: 300px"></div>

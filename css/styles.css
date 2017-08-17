@@ -1,3 +1,12 @@
+/*
+#c9c9c9  - grey
+
+#e3e3e3  - light grey
+
+#9ad3de  - blue
+
+#89bdd3  - darker blue
+*/
 body {
   @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
   font-family: 'Droid Sans', sans-serif;
@@ -12,19 +21,16 @@ p {
   background: white;
   margin-bottom: -18px;
 }
-
 .headContent {
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .logo {
   max-width: 100%;
   max-height: 100px;
   margin-bottom: 0px;
   margin-top: 5px;
 }
-
 .contact-info {
   line-height: 17px;
   font-size: 12px;
@@ -40,7 +46,6 @@ p {
 .body {
   margin-bottom: 30px;
 }
-
 .page {
   background: rgb(241, 241, 241);
   max-width: 1070px;
@@ -48,60 +53,97 @@ p {
   margin: 0 auto;
   padding: 20px;
 }
-
-.card{
+.card {
   box-shadow: 2px 2px 6px #bbbaba;
-  border: 1px solid rgb(221, 220, 216);
   border-radius: 3px;
   background: white;
 }
 
+.widgetLink:hover {
+  text-decoration: none;
+}
+.widget {
+  margin-top: 20px;
+  background:  #89bdd3;
+  color: white;
+  text-decoration: none;
+}
 
-/*listings*/
+.widget:hover {
+  -webkit-transition: background-color .2s; /* Safari */
+  transition: background-color .2s;
+  background-color: #9ad3de;
+}
+
+.widget > h3 {
+  font-size: 23px;
+  padding: 13px;
+}
+
+/*Properties*/
 .propertyPreview {
   font-size: 13px;
   height: 300px;
   margin-bottom: 10px;
+  padding-top: 15px;
 }
-
-.propertyPreview button {
-  position: relative;
-  margin-top: 7px;
-  width: 48%;
-  height: 50px;
-  border: none;
-  background: rgb(207, 241, 242);
-}
-
-.propertyPreview button:hover {
-  background-color:  rgb(192, 246, 243)
-}
-
-.propPrevCrop {
+.propPrevImg {
   height: 270px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.propPrevContent {
+  padding: 0px;
+  height: 270px;
+}
+.propPrevDescription > h3 {
+  margin: 0px;
+  font-size: 20px;
+}
+.propPrevDescription > p {
+  font-size: 13px;
+}
+.propPrevData > h3, .propPrevData > p{
+  display:inline
+}
+.propPrevDescription {
+  padding: 5px;
+  height: 75%;
+}
+.propPrevButtonContainer {
+  height: 25%;
+  font-size: 15px;
+  text-align: center;
+  line-height: 60px;
+}
+.propPrevButtonContainer > .left { float: left;}
+.propPrevButtonContainer > .right { float: right; }
+.propPrevButtonContainer > .left,
+.propPrevButtonContainer > .right {
+  text-decoration: none;
+  color: white;
+  height: 100%;
   width: 50%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: #89bdd3;
 }
-
-.propPrevCropWid {
-  height: 270px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+.propPrevButtonContainer > .left:hover,
+.propPrevButtonContainer > .right:hover {
+  -webkit-transition: background .2s; /* Safari */
+  transition: background .2s;
+  background: #9ad3de;
 }
+/*Properties end*/
 
+/*Properties Expanded*/
 .facts h3 {
   font-size: 20px;
   margin: auto;
 }
-
 .slideshow {
   width: 100%;
   padding-top: 20px;
 }
-
 .slide {
   display: none;
   width: 100%;
@@ -113,7 +155,6 @@ p {
   animation-name: fadeS;
   animation-duration: .7s;
 }
-
 .slideIm{
   height: 400px;
   object-fit: cover;
@@ -122,7 +163,6 @@ p {
   font-size: 50px;
   background: #f9f9f9;
 }
-
 .arrow a {
   text-decoration: none;
   color: black;
@@ -132,9 +172,6 @@ p {
   cursor: pointer;
   background: #f2f2f2;
 }
-
-
-
 @-webkit-keyframes fadeS {
   from {opacity: .4}
   to {opacity: 1}
@@ -144,7 +181,6 @@ p {
   from {opacity: .4}
   to {opacity: 1}
 }
-
 .dot {
   cursor:pointer;
   height: 13px;
@@ -154,10 +190,12 @@ p {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-
 .Dotactive, .dot:hover {
   background-color: #717171;
 }
+/*Properties Expanded End*/
+
+
 
 
 /*Custom button style*/
@@ -169,44 +207,25 @@ p {
 .travButton:hover {
   background: rgb(192, 246, 243);
 }
-
-
 .travButton img {
   height: 30px;
 }
 
-/*listings*/
-
 
 
 /*other*/
-
 .mobile-fit {
   padding-top: 20px;
   padding: 5px;
 }
-
-.propertyPicPreview {
-  height: 150px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-.widget {
-  margin-top: 20px;
-  background: white;
-}
-
 .loginBox {
   width: 60%;
   padding: 20px;
 }
-
 .loginBox button {
   height: 50px;
   width: 100px;
 }
-
 .propertyForm {
   padding: 20px;
   width: 80%;
@@ -217,7 +236,6 @@ p {
   text-align: right;
   border: 2px solid red;
 }
-
 hr {
   border: 1px solid rgb(182, 182, 182);
 }
@@ -251,8 +269,8 @@ button:hover {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
     transition: background .2s ease-out;
-    color: rgb(40, 40, 40);
-    background:  rgb(192, 246, 243);
+    color: white;
+    background:  #9ad3de;
     box-shadow: 0px 0px 2px black;
   }
 
@@ -272,11 +290,10 @@ button:hover {
 
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 767px){
 
 
 .propertyPreview {
-  padding-bottom: 7px;
   font-size: 10px;
   height: auto;
 }
@@ -284,7 +301,6 @@ button:hover {
 .propPrevCrop {
   height: 270px;
   width: 100%;
-
 }
 
 

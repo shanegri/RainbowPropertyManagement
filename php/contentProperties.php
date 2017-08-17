@@ -118,7 +118,6 @@
       if(!isset($_GET['property'])){
         include("widgets/newProperties.php");
       }?>
-      <?php include("widgets/Apply.php") ?>
 
     </div>
   </div>
