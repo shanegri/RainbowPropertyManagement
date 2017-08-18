@@ -1,10 +1,8 @@
 <div class="mobile-fit">
   <div class="row">
     <!--Main Content-->
-    <div class="col-sm-8 body">
-      <!-- <h2 class="text-center"> Available Properties  </h1> -->
-      <h3><small>Available properties</small></h3>
-        <hr></hr>
+    <div class="col-sm-8 body"style="padding-top: 20px;">
+
       <?php
       include('traverseNav.php');
       $pp = 10;
@@ -32,26 +30,8 @@
 
 
         //Gets properties from db
-        if(!isset($_SESSION['propertylist'])){
-          $db = Database::getInstance();
-          $ar = $db->fetch("SELECT * FROM properties");
-          $ar = array_reverse($ar);
-          $properties = array();
-          for($i = 0; $i < sizeof($ar) ; $i++){
-            $prop = Property::initID($i, $ar[$i]['id']);
-            $prop->update($ar[$i]);
-            if(isset($_SESSION['id'])){
-              array_push($properties, $prop);
-            } else if (!$prop->isHidden){
-              array_push($properties, $prop);
-            }
-          }
-          for($i = 0 ; $i < sizeof($properties) ; $i++){
-            $properties[$i]->arIndex = $i;
-          }
-          $_SESSION['propertylist'] = $properties;
-        }
-        $properties = $_SESSION['propertylist'];
+        $properties = Property::initPropertyList();
+
 
         if(isset($_GET['redirect'])){
           header('location:index.php');
@@ -106,8 +86,7 @@
 
     <!--Widgets-->
     <div class="col-sm-4">
-      <h3 class="text-center"><small>Links</small></h3>
-        <hr>
+
       <?php
       if(isset($_GET['property'])){
         include("widgets/mapLocation.php");

@@ -27,7 +27,15 @@ if(isset($_POST['unhide'])){
 }
 
 if(isset($_POST['hide'])){
+  $this->setIsFeatured(false);
   $this->hideUnHide(1);
+}
+
+if(isset($_POST['setFeatured'])){
+  $this->setIsFeatured(true);
+}
+if(isset($_POST['unsetFeatured'])){
+  $this->setIsFeatured(false);
 }
 
 
@@ -35,15 +43,24 @@ if(isset($_POST['hide'])){
 ?>
 <div class="container-fluid card" style=" font-size: 12px; margin-bottom: 10px;">
   <form method="post">
-    <button type="submit" name="delete" onclick="return confirm('Are you sure?')">Delete</button>
-    <button type="submit" name=edit>Edit</button>
-    <button type="submit" name="picture">Add / Remove Pictures</button>
+    <button class="adminButton" type="submit" name="delete" onclick="return confirm('Are you sure?')">Delete</button>
+    <button class="adminButton" type="submit" name=edit>Edit</button>
+    <button class="adminButton" type="submit" name="picture">Add / Remove Pictures</button>
     <?php
       if(!$this->isHidden){
-        echo '<button type="submit" name="hide">Hide</button>';
+        echo '<button class="adminButton" type="submit" name="hide">Hide</button>';
       } else {
-        echo '<button type="submit" name="unhide">Un-Hide</button>';
+        echo '<button class="adminButton" type="submit" name="unhide">Un-Hide</button>';
       }
+    ?>
+    <?php
+    if(!$this->isHidden){
+      if(!$this->isFeatured){
+        echo '<button class="adminButton" type="submit" name="setFeatured">Set As Featured</button>';
+      } else {
+        echo '<button class="adminButton" type="submit" name="unsetFeatured">Unset as Featured</button>';
+      }
+    }
     ?>
   </form>
 </div>

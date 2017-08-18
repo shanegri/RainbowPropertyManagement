@@ -5,7 +5,7 @@ if(isset($_SESSION['id'])){
 ?>
 <div class="container-fluid card" style="width: 100%; padding: 0px;">
 <?php if($this->isHidden == true){
-  echo '<h3>HIDDEN</h3>';
+  echo '<h3 style="text-align: center;">HIDDEN</h3>';
 }?>
 <?php include('expandedSlide.php');?>
 <hr style="margin-top: 0px;">

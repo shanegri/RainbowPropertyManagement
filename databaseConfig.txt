@@ -53,3 +53,8 @@ table: Application {
   AppFormObjects MediumBlob
   Date
 }
+
+table: Constants {
+  id
+  FeaturedProperty
+}

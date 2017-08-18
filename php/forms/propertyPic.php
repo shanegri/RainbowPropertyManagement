@@ -2,7 +2,7 @@
   <div class="container-fluid card propertyForm">
   <button><a href="././properties?property=<?php echo $_GET['updatepic']?>">Back</a></button>
     <form method="post" enctype="multipart/form-data">
-        <h3><small>Select Image to Upload</small></h3>
+        <h3><small>Select Image to Upload <i>(Max Size is 20MB)</i></small></h3>
         <input type="file" name="file">
         <br>
         <input type="submit" value="Upload Image" name="submit">
@@ -61,7 +61,7 @@
         }
 
         //Check size
-        if($post && $size > 2097152){
+        if($post && $size > 20971520){
           $post = false;
           echo '<b style="color: red">File Too Large</b>';
         }

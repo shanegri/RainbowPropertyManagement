@@ -1,5 +1,9 @@
 <div class="propertyPreview card">
-<div class="col-sm-6 propPrevImg " style="background-image: url('<?php echo $this->prevImage; ?>')"></div>
+<div class="col-sm-6 propPrevImg " style="background-image: url('<?php echo $this->prevImage; ?>')">
+<a style="text-decoration: none;"href="../../properties?property=<?php echo $this->arIndex ?>">
+  <div id="hiddenFade<?php echo $this->arIndex ?>" class="propPrevImgHidden"><p id="hidden<?php echo $this->arIndex ?>">HIDDEN</p></div></a>
+
+</div>
 <div class="col-sm-6 propPrevContent">
   <div class="propPrevDescription">
     <h3><small><i>Description: </i></small></h3>
@@ -31,3 +35,13 @@
   </div>
 </div>
 </div>
+<?php
+if($this->isHidden){
+  ?>
+  <script type="text/javascript">
+    $("#hidden<?php echo $this->arIndex ?>").css("display", "block");
+    $("#hiddenFade<?php echo $this->arIndex ?>").css("background", "rgba(255, 255, 255, .7)");
+  </script>
+  <?php
+}
+ ?>

@@ -42,7 +42,9 @@ p {
 }
 /*header*/
 
-
+hr {
+  border: 1px solid rgb(182, 182, 182);
+}
 .body {
   margin-bottom: 30px;
 }
@@ -58,7 +60,6 @@ p {
   border-radius: 3px;
   background: white;
 }
-
 .widgetLink:hover {
   text-decoration: none;
 }
@@ -68,13 +69,11 @@ p {
   color: white;
   text-decoration: none;
 }
-
 .widget:hover {
   -webkit-transition: background-color .2s; /* Safari */
   transition: background-color .2s;
   background-color: #9ad3de;
 }
-
 .widget > h3 {
   font-size: 23px;
   padding: 13px;
@@ -92,6 +91,24 @@ p {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  padding: 0px;
+}
+.propPrevImgHidden{
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  text-align: center;
+  line-height: 250px;
+  color: black;
+  font-size: 40px;
+}
+.propPrevImgHidden:hover{
+  -webkit-transition: background .2s; /* Safari */
+  transition: background .2s;
+  background: rgba(255, 255, 255, .3);
+}
+.propPrevImgHidden > p {
+  display: none;
 }
 .propPrevContent {
   padding: 0px;
@@ -181,7 +198,6 @@ p {
   from {opacity: .4}
   to {opacity: 1}
 }
-
 @keyframes fadeS {
   from {opacity: .4}
   to {opacity: 1}
@@ -199,22 +215,6 @@ p {
   background-color: #717171;
 }
 /*Properties Expanded End*/
-
-
-
-
-/*Custom button style*/
-.travButton {
-  background: none;
-  border: none;
-}
-
-.travButton:hover {
-  background: rgb(192, 246, 243);
-}
-.travButton img {
-  height: 30px;
-}
 
 
 
@@ -236,40 +236,67 @@ p {
   width: 80%;
 }
 
-/*for each log item*/
+/*Log*/
 .item {
   text-align: right;
   border: 2px solid red;
 }
-hr {
-  border: 1px solid rgb(182, 182, 182);
-}
+/*Log end*/
 
+
+/*buttons*/
 button {
+  padding: 10px;
+  border: none;
+  color: white;
+  background: #9ad3de;
+  box-shadow: 2px 2px 6px #bbbaba;
+  border-radius: 3px;
+}
+button:hover {
+  -webkit-transition: background .2s; /* Safari */
+  transition: background .2s;
+  background: #bce9f2;
+}
+button > a{
+  text-decoration: none;
+  color: white;
+}
+.travButton {
+  padding: 0px;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.travButton:hover {
+  background: #9ad3de;
+}
+.travButton img {
+  height: 30px;
+}
+.adminButton {
+  padding: 5px;
   border-radius: 10px;
   background: white;
   margin: 1px;
   color: black;
 }
-
-button:hover {
-  background: rgb(192, 246, 243);
+.adminButton:hover {
+  background: #9ad3de;
 }
+/*buttons end*/
 
 /*Custom NavBar Colors*/
 .navbar-default {
   background: -webkit-linear-gradient(rgb(51, 59, 59), rgb(16, 18, 18));
 }
-
 .navbar-default .navbar-nav > li > a {
   transition: color .3s ease-out;
 }
-
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: white;
 }
-
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -278,53 +305,42 @@ button:hover {
     background:  #9ad3de;
     box-shadow: 0px 0px 2px black;
   }
-
-
 .navbar.navbar-default {
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
     border-radius: 0px;
 }
-
 .navbar.navbar-default .navbar-collapse {
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-
+/*Custom NavBar Colors End*/
 
 
 @media only screen and (max-width: 767px){
-
 
 .propertyPreview {
   font-size: 10px;
   height: auto;
 }
-
 .propPrevCrop {
   height: 270px;
   width: 100%;
 }
-
-
 .loginBox {
   width: 100%;
 }
-
 .propertyForm {
   width: 100%;
 }
-
 .page {
   padding:3px;
 }
-
 .slideIm {
   height: 300px;
 }
-
 .logCol {
   margin-bottom: 20px;
 }

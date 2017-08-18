@@ -9,6 +9,7 @@ class Property extends Form {
 	var $prevImage;
 	var $shortDescription;
 	var $isHidden;
+	var $isFeatured;
 
 public function __construct(){
 	parent::__construct('properties');
@@ -61,6 +62,14 @@ public function echoPreview($p = null){
 		include('./php/properties/preview.php');
 	} else {
 		include('./php/properties/previewWidget.php');
+		if($p === "featured"){
+			?>
+				<script type="text/javascript">
+					$('#featuredList').css('display', 'inline');
+					$('#newList').css('display', 'none');
+				</script>
+			<?PHP
+		}
 	}
 }
 
@@ -70,8 +79,8 @@ public function echoExpanded(){
 
 //shortens description for preview card
 private function shortenDescription($orgD){
-    if(strLen($orgD) > 252){
-      return substr($orgD, 0 , 252) . "...";
+    if(strLen($orgD) > 200){
+      return substr($orgD, 0 , 225) . "...";
     } else {
       return $orgD;
     }
@@ -181,6 +190,59 @@ public function hideUnHide($val){
   } else {
     echo 'Server Error';
   }
+}
+
+public function setIsFeatured($isFeatured){
+	$db = Database::getInstance();
+	if($isFeatured){
+		$propList = $_SESSION['propertylist'];
+		foreach($propList as $prop){
+			$prop->isFeatured = false;
+		}
+		$query = "UPDATE Constants set FeaturedProperty=$this->id where id=1";
+		$this->isFeatured = true;
+	} else {
+		$query = "UPDATE Constants set FeaturedProperty=0 where id=1";
+		$this->isFeatured = false;
+	}
+	$db->query($query);
+}
+
+public static function enableFeaturedProp($propertyList){
+	$db = Database::getInstance();
+	$query = "SELECT * FROM Constants where id=1";
+	$featuredPropId = $db->fetch($query)[0]['FeaturedProperty'];
+	foreach($propertyList as $prop){
+		if($prop->id === $featuredPropId){
+			$prop->isFeatured = true;
+		}
+	}
+}
+
+public static function initPropertyList(){
+	if(!isset($_SESSION['propertylist'])){
+		$db = Database::getInstance();
+		$ar = $db->fetch("SELECT * FROM properties");
+		$ar = array_reverse($ar);
+		$properties = array();
+		for($i = 0; $i < sizeof($ar) ; $i++){
+			$prop = Property::initID($i, $ar[$i]['id']);
+			$prop->update($ar[$i]);
+			if(isset($_SESSION['id'])){
+				array_push($properties, $prop);
+			} else if (!$prop->isHidden){
+				array_push($properties, $prop);
+			}
+		}
+		for($i = 0 ; $i < sizeof($properties) ; $i++){
+			$properties[$i]->arIndex = $i;
+		}
+		$_SESSION['propertylist'] = $properties;
+	}
+	$properties = $_SESSION['propertylist'];
+	Property::enableFeaturedProp($properties);
+	$_SESSION['propertylist'] = $properties;
+	return $properties;
 }
 
 

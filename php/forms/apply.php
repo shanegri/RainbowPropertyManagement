@@ -100,17 +100,17 @@ if(isset($_POST['submit'])){
 	border:1px solid #cdd0d6;
 	border-radius: 2px;
 	height: 50px;
-	line-height: 20px;
+	line-height: 15px;
 	padding: 0px;
 }
 
+
 .visited {
-	background: #e8f8ff;
+	background: #c9d9e0;
 }
 .active {
-	background: #ccf5ff;
+	background: #b9dee8;
 }
-
 
 .pageTrav {
 	height: 75px;
@@ -122,6 +122,7 @@ if(isset($_POST['submit'])){
 	width: 100%;
 	height: 98%;
 	border: none;
+	color: white;
 }
 </style>
 <div class="row">
