@@ -12,7 +12,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
     $this->addInput('dateStart'.$this->id, 'Dates From', FormInput::$DATE, 40, true);
     $this->addInput('dateEnd'.$this->id, 'To', FormInput::$DATE, 40, true);
     $this->addInput('lanlord'.$this->id, 'Lanlord or Mortage Co.', FormInput::$STR, 40, true);
-    $this->addInput('telephoneLan'.$this->id, 'Telephone', FormInput::$INT, 40, true);
+    $this->addInput('telephoneLan'.$this->id, 'Telephone', FormInput::$TEL, 40, true);
     $this->addInput('monthlyCost'.$this->id, 'Monthly Cost $', FormInput::$INT, 5, true);
     $this->addInput('reason'.$this->id, 'Reason for Moving', FormInput::$STR, 40, true);
   }

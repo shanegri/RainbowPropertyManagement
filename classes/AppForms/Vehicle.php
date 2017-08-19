@@ -8,10 +8,10 @@ class Vehicle extends Form implements iIncrementalForm {
 
   public function __construct($id){
       $this->id = $id .get_class($this);
-      $this->addInput("vehMakeModel".$this->id, "Make/Model", FormInput::$STR, 20, null);
-      $this->addInput("vehYear".$this->id, "Year", FormInput::$INT, 4, null);
-      $this->addInput("vehColor".$this->id, "Color", FormInput::$STR, 20);
-      $this->addInput("vehTag".$this->id, "Tag No./State", FormInput::$INT, 20, null);
+      $this->addInput("vehMakeModel".$this->id, "Make/Model", FormInput::$STR, 20, true);
+      $this->addInput("vehYear".$this->id, "Year", FormInput::$INT, 4, true);
+      $this->addInput("vehColor".$this->id, "Color", FormInput::$STR, 20, true);
+      $this->addInput("vehTag".$this->id, "Tag No./State", FormInput::$INT, 20, true);
   }
   public function showForm(){
     echo '<div class="row">';

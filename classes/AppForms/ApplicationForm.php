@@ -24,7 +24,7 @@ class ApplicationForm extends Form {
   public function __construct(){
     $this->type = "Application";
     $this->addInput("dateDesire", "Desired Date of Occupancy", FormInput::$DATE, null, null);
-    $this->addInput("typeSize", "Type and Size of House/Apartment Wanted",FormInput::$STR, 50, null);
+    $this->addInput("typeSize", "Type and Size of House/Apartment Wanted (No. of Bedrooms, etc.)",FormInput::$STR, 50, null);
 
     //Primary Applicant
     $this->addInput("name", "Full Name", FormInput::$STR, 40, true);
@@ -71,7 +71,7 @@ class ApplicationForm extends Form {
     $this->addInput("totalNumberVehicles", "Total Number of Vehicles", FormInput::$INT, 3, true);
     //Income
     $this->addInput("grossIncome", "Total Gross Monthly Income $", FormInput::$INT, 5, true);
-    $this->addInput("incomeComments", "Comments:", FormInput::$TXTAR, 200, true);
+    $this->addInput("incomeComments", "Comments:", FormInput::$TXTAR, 200, null);
     //Yes No Questions
     $this->addInput("beenSued", "Been Sued for non-payment of rent?", FormInput::$DRPDWN, array("No", "Yes"), null);
     $this->addInput("beenEvicted", "Been evicted or asked to move out?", FormInput::$DRPDWN, array("No", "Yes"), null);
@@ -83,7 +83,7 @@ class ApplicationForm extends Form {
     $this->addInput("emergencyAddress", "Address", FormInput::$STR, 50, true);
     $this->addInput("emergencyHomePhone", "Home Phone", FormInput::$INT, 20, true);
     $this->addInput("emergencyWorkPhone", "Work Phone", FormInput::$INT, 20, null);
-    $this->addInput("emergencyRelationship", "Relationship", FormInput::$STR, 20, null);
+    $this->addInput("emergencyRelationship", "Relationship", FormInput::$STR, 20, true);
 
   //Agreement
   $this->addInput("agreement", "Applicant and Co-applicant Agreement", FormInput::$DRPDWN, array("No", "Yes"), true);
