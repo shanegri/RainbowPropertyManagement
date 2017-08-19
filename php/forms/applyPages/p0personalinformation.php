@@ -24,7 +24,7 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 	echo '</div>';
 
 	echo '<div class="col-sm-4">';
-	$Form->showInput('dob');
+	//$Form->showInput('dob');
 	$Form->showInput('cellPhone');
 	echo '</div></div>';
 
@@ -43,7 +43,7 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 	echo '</div>';
 
 	echo '<div class="col-sm-4">';
-	$Form->showInput('dobCO');
+	//$Form->showInput('dobCO');
 	$Form->showInput('cellPhoneCO');
 	$Form->showInput('relationCO');
 	echo '</div></div>';

@@ -28,17 +28,17 @@ class ApplicationForm extends Form {
 
     //Primary Applicant
     $this->addInput("name", "Full Name", FormInput::$STR, 40, true);
-    $this->addInput("dob", "Date of Birth", FormInput::$DATE, null, true);
+    $this->addInput("dob", "Date of Birth", FormInput::$DATE, null, null);
     $this->addInput("homePhone", "Home Phone", FormInput::$TEL, 20, null);
-    $this->addInput("workPhone", "Work Phone", FormInput::$INT, 20, null);
+    $this->addInput("workPhone", "Work Phone", FormInput::$STR, 20, null);
     $this->addInput("cellPhone", "Cell Phone", FormInput::$TEL, 20, null);
     $this->addInput("email", "Email", FormInput::$EMAIL, 100, true);
 
     //Co-Applicant
     $this->addInput("nameCO", "Full Name", FormInput::$STR, 40, true);
-    $this->addInput("dobCO", "Date of Birth", FormInput::$DATE, null, true);
+    $this->addInput("dobCO", "Date of Birth", FormInput::$DATE, null, null);
     $this->addInput("homePhoneCO", "Home Phone", FormInput::$TEL, 20, null);
-    $this->addInput("workPhoneCO", "Work Phone", FormInput::$INT, 20, null);
+    $this->addInput("workPhoneCO", "Work Phone", FormInput::$STR, 20, null);
     $this->addInput("cellPhoneCO", "Cell Phone", FormInput::$TEL, 20, null);
     $this->addInput("emailCO", "Email", FormInput::$EMAIL, 100, true);
     $this->addInput("relationCO", "Relationship", FormInput::$STR, 40, true);
@@ -50,19 +50,19 @@ class ApplicationForm extends Form {
 
     //Banking and credit information
     $this->addInput("bankName", "Bank Name & Branch", FormInput::$STR, 50, null);
-    $this->addInput("bankTelephone", "Telephone", FormInput::$INT, 20, null);
+    $this->addInput("bankTelephone", "Telephone", FormInput::$STR, 20, null);
     $this->addInput("checkingAccNum", "Checking Account Number", FormInput::$INT, 20, null);
     $this->addInput("savingsAccNum", "Savings Account Number", FormInput::$INT, 20, null);
     $this->addInput("locanAccNum", "Locan Account Number", FormInput::$INT, 20, null);
     $this->addInput("monthlyPayment", "Monthly Payment $", FormInput::$INT, 20, null);
       //Credit Refrence 1
       $this->addInput("creditRef1", "CREDIT REFRENCE 1", FormInput::$STR, 50, null);
-      $this->addInput("creditRef1Tel", "Telephone", FormInput::$INT, 20, null);
+      $this->addInput("creditRef1Tel", "Telephone", FormInput::$TEL, 20, null);
       $this->addInput("creditRef1Address", "Address", FormInput::$STR, 100, null);
       $this->addInput("creditRef1AccNum", "Account Number", FormInput::$INT, 20, null);
       //Credit Refrence 2
       $this->addInput("creditRef2", "CREDIT REFRENCE 2", FormInput::$STR, 50, null);
-      $this->addInput("creditRef2Tel", "Telephone", FormInput::$INT, 20, null);
+      $this->addInput("creditRef2Tel", "Telephone", FormInput::$TEL, 20, null);
       $this->addInput("creditRef2Address", "Address", FormInput::$STR, 100, null);
       $this->addInput("creditRef2AccNum", "Account Number", FormInput::$INT, 20, null);
 
@@ -81,8 +81,8 @@ class ApplicationForm extends Form {
     //In-case of emergency
     $this->addInput("emergencyName", "In Case of Personal Emergency, Notify", FormInput::$STR, 20, true);
     $this->addInput("emergencyAddress", "Address", FormInput::$STR, 50, true);
-    $this->addInput("emergencyHomePhone", "Home Phone", FormInput::$INT, 20, true);
-    $this->addInput("emergencyWorkPhone", "Work Phone", FormInput::$INT, 20, null);
+    $this->addInput("emergencyHomePhone", "Home Phone", FormInput::$TEL, 20, true);
+    $this->addInput("emergencyWorkPhone", "Work Phone", FormInput::$STR, 20, null);
     $this->addInput("emergencyRelationship", "Relationship", FormInput::$STR, 20, true);
 
   //Agreement
@@ -199,10 +199,10 @@ class ApplicationForm extends Form {
     $t .= $this->showData("dateDesire");
     $t .= $this->showData("typeSize").nLine;
 
-    $ar = ["name","dob","homePhone","workPhone","cellPhone","email"];
+    $ar = ["name","homePhone","workPhone","cellPhone","email"];
     $t .= $this->addJsonArray("Primary Applicant", $ar );
 
-    $ar = ["nameCO","dobCO","homePhoneCO","workPhoneCO","cellPhoneCO","emailCO","relationCO"];
+    $ar = ["nameCO","homePhoneCO","workPhoneCO","cellPhoneCO","emailCO","relationCO"];
     $t .= $this->addJsonArray("Co-Applicant", $ar );
 
     foreach($this->Resident as $f){ $t .= $f->genDoc(); }

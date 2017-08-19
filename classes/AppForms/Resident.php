@@ -21,17 +21,17 @@ class Resident extends Form implements iIncrementalForm {
     echo '<div class="col-sm-4">';
     $this->showInput('relation'.$this->id);
     echo '</div>';
-    echo '<div class="col-sm-4">';
-    $this->showInput('dob'.$this->id);
-    echo '</div>';
+    // echo '<div class="col-sm-4">';
+    // $this->showInput('dob'.$this->id);
+    // echo '</div>';
     echo '</div>';
   }
 
   public function genDoc(){
       $out = '"'.$this->id.'":{'.nLine;
       $out .= $this->showData('name'.$this->id);
-      $out .= $this->showData('relation'.$this->id);
-      $out .= $this->showData('dob'.$this->id, true);
+      $out .= $this->showData('relation'.$this->id, true);
+  //    $out .= $this->showData('dob'.$this->id, true);
       $out .= "},".nLine.nLine;
       return $out;
   }

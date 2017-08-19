@@ -10,7 +10,7 @@ class Employment extends Form implements iIncrementalForm {
     $this->id = $id . get_class($this);
     $this->addInput('employer'.$this->id, 'Employment', FormInput::$STR, 50, true);
     $this->addInput('address'.$this->id, 'Address', FormInput::$STR, 50, true);
-    $this->addInput('telephone'.$this->id, 'Telephone', FormInput::$INT, 50, true);
+    $this->addInput('telephone'.$this->id, 'Telephone', FormInput::$STR, 50, true);
     $this->addInput('payment'.$this->id, 'Cross Monthly Salary $', FormInput::$INT, 50, true);
     $this->addInput('position'.$this->id, 'Position', FormInput::$STR, 50, true);
     $this->addInput('supervisor'.$this->id, 'Supervisor', FormInput::$STR, 50, true);
