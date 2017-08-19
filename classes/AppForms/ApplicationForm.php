@@ -236,7 +236,7 @@ class ApplicationForm extends Form {
     $ar = ["emergencyName","emergencyAddress","emergencyHomePhone","emergencyWorkPhone", "emergencyRelationship"];
     $t .= $this->addJsonArray("In Case of Emergency", $ar );
 
-    $t.= $this->showData("emailCO" , true);
+    $t.= $this->showData("email" , true);
     return $t."}";
   }
 

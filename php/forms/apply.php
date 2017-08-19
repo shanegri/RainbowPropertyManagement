@@ -74,10 +74,9 @@ if(isset($_POST['submit'])){
 	$_SESSION['applicationFormSubmited'] = true;
   $Form->ApplicationUpdate($_POST);
   if($Form->ApplicationValidate()){
-		$s = base64_encode(serialize($Form));
 		$db = Database::getInstance();
 		$JSONdata = $Form->genJSON();
-		$q = "INSERT INTO Application (AppFormObjects, JSON) values ('$s','$JSONdata')";
+		$q = "INSERT INTO Application (JSONEN) values (AES_ENCRYPT('$JSONdata', '$db->getKey()'))";
 		$r = $db->query($q);
 		if($r){
 			unset($_SESSION['applicationFormSubmited']);

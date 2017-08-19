@@ -12,13 +12,12 @@ if(isset($_SESSION['logData'])){
 } else {
   $db = Database::getInstance();
   $data = array();
-  $query = "SELECT * FROM Application";
+  $query = "SELECT id, AES_DECRYPT(JSONEN, '$db->getKey()') as JSONEN, Date FROM Application";
   $res = $db->fetch($query);
   for($i = 0 ; $i < sizeof($res) ; $i++){
-    $l = new ApplicationFormLog($res[$i]['JSON']);
+    $l = new ApplicationFormLog($res[$i]['JSONEN']);
     $l->date = $res[$i]['Date'];
     $l->id = $res[$i]['id'];
-    $l->initAppObject($res[$i]['AppFormObjects']);
     $data[$l->date] = $l;
   }
   $size = sizeof($data);

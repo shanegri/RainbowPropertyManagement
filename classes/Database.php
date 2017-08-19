@@ -2,19 +2,23 @@
 
 class Database {
 
-  var $host = "localhost";
-  var $dbname = "rpm";
-  var $username = "root";
-  var $pass = "pass";
+  var $host;
+  var $dbname;
+  var $username;
+  var $pass;
   var $conn;
+  private $config;
 
   private function __construct(){
-    //For injection handeling
-   $this->conn = mysqli_connect($this->host, $this->username, $this->pass, $this->dbname);
+    $file = $_SERVER['DOCUMENT_ROOT']. '/../../config/web.json';
+    $config = json_decode(file_get_contents($file), true);
+    $this->config = $config;
+    $this->dbname = $config['dbname'];
+    $this->username = $config['username'];
+    $this->pass = $config['pass'];
+    $this->conn = mysqli_connect($this->host, $this->username, $this->pass, $this->dbname);
    if(!$this->conn){
      echo 'Error Connecting';
-   } else {
-//     echo 'Procedural Connected';
    }
   }
 
@@ -58,6 +62,10 @@ class Database {
     } else {
       return $this->conn->insert_id;
     }
+  }
+
+  public function getKey(){
+    return $this->config['key'];
   }
 
 

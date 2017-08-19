@@ -10,7 +10,6 @@ class ApplicationFormLog extends aLog {
   public $type;
   public $decodedJSON;
 
-  private $appForm;
 
   public function __construct($inputJSON){
     $this->rawJSON = $inputJSON;
@@ -31,7 +30,6 @@ class ApplicationFormLog extends aLog {
         $out .= $key . ": " . $value .nLine.nLine;
       }
     }
-    //return $this->appForm->genJSON();
     return $out;
   }
   public function del(){
@@ -42,12 +40,6 @@ class ApplicationFormLog extends aLog {
     } else {
       return false;
     }
-  }
-
-  //FOR TESTING ONLY
-  public function initAppObject($val){
-    $appForm = unserialize(base64_decode($val));
-    $this->appForm = $appForm;
   }
 }
 
