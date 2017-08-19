@@ -1,6 +1,6 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
-
+<h3><small>* = Required Field</small></h3>
 <form method="post">
 <?php
 if(!isset($_GET['contact'])){
@@ -12,7 +12,7 @@ if(!isset($_SESSION['contactForm'])){
 	$Form = new Form('Contact');
 	$Form->addInput("fName", "First Name", FormInput::$STR, 20, true);
   $Form->addInput("lName", "Last Name", FormInput::$STR, 20, true);
-	$Form->addInput("email", "Email Address", FormInput::$EMAIL, 50, true);
+	$Form->addInput("email", "Email Address<i> (Will be used for confirmation if supplied.)</i>", FormInput::$EMAIL, 50, null);
 	$Form->addInput("message", "Message", FormInput::$TXTAR, 700, true);
 
 

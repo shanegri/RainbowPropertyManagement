@@ -87,6 +87,7 @@ class FormInput {
 	public static $EMAIL = 21;
 	public static $DATE = 3;
 	public static $DRPDWN = 4;
+	public static $TEL = 234;
 
 
 	var $value = "";
@@ -176,6 +177,9 @@ class FormInput {
 			case FormInput::$DATE:
 				$this->showDate();
 				break;
+			case FormInput::$TEL:
+				$this->showTelephoneInput();
+				break;
 		}
 	}
 
@@ -222,6 +226,15 @@ class FormInput {
     </select>
 		<b style="color:red"><?php echo $this->error ?></b>
 	<?php
+	}
+
+	private function showTelephoneInput(){
+		?>
+			<h3><small><?php echo $this->name ?> </small></h3>
+			<input type="tel" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" placeholder="XXX XXX XXXX" maxlength="12" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
+			<br>
+			<b style="color:red"><?php echo $this->error ?></b>
+			<?php
 	}
 
 

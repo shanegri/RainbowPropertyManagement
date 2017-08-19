@@ -29,17 +29,17 @@ class ApplicationForm extends Form {
     //Primary Applicant
     $this->addInput("name", "Full Name", FormInput::$STR, 40, true);
     $this->addInput("dob", "Date of Birth", FormInput::$DATE, null, true);
-    $this->addInput("homePhone", "Home Phone", FormInput::$INT, 20, null);
+    $this->addInput("homePhone", "Home Phone", FormInput::$TEL, 20, null);
     $this->addInput("workPhone", "Work Phone", FormInput::$INT, 20, null);
-    $this->addInput("cellPhone", "Cell Phone", FormInput::$INT, 20, null);
+    $this->addInput("cellPhone", "Cell Phone", FormInput::$TEL, 20, null);
     $this->addInput("email", "Email", FormInput::$EMAIL, 100, true);
 
     //Co-Applicant
     $this->addInput("nameCO", "Full Name", FormInput::$STR, 40, true);
     $this->addInput("dobCO", "Date of Birth", FormInput::$DATE, null, true);
-    $this->addInput("homePhoneCO", "Home Phone", FormInput::$INT, 20, null);
+    $this->addInput("homePhoneCO", "Home Phone", FormInput::$TEL, 20, null);
     $this->addInput("workPhoneCO", "Work Phone", FormInput::$INT, 20, null);
-    $this->addInput("cellPhoneCO", "Cell Phone", FormInput::$INT, 20, null);
+    $this->addInput("cellPhoneCO", "Cell Phone", FormInput::$TEL, 20, null);
     $this->addInput("emailCO", "Email", FormInput::$EMAIL, 100, true);
     $this->addInput("relationCO", "Relationship", FormInput::$STR, 40, true);
 
