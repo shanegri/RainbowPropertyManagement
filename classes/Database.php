@@ -2,11 +2,11 @@
 
 class Database {
 
-  var $host;
-  var $dbname;
-  var $username;
-  var $pass;
-  var $conn;
+  private $host;
+  private $dbname;
+  private $username;
+  private $pass;
+  public $conn;
   private $config;
 
   private function __construct(){
@@ -17,9 +17,9 @@ class Database {
     $this->username = $config['username'];
     $this->pass = $config['pass'];
     $this->conn = mysqli_connect($this->host, $this->username, $this->pass, $this->dbname);
-   if(!$this->conn){
-     echo 'Error Connecting';
-   }
+    if(!$this->conn){
+      echo 'Error Connecting';
+    }
   }
 
   public function fetch($query){

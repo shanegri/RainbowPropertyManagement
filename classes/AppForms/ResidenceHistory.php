@@ -7,6 +7,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
   private $id;
 
   public function __construct($id){
+    parent::__construct("ApplicationForm");
     $this->id = $id . get_class($this);
     $this->addInput('address'.$this->id, 'Address', FormInput::$STR, 40, true);
     $this->addInput('dateStart'.$this->id, 'Dates From', FormInput::$DATE, 40, true);

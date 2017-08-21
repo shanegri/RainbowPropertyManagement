@@ -7,6 +7,7 @@ class Resident extends Form implements iIncrementalForm {
   private $id;
 
   public function __construct($id){
+    parent::__construct("ApplicationForm");
     $this->id = $id . get_class($this);
     $this->addInput('name'.$this->id, 'Full Name', FormInput::$STR, 50, null);
     $this->addInput('relation'.$this->id, 'Relationship To You', FormInput::$STR, 50, null);

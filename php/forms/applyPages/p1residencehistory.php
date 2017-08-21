@@ -5,5 +5,5 @@ echo '<div class="text-center">';
 $Form->showResidenceHistory();
 echo '</div>';
 
-
+$Form->setPageNum(1);
 ?>

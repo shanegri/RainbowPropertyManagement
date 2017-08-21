@@ -7,6 +7,7 @@ class OtherIncome extends Form implements iIncrementalForm {
   private $id;
 
   public function __construct($id){
+    parent::__construct("ApplicationForm");
     $this->id = $id . get_class($this);
     $this->addInput("amt".$this->id, "Amount", FormInput::$INT, 10, null);
     $this->addInput("per".$this->id, "Per", FormInput::$STR, 10, null);

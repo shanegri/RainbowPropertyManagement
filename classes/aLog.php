@@ -1,7 +1,10 @@
 <?php
 define("nLine", "\r\n");
 
-abstract class aLog implements iLog {
+/*Abstract class representing an object
+ * that can be displayed as a log.
+ */
+abstract class aLog {
 
   var $date;
   var $type;

@@ -14,6 +14,7 @@ class ApplicationForm extends Form {
   private $Resident;
   private $Vehicle;
   private $OtherIncome;
+  private $subForms;
   public $visitedPages = array();
 
   var $date;
@@ -22,6 +23,7 @@ class ApplicationForm extends Form {
   var $id;
 
   public function __construct(){
+    parent::__construct("ApplicationForm");
     $this->type = "Application";
     $this->addInput("dateDesire", "Desired Date of Occupancy", FormInput::$DATE, null, null);
     $this->addInput("typeSize", "Type and Size of House/Apartment Wanted (No. of Bedrooms, etc.)",FormInput::$STR, 50, null);
@@ -30,7 +32,7 @@ class ApplicationForm extends Form {
     $this->addInput("name", "Full Name", FormInput::$STR, 40, true);
     $this->addInput("dob", "Date of Birth", FormInput::$DATE, null, null);
     $this->addInput("homePhone", "Home Phone", FormInput::$TEL, 20, null);
-    $this->addInput("workPhone", "Work Phone", FormInput::$STR, 20, null);
+    $this->addInput("workPhone", "Work Phone", FormInput::$TEL, 20, null);
     $this->addInput("cellPhone", "Cell Phone", FormInput::$TEL, 20, null);
     $this->addInput("email", "Email", FormInput::$EMAIL, 100, true);
 
@@ -38,7 +40,7 @@ class ApplicationForm extends Form {
     $this->addInput("nameCO", "Full Name", FormInput::$STR, 40, true);
     $this->addInput("dobCO", "Date of Birth", FormInput::$DATE, null, null);
     $this->addInput("homePhoneCO", "Home Phone", FormInput::$TEL, 20, null);
-    $this->addInput("workPhoneCO", "Work Phone", FormInput::$STR, 20, null);
+    $this->addInput("workPhoneCO", "Work Phone", FormInput::$TEL, 20, null);
     $this->addInput("cellPhoneCO", "Cell Phone", FormInput::$TEL, 20, null);
     $this->addInput("emailCO", "Email", FormInput::$EMAIL, 100, true);
     $this->addInput("relationCO", "Relationship", FormInput::$STR, 40, true);
@@ -50,7 +52,7 @@ class ApplicationForm extends Form {
 
     //Banking and credit information
     $this->addInput("bankName", "Bank Name & Branch", FormInput::$STR, 50, null);
-    $this->addInput("bankTelephone", "Telephone", FormInput::$STR, 20, null);
+    $this->addInput("bankTelephone", "Telephone", FormInput::$TEL, 20, null);
     $this->addInput("checkingAccNum", "Checking Account Number", FormInput::$INT, 20, null);
     $this->addInput("savingsAccNum", "Savings Account Number", FormInput::$INT, 20, null);
     $this->addInput("locanAccNum", "Locan Account Number", FormInput::$INT, 20, null);
@@ -82,7 +84,7 @@ class ApplicationForm extends Form {
     $this->addInput("emergencyName", "In Case of Personal Emergency, Notify", FormInput::$STR, 20, true);
     $this->addInput("emergencyAddress", "Address", FormInput::$STR, 50, true);
     $this->addInput("emergencyHomePhone", "Home Phone", FormInput::$TEL, 20, true);
-    $this->addInput("emergencyWorkPhone", "Work Phone", FormInput::$STR, 20, null);
+    $this->addInput("emergencyWorkPhone", "Work Phone", FormInput::$TEL, 20, null);
     $this->addInput("emergencyRelationship", "Relationship", FormInput::$STR, 20, true);
 
   //Agreement
@@ -102,6 +104,10 @@ class ApplicationForm extends Form {
     array_push($this->Resident, new Resident(0));
     array_push($this->Employment, new Employment(0));
     array_push($this->Vehicle, new Vehicle(0));
+    $this->subForms = ["ResidenceHistory"=>$this->ResidenceHistory,
+                       "Employment"=>$this->Employment,
+                       "OtherIncome"=>$this->OtherIncome,
+                       "Vehicle"=>$this->Vehicle ];
   }
   public function inc($type){
     switch($type){
@@ -249,6 +255,19 @@ class ApplicationForm extends Form {
       $t .= $this->showData($values[sizeof($values)-1], true);
     $t .= "},".nLine.nLine;
     return $t;
+  }
+
+  public function setPageNum($aPageNum){
+    parent::setPageNum($aPageNum);
+    foreach($this->subForms as $subFormArray){
+      foreach($subFormArray as $subForm){
+        $subForm->setPageNum($aPageNum);
+      }
+    }
+  }
+
+  public function hasVisitedAllPages(){
+    return sizeof($this->visitedPages) == 6;
   }
 }
 

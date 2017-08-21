@@ -1,6 +1,5 @@
 <?php
 
-include_once('iLog.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/aLog.php');
 
 

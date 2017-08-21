@@ -71,8 +71,10 @@ if(isset($_POST['dec'])){
 }
 
 if(isset($_POST['submit'])){
+	if($Form->hasVisitedAllPages()){
 	$_SESSION['applicationFormSubmited'] = true;
   $Form->ApplicationUpdate($_POST);
+	unset($_SESSION['AppFormErrors']);
   if($Form->ApplicationValidate()){
 		$db = Database::getInstance();
 		$JSONdata = $Form->genJSON();
@@ -85,11 +87,14 @@ if(isset($_POST['submit'])){
 			$emailBody = $AppFormLog->genDoc();
 			Mailer::sendFormEmail($emailType, $emailBody, $_POST['email']);
 		} else {
-			echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application.</h3></div>';
+			echo '<div class="text-center"><h3 style="color: red;">Network Error, Please Try Again Later.</h3></div>';
 		}
 	} else {
-		echo '<div class="text-center"><h3 style="color: red;">Submission failed, please review application for errors.</h3></div>';
+		echo '<div class="text-center"><h3 style="color: red;">Please Review Application, Red Pages Have Errors.</h3></div>';
 	}
+} else {
+	echo '<div class="text-center"><h3 style="color: red;">Please Visit All Pages Before Submission.</h3></div>';
+}
 }
 ?>
 <style media="screen">
@@ -107,8 +112,12 @@ if(isset($_POST['submit'])){
 .visited {
 	background: #c9d9e0;
 }
-.active {
+.activeB {
 	background: #b9dee8;
+}
+
+.error {
+	background: red;
 }
 
 .pageTrav {
@@ -169,10 +178,20 @@ foreach($Form->visitedPages as $key){
 	echo '$( "#'.$key.'" ).addClass(\'visited\');';
 }
 echo '</script>';
+if(isset($_SESSION['AppFormErrors'])){
+	foreach($_SESSION['AppFormErrors'] as $i){
+		$in = $i;
+		?>
+		<script type="text/javascript">
+			$("#<?php echo $in; ?>apply").addClass("error");
+		</script>
+		<?php
+	}
+}
 ?>
 
 <script type="text/javascript">
-	$( "#<?php echo $_GET['page'] . "apply"; ?>" ).addClass('active');
+	$( "#<?php echo $_GET['page'] . "apply"; ?>" ).addClass('activeB').removeClass('error');
 </script>
 
 

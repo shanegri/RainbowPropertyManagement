@@ -16,5 +16,6 @@ echo '
 <h3><i><small>Please review before submitting. You will not be able to make changes after submission.</small></i></h3>
 <button type="submit" name="submit">Submit</button>
 </div> ';
+$Form->setPageNum(5);
 
  ?>

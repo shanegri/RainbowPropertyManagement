@@ -1,13 +1,11 @@
 <?php
-require_once('./classes/Mailer.php');
-
+include_once('./classes/Mailer.php');
 include_once('./classes/Database.php');
 include_once('./classes/Property.php');
 include_once('./classes/Form.php');
 include_once('./classes/FormData.php');
 include_once('./classes/AppForms/ApplicationForm.php');
 include_once('./classes/AppForms/ApplicationFormLog.php');
-include_once("./classes/iLog.php");
 include_once("./classes/aLog.php");
 include_once("./js/redirect.php");
 ob_start();
@@ -19,6 +17,10 @@ if(isset($_SESSION['applyForm']) && !isset($_GET['apply'])){
   if(isset($_SESSION['applicationFormSubmited'])){
     unset($_SESSION['applicationFormSubmited']);
   }
+}
+
+if(isset($_SESSION['AppFormErrors']) && !isset($_GET['apply'])){
+  unset($_SESSION['AppFormErrors']);
 }
 
 if(isset($_SESSION['contactForm']) && !isset($_GET['contact'])){

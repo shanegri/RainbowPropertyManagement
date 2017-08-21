@@ -34,4 +34,6 @@ echo '<div class="row">';
 	echo '<div class="col-sm-6">';
 	$Form->showInput('creditRef2Address');
 	$Form->showInput('creditRef2AccNum');
-echo '</div></div>'; ?>
+echo '</div></div>';
+$Form->setPageNum(3);
+?>

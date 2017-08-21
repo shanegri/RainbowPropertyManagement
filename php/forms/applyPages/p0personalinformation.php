@@ -60,6 +60,6 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 	echo '</div>';
 	$Form->showInput("howHear");
 
-
+	$Form->setPageNum(0);
 
  ?>

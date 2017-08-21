@@ -52,7 +52,17 @@ class Form {
 	public function validate(){
 		$retVal = true;
 		foreach($this->store as $key=>$input){
-			if($input->isValid() !== true){$retVal = false;}
+			if($input->isValid() !== true){
+				$retVal = false;
+				if($this->name == "ApplicationForm"){
+					if(!isset($_SESSION['AppFormErrors'])){
+						$_SESSION['AppFormErrors'] = array();
+					}
+					if(!in_array($input->pageNum, $_SESSION['AppFormErrors']) && $input->pageNum != 10){
+						$_SESSION['AppFormErrors'][] = $input->pageNum;
+					}
+				}
+			}
 		}
 		return $retVal;
 	}
@@ -76,11 +86,21 @@ class Form {
 		}
 		return $r;
 	}
+
+	public function setPageNum($aPageNum){
+		foreach($this->store as $FormInput){
+			if($FormInput->pageNum === null){
+				$FormInput->pageNum = $aPageNum;
+			}
+		}
+		return true;
+	}
 }
 
 
 class FormInput {
 
+	public $pageNum = 10;
 	public static $INT = 0;
 	public static $STR = 1;
 	public static $TXTAR = 2;
@@ -124,6 +144,15 @@ class FormInput {
 				$this->error = "Input Must be a number";
 				return false;
 			}
+		case FormInput::$TEL:
+			$testVal = str_replace(" ", "", $this->value);
+			$testVal = str_replace("-", "", $testVal);
+			if(!ctype_digit($testVal)){
+				$this->error = "Telephone must only contain numbers!";
+				return false;
+			} else {
+				return true;
+			}
 		case FormInput::$EMAIL:
 			if(!filter_var($this->value, FILTER_VALIDATE_EMAIL)){
 				$this->error = "Not a valid email address";
@@ -159,6 +188,9 @@ class FormInput {
 	}
 
 	public function showInput(){
+		if($this->pageNum === 10){
+			$this->pageNum = null;
+		}
 		switch ($this->type) {
 			case FormInput::$EMAIL:
 			case FormInput::$INT:
@@ -231,7 +263,7 @@ class FormInput {
 	private function showTelephoneInput(){
 		?>
 			<h3><small><?php echo $this->name ?> </small></h3>
-			<input type="tel" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" placeholder="XXX XXX XXXX" maxlength="12" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
+			<input type="tel" placeholder="XXX XXX XXXX" maxlength="15" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
 			<br>
 			<b style="color:red"><?php echo $this->error ?></b>
 			<?php

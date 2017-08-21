@@ -3,4 +3,6 @@ echo '<h3 class="text-center"style="background: grey"><small style="color: white
 echo '<div class="text-center">';
 $Form->showEmploymentCount();
 echo '</div>';
+
+$Form->setPageNum(2);
 ?>

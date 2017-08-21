@@ -44,5 +44,6 @@ echo '<div class="row">';
 	echo '<div class="col-sm-4">';
 	$Form->showInput('emergencyRelationship');
 echo '</div></div>';
+$Form->setPageNum(4);
 
 ?>

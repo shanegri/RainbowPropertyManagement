@@ -15,7 +15,7 @@ header('Content-disposition: attachment; filename='.$f->genName().'.txt');
 header('Content-type: text/plain');
 
 
-echo $f->genDoc();
+print $f->genDoc();
 
 exit();
 header('location: ././form?log&page='.$_SESSION['page']);

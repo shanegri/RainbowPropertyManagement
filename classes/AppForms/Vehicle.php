@@ -7,6 +7,7 @@ class Vehicle extends Form implements iIncrementalForm {
   private $id;
 
   public function __construct($id){
+      parent::__construct("ApplicationForm"); 
       $this->id = $id .get_class($this);
       $this->addInput("vehMakeModel".$this->id, "Make/Model", FormInput::$STR, 20, true);
       $this->addInput("vehYear".$this->id, "Year", FormInput::$INT, 4, true);
