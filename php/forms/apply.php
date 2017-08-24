@@ -7,12 +7,23 @@
 <form method="post">
 <?php
 
+////////////
+$isBanking = true;
+////////////
+
 if(!isset($_SESSION['applyForm'])){
 	$Form = new ApplicationForm();
 	$_SESSION['applyForm'] = $Form;
 } else {
   $Form = $_SESSION['applyForm'];
 }
+
+/////////////
+if(!$isBanking){
+	$Form->isBanking = false;
+	$Form = $_SESSION['applyForm'];
+}
+//////////////
 
 if(!isset($_GET['page'])){
 	ob_clean();
@@ -49,6 +60,9 @@ if(isset($_POST['incPage'])){
 		$Form->ApplicationValidate();
 	}
 	$currentPage = $_GET['page'] + 1;
+	if($currentPage == 3 && !$isBanking){
+		$currentPage += 1;
+	}
 	header("location:form?apply&page=".$currentPage);
 }
 if(isset($_POST['decPage'])){
@@ -58,6 +72,9 @@ if(isset($_POST['decPage'])){
 		$Form->ApplicationValidate();
 	}
 	$currentPage = $_GET['page'] - 1;
+	if($currentPage == 3 && !$isBanking){
+		$currentPage -= 1;
+	}
 	header("location:form?apply&page=".$currentPage);
 }
 
@@ -134,6 +151,12 @@ if(isset($_POST['submit'])){
 }
 </style>
 <div class="row">
+
+	<?php if(!$isBanking){
+	echo '
+	<div class="col-sm-1"></div>
+	'; } ?>
+
 	<div class="col-sm-2 applyNav">
 		<button id="0apply" class="navButton" type="submit" name="goto" value="0">
 		<p>Personal Information</p> </button>
@@ -147,10 +170,13 @@ if(isset($_POST['submit'])){
 		<button id="2apply" class="navButton" type="submit" name="goto" value="2">
 		<p>Employment History</p> </button>
 	</div>
+
+	<?php if($isBanking){ echo '
 	<div class="col-sm-2 applyNav">
 		<button id="3apply" class="navButton" type="submit" name="goto" value="3">
 		<p>Banking</p> </button>
-	</div>
+	</div> ';} ?>
+
 	<div class="col-sm-2 applyNav">
 		<button id="4apply" class="navButton" type="submit" name="goto" value="4">
 		<p>Other</p> </button>

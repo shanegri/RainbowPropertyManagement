@@ -34,7 +34,7 @@ if(isset($_SESSION['id'])){
     <h3><small><i>Number Of Bathrooms</i></small></h3><p><?php echo $this->v('numBathroom') ?></p>
   </div>
   <div class="col-sm-6">
-    <h3><small><i>Cost Per Month: </i></small></h3><p><?php echo $this->v('cost') ?></p>
+    <h3><small><i>Cost Per Month $ </i></small></h3><p><?php echo $this->v('cost') ?></p>
     <?php
     if($this->v('yearBuilt') != '' && $this->v('yearBuilt') != '0'){
         echo" <h3><small><i>Year Built</i></small></h3><p>".$this->v('yearBuilt')."</p>";

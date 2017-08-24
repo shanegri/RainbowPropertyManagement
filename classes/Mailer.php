@@ -6,8 +6,6 @@ class Mailer {
 	public static $From = "automailer@rainbow.rent";
 	public static $FromName = "Rainbow Property Management Automailer";
 
-	//TEST RECIEVER
-	public static $TestReciever = 'shgriffin16@gmail.com';
 	public static $adminEmail = 'shgriffin16@gmail.com';
 
  	public static function sendToAdmin($type, $body){
@@ -40,7 +38,7 @@ class Mailer {
 
 	public static function sendFormEmail($type, $body, $userEmail){
 		///////
-		$userEmail = Mailer::$TestReciever;
+		$userEmail = 'shgriffin16@gmail.com';
 		///////
 		Mailer::sendToAdmin($type, $body);
 		if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){

@@ -1,5 +1,6 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
+<h3 class="text-center"><small>Ask Us a Question or Send Us A Message!</small></h3>
 <h3><small>* = Required Field</small></h3>
 <form method="post">
 <?php

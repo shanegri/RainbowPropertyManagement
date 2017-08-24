@@ -1,8 +1,9 @@
 <div class="mobile-fit">
 <div class="container-fluid card propertyForm">
 	<button><a href="././properties">Back</a></button>
-
 	<h3 class="text-center"><small>Create a New Property</small></h3>
+	<h3 class="text-center"><small><i>Not-Required Fields Left Blank Will Not Be Shown. (Ex. Year Built)</i></small></h3>
+
 <form method="post">
 <?php
 
@@ -39,7 +40,7 @@ if(isset($_POST['submit'])){
 	<div class="col-sm-6">
 		<?php
 		$prop->showInput('numBedroom');
-		$prop->showInput('numBedroom');
+		$prop->showInput('numBathroom');
 		$prop->showInput('cost');
 		$prop->showInput('yearBuilt');
 		$prop->showInput('sqrFeet');

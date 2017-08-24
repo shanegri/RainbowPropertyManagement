@@ -145,6 +145,9 @@ class FormInput {
 				return false;
 			}
 		case FormInput::$TEL:
+			if(strlen($this->value) === 0){
+				return true;
+			}
 			$testVal = str_replace(" ", "", $this->value);
 			$testVal = str_replace("-", "", $testVal);
 			if(!ctype_digit($testVal)){
@@ -263,7 +266,7 @@ class FormInput {
 	private function showTelephoneInput(){
 		?>
 			<h3><small><?php echo $this->name ?> </small></h3>
-			<input type="tel" placeholder="XXX XXX XXXX" maxlength="15" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
+			<input type="tel" hint="XXX XXX XXXX" maxlength="15" name="<?php echo $this->key ?>" value="<?php echo $this->value ?>">
 			<br>
 			<b style="color:red"><?php echo $this->error ?></b>
 			<?php

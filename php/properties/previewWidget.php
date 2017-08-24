@@ -19,7 +19,7 @@
     </div>
 
     <div class="propPrevData">
-    <h3><small><i>Cost: </i></small></h3>
+    <h3><small><i>Cost Per Month $ </i></small></h3>
     <p><?php echo $this->v('cost')  ?></p>
     </div>
 

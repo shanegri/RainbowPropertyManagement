@@ -17,6 +17,8 @@ class ApplicationForm extends Form {
   private $subForms;
   public $visitedPages = array();
 
+  public $isBanking = true;
+
   var $date;
   var $index;
   var $type;
@@ -219,14 +221,16 @@ class ApplicationForm extends Form {
     foreach($this->ResidenceHistory as $f){ $t .= $f->genDoc(); }
     foreach($this->Employment as $f){ $t .= $f->genDoc(); }
 
-    $ar = ["bankName","bankTelephone","checkingAccNum","savingsAccNum","locanAccNum","monthlyPayment"];
-    $t .= $this->addJsonArray("Banking", $ar );
+    if($this->isBanking){
+      $ar = ["bankName","bankTelephone","checkingAccNum","savingsAccNum","locanAccNum","monthlyPayment"];
+      $t .= $this->addJsonArray("Banking", $ar );
 
-    $ar = ["creditRef1","creditRef1Tel","creditRef1Address","creditRef1AccNum"];
-    $t .= $this->addJsonArray("Credit Refrence 1", $ar );
+      $ar = ["creditRef1","creditRef1Tel","creditRef1Address","creditRef1AccNum"];
+      $t .= $this->addJsonArray("Credit Refrence 1", $ar );
 
-    $ar = ["creditRef2","creditRef2Tel","creditRef2Address","creditRef2AccNum"];
-    $t .= $this->addJsonArray("Credit Refrence 2", $ar );
+      $ar = ["creditRef2","creditRef2Tel","creditRef2Address","creditRef2AccNum"];
+      $t .= $this->addJsonArray("Credit Refrence 2", $ar );
+      }
 
     $t.=$this->showData("totalNumberVehicles");
     foreach($this->Vehicle as $f){ $t .= $f->genDoc(); }
@@ -267,7 +271,11 @@ class ApplicationForm extends Form {
   }
 
   public function hasVisitedAllPages(){
-    return sizeof($this->visitedPages) == 6;
+    if($this->isBanking){
+      return sizeof($this->visitedPages) == 6;
+    } else {
+      return sizeof($this->visitedPages) == 5;
+    }
   }
 }
 
