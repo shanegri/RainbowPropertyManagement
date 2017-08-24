@@ -12,7 +12,7 @@ if(isset($_SESSION['logData'])){
 } else {
   $db = Database::getInstance();
   $data = array();
-  $query = "SELECT id, AES_DECRYPT(JSONEN, '$db->getKey()') as JSONEN, Date FROM Application";
+  $query = "SELECT id, AES_DECRYPT(JSONEN, '".$db->getKey()."') as JSONEN, Date FROM Application";
   $res = $db->fetch($query);
   for($i = 0 ; $i < sizeof($res) ; $i++){
     $l = new ApplicationFormLog($res[$i]['JSONEN']);

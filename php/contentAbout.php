@@ -2,13 +2,11 @@
   <div class="row" >
     <!--Main Content-->
     <div class="col-sm-8">
-
-
     <?php include_once("widgets/About.php") ?>
     </div>
 
     <!--Widgets-->
-  
+
 
     <div class="col-sm-4">
       <?php include("widgets/submitWorkOrder.php") ?>

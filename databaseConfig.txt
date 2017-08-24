@@ -50,11 +50,18 @@ table: Contact {
 
 table: Application {
   id
-  AppFormObjects MediumBlob
+  JSONEN mediumblob
   Date
 }
 
 table: Constants {
   id
   FeaturedProperty
+}
+
+table: about {
+  HEADER1 varchar 100
+  HEADER2 varchar 100
+  TEXT1 varchar 1000
+  TEXT2 varchar 1000
 }

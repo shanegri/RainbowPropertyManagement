@@ -66,6 +66,16 @@
           <?php
         }
 
+        if(isset($_GET['about']) && !$m){
+          include_once('php/forms/aboutForm.php');
+          $m = true;
+          ?>
+          <script>
+          document.getElementById('4').id = '7';
+          </script>
+          <?php
+        }
+
         ?>
     </div>
       <!--Footer-->

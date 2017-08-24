@@ -7,7 +7,6 @@ if(!isset($_GET['contact'])){
 	header('location:contact?contact');
 }
 
-
 if(!isset($_SESSION['contactForm'])){
 	$Form = new Form('Contact');
 	$Form->addInput("fName", "First Name", FormInput::$STR, 20, true);

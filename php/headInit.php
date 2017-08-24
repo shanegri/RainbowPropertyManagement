@@ -39,6 +39,9 @@ if(!isset($_GET['addProperty']) && isset($_SESSION['propForm'])){
   unset($_SESSION['propForm']);
 }
 
+if(!isset($_GET['about']) && isset($_SESSION['aboutForm'])){
+  unset($_SESSION['aboutForm']);
+}
 //REMOVE BEFORE COMMITING
 //$_SESSION['id'] = 1;
 
