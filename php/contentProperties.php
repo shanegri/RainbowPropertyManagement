@@ -34,13 +34,13 @@
 
 
         if(isset($_GET['redirect'])){
-          header('location:index.php');
+          header('location:index');
         }
 
         //Redirects if page is out of range
         if(isset($_GET['page'])){
           if($_GET['page'] < 0 || $_GET['page'] > floor(sizeof($properties)/$pp)){
-            header('location:properties.php?page=0');
+            header('location:properties?page=0');
           }
         }
 
@@ -56,7 +56,7 @@
             }
           }
           unset($_POST['traverse']);
-          header('location:properties.php?page='.$_SESSION['page']);
+          header('location:properties?page='.$_SESSION['page']);
         }
         //Prints page nav
         if(isset($_GET['page'])){
