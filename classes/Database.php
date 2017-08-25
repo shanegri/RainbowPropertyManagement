@@ -10,7 +10,7 @@ class Database {
   private $config;
 
   private function __construct(){
-    $file = $_SERVER['DOCUMENT_ROOT']. '/../../config/web.json';
+    $file = $_SERVER['DOCUMENT_ROOT']. '/../config/web.json';
     $config = json_decode(file_get_contents($file), true);
     $this->config = $config;
     $this->dbname = $config['dbname'];

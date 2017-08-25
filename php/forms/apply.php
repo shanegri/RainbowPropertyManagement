@@ -102,7 +102,7 @@ if(isset($_POST['submit'])){
 			$AppFormLog = new ApplicationFormLog($JSONdata);
 			$emailType = "Rental Application";
 			$emailBody = $AppFormLog->genDoc();
-			Mailer::sendFormEmail($emailType, $emailBody, $_POST['email']);
+			Mailer::sendFormEmail($emailType, $emailBody, $Form->getValue('email'));
 		} else {
 			echo '<div class="text-center"><h3 style="color: red;">Network Error, Please Try Again Later.</h3></div>';
 		}

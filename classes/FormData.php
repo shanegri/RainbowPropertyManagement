@@ -18,8 +18,10 @@ class FormData extends aLog{
       $this->date = $row['Date'];
     } else {
       //Enable server time caching
-      $this->row['Date'] = "0";
-      $this->date = "0";
+      date_default_timezone_set('America/Buffalo');
+      $current_date = date('d/m/Y  H:i:s');
+      $this->row['Date'] = $current_date;
+      $this->date = $current_date;
     }
     if(isset($row['id'])){
       $this->id = $row['id'];
