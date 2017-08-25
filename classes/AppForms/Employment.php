@@ -16,7 +16,7 @@ class Employment extends Form implements iIncrementalForm {
     $this->addInput('position'.$this->id, 'Position', FormInput::$STR, 50, true);
     $this->addInput('supervisor'.$this->id, 'Supervisor', FormInput::$STR, 50, true);
     $this->addInput('dateStart'.$this->id, 'Dates From', FormInput::$DATE, 40, true);
-    $this->addInput('dateEnd'.$this->id, 'To', FormInput::$DATE, 40, true);
+    $this->addInput('dateEnd'.$this->id, 'To (Use Current Date If Still Employed)', FormInput::$DATE, 40, true);
   }
 
   public function showForm(){

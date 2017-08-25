@@ -12,7 +12,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
     $this->addInput('address'.$this->id, 'Address', FormInput::$STR, 40, true);
     $this->addInput('dateStart'.$this->id, 'Dates From', FormInput::$DATE, 40, true);
     $this->addInput('dateEnd'.$this->id, 'To', FormInput::$DATE, 40, true);
-    $this->addInput('lanlord'.$this->id, 'Lanlord or Mortage Co.', FormInput::$STR, 40, true);
+    $this->addInput('landlord'.$this->id, 'Landlord or Mortage Co.', FormInput::$STR, 40, true);
     $this->addInput('telephoneLan'.$this->id, 'Telephone', FormInput::$TEL, 40, true);
     $this->addInput('monthlyCost'.$this->id, 'Monthly Cost $', FormInput::$INT, 5, true);
     $this->addInput('reason'.$this->id, 'Reason for Moving', FormInput::$STR, 40, true);
@@ -36,7 +36,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
     $this->showInput('address'.$this->id);
     echo '</div>';
     echo '<div class="col-sm-4">';
-    $this->showInput('lanlord'.$this->id);
+    $this->showInput('landlord'.$this->id);
     echo '</div>';
     echo '<div class="col-sm-4">';
     $this->showInput('telephoneLan'.$this->id);
@@ -66,7 +66,7 @@ class ResidenceHistory extends Form implements iIncrementalForm {
   public function genDoc(){
       $out = '"'.$this->id.'":{'.nLine;
       $out .= $this->showData('address'.$this->id);
-      $out .= $this->showData('lanlord'.$this->id);
+      $out .= $this->showData('landlord'.$this->id);
       $out .= $this->showData('telephoneLan'.$this->id);
       $out .= $this->showData('dateStart'.$this->id);
       $out .= $this->showData('dateEnd'.$this->id);

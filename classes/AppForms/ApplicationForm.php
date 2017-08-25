@@ -50,14 +50,14 @@ class ApplicationForm extends Form {
     //Personal Other
     $this->addInput("pets", "How Many Pets Do You or Other Occupants Own?", FormInput::$INT, 3, null);
     $this->addInput("petsType", "Kind of Pet, Breed, Weight and Age,", FormInput::$STR, 50, null);
-    $this->addInput("howHear", "How Did You Hear About Out Property?", FormInput::$STR, 50, null);
+    $this->addInput("howHear", "How Did You Hear About Our Property?", FormInput::$STR, 50, null);
 
     //Banking and credit information
     $this->addInput("bankName", "Bank Name & Branch", FormInput::$STR, 50, null);
     $this->addInput("bankTelephone", "Telephone", FormInput::$TEL, 20, null);
     $this->addInput("checkingAccNum", "Checking Account Number", FormInput::$INT, 20, null);
     $this->addInput("savingsAccNum", "Savings Account Number", FormInput::$INT, 20, null);
-    $this->addInput("locanAccNum", "Locan Account Number", FormInput::$INT, 20, null);
+    $this->addInput("locanAccNum", "Loan Account Number", FormInput::$INT, 20, null);
     $this->addInput("monthlyPayment", "Monthly Payment $", FormInput::$INT, 20, null);
       //Credit Refrence 1
       $this->addInput("creditRef1", "CREDIT REFRENCE 1", FormInput::$STR, 50, null);
