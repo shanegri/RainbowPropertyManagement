@@ -186,7 +186,6 @@ class FormInput {
 
 	public function updateValue($value){
 	$this->value = mysqli_real_escape_string(Database::getInstance()->conn, $value);
-	$this->value = $value;
 	$this->error = "";
 	}
 
