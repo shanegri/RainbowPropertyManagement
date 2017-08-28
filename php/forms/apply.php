@@ -8,7 +8,7 @@
 <?php
 
 ////////////
-$isBanking = true;
+$isBanking = false;
 ////////////
 
 if(!isset($_SESSION['applyForm'])){

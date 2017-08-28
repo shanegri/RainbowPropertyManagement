@@ -6,7 +6,7 @@ class Mailer {
 	public static $From = "automailer@rainbow.rent";
 	public static $FromName = "Rainbow Property Management Automailer";
 
-	public static $adminEmail = 'shgriffin16@gmail.com';
+	public static $adminEmail = 'RPM1514@yahoo.com';
 
  	public static function sendToAdmin($type, $body){
 		$email = Mailer::emailFactory();
