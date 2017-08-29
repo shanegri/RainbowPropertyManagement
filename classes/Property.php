@@ -16,7 +16,7 @@ public function __construct(){
 	$this->addInput('description', 'Description', FormInput::$TXTAR, 700, true);
 	$this->addInput('numBedroom', 'Number of Bedrooms', FormInput::$INT, null, null);
 	$this->addInput('numBathroom', 'Number of Bathrooms', FormInput::$INT, null, null);
-	$this->addInput('cost', 'Cost', FormInput::$INT, null, true);
+	$this->addInput('cost', 'Cost (Per Month or Total Price)', FormInput::$INT, null, true);
 	$this->addInput('yearBuilt', 'Year Built', FormInput::$INT, null, null);
 	$this->addInput('sqrFeet', 'Square Feet', FormInput::$INT, null, null);
 	$this->addInput('unitNum', 'Unit Number', FormInput::$INT, null, null);
@@ -27,6 +27,7 @@ public function __construct(){
 	$this->addInput('city', 'City', FormInput::$STR, 20, true);
 	$this->addInput('zip', 'Zip', FormInput::$INT, null, true);
 	$this->addInput('isHidden', 'isHidden', FormInput::$INT, null, null);
+	$this->addInput('rentOrBuy', 'Rent or Buy', FormInput::$DRPDWN, array("Rent", "Buy"), null);
 }
 
 //Redifines update to handel visibility
@@ -68,7 +69,7 @@ public function echoPreview($p = null){
 					$('#featuredList').css('display', 'inline');
 					$('#newList').css('display', 'none');
 				</script>
-			<?PHP
+			<?php
 		}
 	}
 }
@@ -79,8 +80,9 @@ public function echoExpanded(){
 
 //shortens description for preview card
 private function shortenDescription($orgD){
-    if(strLen($orgD) > 200){
-      return substr($orgD, 0 , 200) . "...";
+	$newLength = 150;
+    if(strLen($orgD) > $newLength){
+      return substr($orgD, 0 , $newLength) . "...";
     } else {
       return $orgD;
     }

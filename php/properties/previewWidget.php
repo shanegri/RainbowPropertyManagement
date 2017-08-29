@@ -14,12 +14,24 @@
     <p><?php echo $this->shortDescription ?></p>
 
     <div class="propPrevData">
+      <h3 style="font-size: 25px;"><small><i>
+      <?php
+      if($this->v('rentOrBuy') != "Buy"){
+        echo "For Rent";
+      } else {echo "For Purchase"; }
+       ?>
+      </i></small></h3><br>
     <h3><small><i>Address: </i></small></h3>
     <p><?php echo $this->v('address')  ?></p>
     </div>
 
     <div class="propPrevData">
-    <h3><small><i>Cost Per Month $ </i></small></h3>
+    <?php
+    if($this->v('rentOrBuy') !== "Buy"){
+    echo '<h3><small><i>Cost Per Month $ </i></small></h3>';
+    } else {
+    echo '<h3><small><i>Cost $ </i></small></h3>';
+    }?>
     <p><?php echo $this->v('cost')  ?></p>
     </div>
 
@@ -29,13 +41,17 @@
     </div>
   </div>
 
-  <div class="propPrevButtonContainer">
+  <div class="propPrevButtonContainer" style="margin-top: 4px;">
     <a class="left" href="../../properties?property=<?php echo $this->arIndex ?>">
       More Information
     </a>
-    <a class="right" href="form?apply&page=0">
-      Apply to Rent
-    </a>
+    <?php
+    if($this->v('rentOrBuy') != "Buy"){
+      echo '<a class="right" href="form?apply&page=0"> Apply to Rent </a>';
+    } else {
+      echo '<a class="right" href="form?purchase&prev=home"> Apply to Buy </a>';
+    }
+     ?>
   </div>
 </div>
 </div>

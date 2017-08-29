@@ -10,6 +10,7 @@ class FormData extends aLog{
   var $date;
   var $index;
   var $id;
+  var $isComplete;
 
   public function __construct($row, $type){
     $this->row = $row;
@@ -18,13 +19,20 @@ class FormData extends aLog{
       $this->date = $row['Date'];
     } else {
       //Enable server time caching
-      date_default_timezone_set('America/Buffalo');
+      date_default_timezone_set('America/New_York');
       $current_date = date('d/m/Y  H:i:s');
       $this->row['Date'] = $current_date;
       $this->date = $current_date;
     }
     if(isset($row['id'])){
       $this->id = $row['id'];
+    }
+    if($type == "Work Order"){
+      if($row['dateComplete'] == 0){
+        $this->isComplete = false;
+      } else {
+        $this->isComplete = $row['dateComplete'];
+      }
     }
   }
 
@@ -85,6 +93,14 @@ class FormData extends aLog{
     }
     $c .= "Email Address: " . $row['email'] . nLine;
     return $c;
+  }
+
+  //For Work Order Completion
+  public function mark(){
+    $db = Database::getInstance();
+    $query = "UPDATE WorkOrder SET dateComplete=NOW() WHERE id=".$this->id;
+    $res = $db->query($query);
+    return $res;
   }
 
 

@@ -2,6 +2,7 @@
 <div class="container-fluid card propertyForm">
 <form method="post">
 <button type="submit" name="back">Back</button>
+<h3 style="font-size: 18px;margin-left: 5px; display: inline;"><small><i>Changes Will Not Be Saved. </i></small></h3>
 <h3 class="text-center"><small><i>Not-Required Fields Left Blank Will Not Be Shown. (Ex. Year Built)</i></small></h3>
 
 <?php
@@ -32,6 +33,7 @@ if(isset($_POST['submit'])){
 <div class="row">
 	<div class="col-sm-6">
 		<?php
+    $prop->showInput('rentOrBuy');
 		$prop->showInput('numBedroom');
 		$prop->showInput('numBathroom');
 		$prop->showInput('cost');

@@ -76,6 +76,16 @@
           <?php
         }
 
+        if(isset($_GET['purchase']) && !$m){
+          include_once('php/forms/applyPurchase.php');
+          $m = true;
+          ?>
+          <script>
+          document.getElementById('4').id = '7';
+          </script>
+          <?php
+        }
+
         ?>
     </div>
       <!--Footer-->

@@ -34,7 +34,14 @@ if(isset($_SESSION['id'])){
     <h3><small><i>Number Of Bathrooms</i></small></h3><p><?php echo $this->v('numBathroom') ?></p>
   </div>
   <div class="col-sm-6">
-    <h3><small><i>Cost Per Month $ </i></small></h3><p><?php echo $this->v('cost') ?></p>
+
+      <?php
+      if($this->v('rentOrBuy') !== "Buy"){
+      echo '<h3><small><i>Cost Per Month $ </i></small>';
+      } else {
+      echo '<h3><small><i>Cost $ </i></small></h3>';
+      }?>
+    </h3><p><?php echo $this->v('cost') ?></p>
     <?php
     if($this->v('yearBuilt') != '' && $this->v('yearBuilt') != '0'){
         echo" <h3><small><i>Year Built</i></small></h3><p>".$this->v('yearBuilt')."</p>";
@@ -46,4 +53,6 @@ if(isset($_SESSION['id'])){
   </div>
 </div>
 </div>
+<hr>
+<h3 class="text-center" style="margin-bottom: 20px; font-size: 23px;"><small>Please Call <i>(716) 284-7368</i> to Make an Appointment for a Showing Time.</small></h3>
 </div>

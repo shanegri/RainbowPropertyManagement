@@ -16,6 +16,7 @@ table: properties {
   singleormult 20 varchar
   util 20 varchar
   isHidden (Either 1 or 0)
+  rentOrBuy varchar 10 (Either "Rent" / "Buy")
 }
 
 table: users {
@@ -37,6 +38,7 @@ table: WorkOrder {
   city varchar 20
   email varchar 50
   Date
+  dateComplete DATETIME
 }
 
 table: Contact {

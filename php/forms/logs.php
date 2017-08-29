@@ -81,6 +81,12 @@ if(isset($_GET['d'])){
   $r = $data[$_GET['d']]->del();
   if ($r) { unset($_SESSION['logData']);header('location:form?log');} else {echo '<b>Failed</b>';}
 }
+
+//Handel Mark As Complete
+if(isset($_GET['mark'])){
+  $r = $data[$_GET['mark']]->mark();
+  if ($r) { unset($_SESSION['logData']);header('location:form?log');} else {echo '<b>Failed</b>';}
+}
 ?>
 <div style=" margin: 0 auto; width: 80%">
 <?php
