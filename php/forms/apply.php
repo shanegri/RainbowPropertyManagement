@@ -7,7 +7,9 @@
 <form method="post">
 <?php
 
-////////////
+////////////<-Code Inside Comments Refers to
+					//  Temp Banking enabler
+					//  TODO Remove + Cleanup
 $isBanking = false;
 ////////////
 
