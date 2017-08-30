@@ -23,7 +23,7 @@ if(sizeof($images) == 0){
 </div>
 
 <div class="arrow text-center" >
-<a onclick="reverse()" style="float: left; border-radius: 5px; margin-left: 20px;">&#x2190;</a>
+<a onclick="reverse()" style="float: left; border-radius: 5px; margin-left: 15px;">&#x2190;</a>
   <?php
 	$images = $this->images;
 	for($i = 0 ; $i < sizeof($images); $i++){
@@ -39,10 +39,21 @@ if(sizeof($images) == 0){
 }
 ?>
 
-<a onclick="advance()" style="float: right; border-radius: 5px;  margin-right: 20px">&#x2192;</a>
+<a onclick="advance()" style="float: right; border-radius: 5px;  margin-right: 15px">&#x2192;</a>
 </div>
 
+<style media="screen">
+@media only screen and (max-width: 1000px){
+	.dot {
+		width: 5px;
+		height: 5px;
+	}
+	.arrow {
+		font-size: 30px;
+	}
 
+}
+</style>
 <script>
 
 var counter = 0;
