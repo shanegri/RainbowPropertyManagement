@@ -57,5 +57,7 @@ if(isset($_SESSION['id'])){
 </div>
 </div>
 <hr>
-<h3 class="text-center" style="margin-bottom: 20px; font-size: 23px;"><small>Please Call <i>(716) 284-7368</i> to Make an Appointment for a Showing Time.</small></h3>
+<h3 class="text-center" style="margin-bottom: 0px; font-size: 23px;"><small>Please Call <i>(716) 284-7368</i> to Make an Appointment for a Showing Time.</small></h3>
+<h3 class="text-center" style="margin-bottom: 20px; margin-top: 5px; font-size: 23px;"><small>You Must Submit a Rental Application Before Showing Times Will Be Offered.</small></h3>
+
 </div>
