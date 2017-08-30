@@ -82,11 +82,18 @@ if(isset($_GET['d'])){
   if ($r) { unset($_SESSION['logData']);header('location:form?log');} else {echo '<b>Failed</b>';}
 }
 
-//Handel Mark As Complete
+//Handel Work Order Mark As Complete
 if(isset($_GET['mark'])){
   $r = $data[$_GET['mark']]->mark();
   if ($r) { unset($_SESSION['logData']);header('location:form?log');} else {echo '<b>Failed</b>';}
 }
+
+//Handel Work Order unmark as completed
+if(isset($_GET['unMark'])){
+  $r = $data[$_GET['unMark']]->unMark();
+  if ($r) { unset($_SESSION['logData']);header('location:form?log');} else {echo '<b>Failed</b>';}
+}
+
 ?>
 <div style=" margin: 0 auto; width: 80%">
 <?php
