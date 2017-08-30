@@ -18,7 +18,8 @@ abstract class aLog {
         <a href='form?log&page=0&mark=".$this->index."' onclick='return confirm(\"Are You Sure?\")'>Mark As Completed</a>
         ";
       } else {
-        $completeText = "Date Completed: " .$this->isComplete;
+        $completeText = "Date Completed: " .$this->isComplete . " ".
+        "<a href='form?log&page=0&unMark=".$this->index."' onclick='return confirm(\"Are You Sure?\")'>Remove</a>";
       }
     }
 

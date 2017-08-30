@@ -178,7 +178,7 @@ public function setIcon($toSet){
 
 //Returns value for that key
 public function v($key){
-  return $this->getValue($key);
+  return stripslashes($this->getValue($key));
 }
 
 public function hideUnHide($val){

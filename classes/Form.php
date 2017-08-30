@@ -44,7 +44,7 @@ class Form {
 	public function update($post){
 		foreach($post as $key=>$value){
 			if(array_key_exists($key, $this->store)){
-				$this->store[$key]->updateValue($value);
+				$this->store[$key]->updateValue(stripslashes($value));
 			}
 		}
 	}
@@ -81,6 +81,7 @@ class Form {
 			$id = $db->lastId();
 		}
 		foreach($this->store as $form){
+
 			$q = "UPDATE ".$this->name." SET " .$form->key."='".$form->value."' WHERE id=".$id;
 		  if(!$db->query($q)){$r = false;}
 		}
@@ -186,6 +187,7 @@ class FormInput {
 
 	public function updateValue($value){
 	$this->value = mysqli_real_escape_string(Database::getInstance()->conn, $value);
+	$this->value = str_replace('\r\n', "<br>", $this->value);
 	$this->error = "";
 	}
 

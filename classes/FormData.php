@@ -103,6 +103,14 @@ class FormData extends aLog{
     return $res;
   }
 
+  public function unMark(){
+    $db = Database::getInstance();
+    $blankDate = "0000-00-00 00:00:00";
+    $query = "UPDATE WorkOrder SET dateComplete=0 WHERE id=".$this->id;
+    $res = $db->query($query);
+    return $res;
+  }
+
 
 
 
