@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class="propPrevButtonContainer" style="margin-top: 4px;">
+  <div class="propPrevButtonContainer" style="margin-top: 18px;">
     <a class="left" href="../../properties?property=<?php echo $this->arIndex ?>">
       More Information
     </a>
