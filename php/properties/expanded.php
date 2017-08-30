@@ -43,6 +43,9 @@ if(isset($_SESSION['id'])){
       }?>
     </h3><p><?php echo $this->v('cost') ?></p>
     <?php
+    if($this->v('util') != '' && $this->v('util') != '0'){
+        echo" <h3><small><i>Utils</i></small></h3><p>".$this->v('util')."</p>";
+    }
     if($this->v('yearBuilt') != '' && $this->v('yearBuilt') != '0'){
         echo" <h3><small><i>Year Built</i></small></h3><p>".$this->v('yearBuilt')."</p>";
     }
