@@ -7,6 +7,9 @@
       $url = "index";
     } else if ($back === "prop"){
       $url = "properties?page=0";
+      if(isset($_GET['prop'])){
+      $url = "properties?property=".$_GET['prop'];
+      }
     }
      ?>
      <a href="<?php echo $url ?>"><button >Back</button></a>

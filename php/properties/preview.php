@@ -6,7 +6,7 @@
 </div>
 <div class="col-sm-6 propPrevContent">
   <div class="propPrevDescription" style="padding: 0px;">
-    <div style="width: 100%; background: #89bdd3; height: 25px; padding-left: 6px; padding-right: 6px;" >
+    <div style="width: 100%; background: #89bdd3; height: 25px; padding-left: 12px; padding-right: 12px;" >
     <h3 style="font-size: 23px; margin: 0; float: left;"><small style="color: white;"><?php echo $this->v('type') ?> </small></h3>
     <h3 style="font-size: 23px; margin: 0; float: right;"><small style="color: white;">
       <?php

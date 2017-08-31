@@ -94,6 +94,17 @@
       <?php include("widgets/submitWorkOrder.php") ?>
       <?php include("widgets/contactUs.php") ?>
       <?php
+      if(isset($_GET['property'])){
+      if($_SESSION['propertylist'][$_GET['property']]->v('rentOrBuy') == "Buy"){
+          include("widgets/ApplyToBuy.php");
+      } else {
+        include("widgets/Apply.php");
+      }
+    }
+
+
+      ?>
+      <?php
       if(!isset($_GET['property'])){
         include("widgets/newProperties.php");
       }?>
