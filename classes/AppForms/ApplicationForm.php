@@ -272,9 +272,9 @@ class ApplicationForm extends Form {
 
   public function hasVisitedAllPages(){
     if($this->isBanking){
-      return sizeof($this->visitedPages) == 6;
+      return sizeof($this->visitedPages) === 6;
     } else {
-      return sizeof($this->visitedPages) == 5;
+      return sizeof($this->visitedPages) === 5;
     }
   }
 }
