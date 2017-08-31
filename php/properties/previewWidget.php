@@ -1,7 +1,7 @@
 <div class="propertyPreview card" style="height: auto; padding-top: 0px; margin-top:20px;">
-<h3 class="text-center" style="margin: 2px;">
-  <small id="newList" >Newest Listing</small>
-  <small id="featuredList" style="display: none;">Featured Listing</small>
+<h3 class="text-center" style="margin-bottom: 0px; background: #89bdd3; ">
+  <small style="color:white; "id="newList" >Newest Listing</small>
+  <small id="featuredList" style="color:white;display: none;">Featured Listing</small>
 </h3>
 <div class="propPrevImg " style="background-image: url('<?php echo $this->prevImage; ?>')">
 <a style="text-decoration: none;"href="../../properties?property=<?php echo $this->arIndex?>">
@@ -9,40 +9,52 @@
 
 </div>
 <div class="propPrevContent" style="height: 315px;">
-  <div class="propPrevDescription">
-    <h3 style="font-size: 22px; float: right;"><small>
+  <div class="propPrevDescription" style="padding: 0px;">
+   <div style="width: 100%; background: #89bdd3; height: 25px; padding-left: 6px; padding-right: 6px;" >
+   <h3 style="font-size: 23px; margin: 0; float: left;"><small style="color: white;"><?php echo $this->v('type') ?> </small></h3>
+   <h3 style="font-size: 23px; margin: 0; float: right;"><small style="color: white;">
+     <?php
+     if($this->v('rentOrBuy') != "Buy"){
+       echo "For Rent";
+     } else {echo "For Purchase"; }
+     ?>
+   </small></h3>
+   </div>
+
+    <div style="padding: 6px;">
+      <p><?php echo $this->shortDescription ?></p>
+
+      <div class="propPrevData">
+
+      <h3><small><i>Address: </i></small></h3>
+      <p><?php echo $this->v('address')  ?></p>
+      </div>
+
+      <div class="propPrevData">
       <?php
-      if($this->v('rentOrBuy') != "Buy"){
-        echo "For Rent";
-      } else {echo "For Purchase"; }
-      ?>
-    </small></h3>
-    <h3><small><i>Description: </i></small></h3>
-    <p><?php echo $this->shortDescription ?></p>
+      if($this->v('rentOrBuy') !== "Buy"){
+      echo '<h3><small><i>Cost Per Month $ </i></small></h3>';
+      } else {
+      echo '<h3><small><i>Cost $ </i></small></h3>';
+      }?>
+      <p><?php echo $this->v('cost')  ?></p>
+      </div>
 
-    <div class="propPrevData">
+      <div class="propPrevData">
+      <h3><small><i>Bedrooms: </i></small></h3>
+      <p><?php echo $this->v('numBedroom')  ?></p>
+      </div>
 
-    <h3><small><i>Address: </i></small></h3>
-    <p><?php echo $this->v('address')  ?></p>
+      <div class="propPrevData">
+      <h3><small><i>Bathrooms: </i></small></h3>
+      <p><?php echo $this->v('numBathroom')  ?></p>
+      </div>
+    </div>
+    
     </div>
 
-    <div class="propPrevData">
-    <?php
-    if($this->v('rentOrBuy') !== "Buy"){
-    echo '<h3><small><i>Cost Per Month $ </i></small></h3>';
-    } else {
-    echo '<h3><small><i>Cost $ </i></small></h3>';
-    }?>
-    <p><?php echo $this->v('cost')  ?></p>
-    </div>
-
-    <div class="propPrevData">
-    <h3><small><i>Type: </i></small></h3>
-    <p><?php echo $this->v('type')  ?></p>
-    </div>
   </div>
-
-  <div class="propPrevButtonContainer" >
+  <div class="propPrevButtonContainer" style="padding: 0px; height: 60px; margin-top: -85px;">
     <a class="left" href="../../properties?property=<?php echo $this->arIndex ?>">
       More Information
     </a>
@@ -56,6 +68,12 @@
   </div>
 </div>
 </div>
+<style media="screen">
+  .propPrevButtonContainer > .left,
+  .propPrevButtonContainer > .right {
+    height: 100%;
+  }
+</style>
 <?php
 if($this->isHidden){
   ?>
