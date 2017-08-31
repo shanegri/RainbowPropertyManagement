@@ -131,8 +131,7 @@ hr {
 .propPrevButtonContainer {
   height: 25%;
   font-size: 15px;
-  text-align: center;
-  line-height: 60px;
+  padding-top: 10px;
 }
 .propPrevButtonContainer > .left { float: left; width: 49.75%; }
 .propPrevButtonContainer > .right { float: right;   width: 50%;}
@@ -142,6 +141,8 @@ hr {
   color: white;
   height: 100%;
   background: #89bdd3;
+  text-align: center;
+  padding-top: 15px;
 }
 .propPrevButtonContainer > .left:hover,
 .propPrevButtonContainer > .right:hover {

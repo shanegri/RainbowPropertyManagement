@@ -1,4 +1,4 @@
-<div class="propertyPreview card">
+<div class="propertyPreview card" >
 <div class="col-sm-6 propPrevImg " style="background-image: url('<?php echo $this->prevImage; ?>')">
 <a style="text-decoration: none;"href="../../properties?property=<?php echo $this->arIndex ?>">
   <div id="hiddenFade<?php echo $this->arIndex ?>" class="propPrevImgHidden"><p id="hidden<?php echo $this->arIndex ?>">HIDDEN</p></div></a>
@@ -6,18 +6,18 @@
 </div>
 <div class="col-sm-6 propPrevContent">
   <div class="propPrevDescription" style="padding-top: 0px;">
+    <h3 style="font-size: 22px; float: right;"><small>
+      <?php
+      if($this->v('rentOrBuy') != "Buy"){
+        echo "For Rent";
+      } else {echo "For Purchase"; }
+      ?>
+    </small></h3>
     <h3> <small><i>Description: </i></small></h3>
     <p><?php echo $this->shortDescription ?></p>
 
     <div class="propPrevData">
 
-    <h3 style="font-size: 25px;"><small><i>
-    <?php
-    if($this->v('rentOrBuy') != "Buy"){
-      echo "For Rent";
-    } else {echo "For Purchase"; }
-     ?>
-    </i></small></h3><br>
 
     <h3><small><i>Address: </i></small></h3>
     <p><?php echo $this->v('address')  ?></p>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="propPrevButtonContainer"  style="margin-top: 18px;">
+  <div class="propPrevButtonContainer">
     <a class="left" href="../../properties?property=<?php echo $this->arIndex ?>">
       More Information
     </a>

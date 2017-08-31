@@ -8,19 +8,20 @@
   <div id="hiddenFade<?php echo $this->arIndex ."new" ?>" class="propPrevImgHidden"><p id="hidden<?php echo $this->arIndex."new" ?>">HIDDEN</p></div></a>
 
 </div>
-<div class="propPrevContent">
+<div class="propPrevContent" style="height: 315px;">
   <div class="propPrevDescription">
-    <h3><small><i>Description: </i></small></h3>
-    <p><?php echo $this->shortDescription ?></p>
-
-    <div class="propPrevData">
-      <h3 style="font-size: 25px;"><small><i>
+    <h3 style="font-size: 22px; float: right;"><small>
       <?php
       if($this->v('rentOrBuy') != "Buy"){
         echo "For Rent";
       } else {echo "For Purchase"; }
-       ?>
-      </i></small></h3><br>
+      ?>
+    </small></h3>
+    <h3><small><i>Description: </i></small></h3>
+    <p><?php echo $this->shortDescription ?></p>
+
+    <div class="propPrevData">
+
     <h3><small><i>Address: </i></small></h3>
     <p><?php echo $this->v('address')  ?></p>
     </div>
@@ -41,7 +42,7 @@
     </div>
   </div>
 
-  <div class="propPrevButtonContainer" style="margin-top: 18px;">
+  <div class="propPrevButtonContainer" >
     <a class="left" href="../../properties?property=<?php echo $this->arIndex ?>">
       More Information
     </a>
