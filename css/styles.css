@@ -121,6 +121,9 @@ hr {
 .propPrevDescription > p {
   font-size: 13px;
 }
+.propPrevData {
+  margin-bottom: 5px;
+}
 .propPrevData > h3, .propPrevData > p{
   display:inline
 }
@@ -321,27 +324,36 @@ button > a{
 
 
 @media only screen and (max-width: 767px){
+  .propertyPreview {
+    font-size: 10px;
+    height: auto;
+  }
+  .propPrevCrop {
+    height: 270px;
+    width: 100%;
+  }
+  .loginBox {
+    width: 100%;
+  }
+  .propertyForm {
+    width: 100%;
+  }
+  .page {
+    padding:3px;
+  }
+  .slideIm {
+    height: 300px;
+  }
+  .logCol {
+    margin-bottom: 20px;
+  }
+  .propPrevData {
+    margin-bottom: 10px;
+  }
+}
 
-.propertyPreview {
-  font-size: 10px;
-  height: auto;
-}
-.propPrevCrop {
-  height: 270px;
-  width: 100%;
-}
-.loginBox {
-  width: 100%;
-}
-.propertyForm {
-  width: 100%;
-}
-.page {
-  padding:3px;
-}
-.slideIm {
-  height: 300px;
-}
-.logCol {
-  margin-bottom: 20px;
+@media only screen and (max-width: 1100px){
+  .propPrevData {
+    margin-bottom: -4px;
+  }
 }

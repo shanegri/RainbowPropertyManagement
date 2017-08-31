@@ -61,22 +61,6 @@
   </div>
 </div>
 </div>
-<style media="screen">
-  .propPrevData {
-    margin-bottom: 5px;
-  }
-  @media only screen and (max-width: 1100px){
-    .propPrevData {
-      margin-bottom: -4px;
-    }
-  }
-
-  @media only screen and (max-width: 767px){
-    .propPrevData {
-      margin-bottom: 6px;
-    }
-  }
-</style>
 <?php
 if($this->isHidden){
   ?>
