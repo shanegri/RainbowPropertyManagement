@@ -164,14 +164,14 @@ el.addEventListener('touchmove', function(e){
 		$('.slideshowImageContainer').css('padding-right', shift);
 		$('.slideshowImageContainer').css('padding-left', 0);
 	}
-	if(shift > 150){
+	if(shift > 100){
 		$('.slideshowImageContainer').css('padding-right', 0);
 		$('.slideshowImageContainer').css('padding-left', 30);
 		initTouch = false;
 		remove = true;
 		$('.slideshowImageContainer').animate({paddingLeft: "0"}, "fast");
 		advance();
-	} else if (shift < -150){
+	} else if (shift < -100){
 		$('.slideshowImageContainer').css('padding-left', 0);
 		$('.slideshowImageContainer').css('padding-right', 30);
 		initTouch = false;

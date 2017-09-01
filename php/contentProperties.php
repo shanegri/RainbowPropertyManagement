@@ -1,5 +1,5 @@
-<div class="mobile-fit">
-  <div class="row">
+<div class="mobile-fit" >
+  <div class="row" style="margin: 0 auto; ">
     <!--Main Content-->
     <div class="col-sm-8 body"style="padding-top: 20px;">
 

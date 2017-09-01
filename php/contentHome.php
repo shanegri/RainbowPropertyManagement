@@ -1,5 +1,5 @@
 <div class="mobile-fit container-fluid body">
-  <div class="row" style="padding: 0px;">
+  <div class="row" style="padding: 0px; margin: 0 auto;">
     <!-- about col -->
     <div class="col-sm-4">
 

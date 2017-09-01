@@ -1,5 +1,5 @@
 <div class="mobile-fit container-fluid body">
-  <div class="row" >
+  <div class="row" style="margin: 0 auto;">
     <!--Main Content-->
     <div class="col-sm-8">
     <?php include_once("widgets/About.php") ?>
