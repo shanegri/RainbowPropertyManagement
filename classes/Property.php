@@ -169,7 +169,7 @@ public function setIcon($toSet){
 		rename($files[0], $tempDIR);
 		$e = explode('.', $toSet);
 		$name = $e[3];
-		$ext = $e[4];
+		$ext = $e[sizeof($e) -1];
 		rename($toSet, $target_dir.'0.'.$name.'.'.$ext);
 		rename($tempDIR, $target_dir . $num .'.'. $tempName .'.'.$tempExe);
 		$this->setPrevImage();
