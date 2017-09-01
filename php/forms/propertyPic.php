@@ -45,7 +45,6 @@
           echo '<b style="color: red">Max File Limit Reached</b>';
         }
 
-        echo $type;
         //Ensure File exists + breakoff extension
         if(isset($file_ext[1])){
           $file_ext = $file_ext[1];
