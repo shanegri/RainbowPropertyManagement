@@ -33,10 +33,11 @@
       $post = true;
       if(isset($_POST['submit'])){
         //Accepted File types
-        $acc_ext = array('jpg', 'png', 'jpeg', 'gif');
+        $acc_ext = array('image/jpg', 'image/png', 'image/jpeg', 'image/gif');
         $file_new_name = sizeof($prop->images);
         $file = $_FILES['file'];
         $size = $file['size'];
+        $type = $file['type'];
         $file_ext = explode('.', $file['name']);
 
         if(sizeof($prop->images) > 15){
@@ -44,6 +45,7 @@
           echo '<b style="color: red">Max File Limit Reached</b>';
         }
 
+        echo $type;
         //Ensure File exists + breakoff extension
         if(isset($file_ext[1])){
           $file_ext = $file_ext[1];
@@ -55,7 +57,7 @@
         }
 
         //Check if Accepted file type
-        if($post && !in_array($file_ext, $acc_ext)){
+        if($post && !in_array($type, $acc_ext)){
           $post = false;
           echo '<b style="color: red">Incorrect File Type</b>';
         }

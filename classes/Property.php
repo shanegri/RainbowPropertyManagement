@@ -145,7 +145,7 @@ public function renameImages(){
     for($i = 0 ; $i < sizeof($files) ; $i++){
       $e = explode('.', $files[$i]);
 			$name = $e[3];
-			$ext = $e[4];
+			$ext = $e[sizeof($e) -1];
 			rename($files[$i], $i);
 			$tochange[$i] = $target_dir.$i.'.'.$name.'.'.$ext;
     }
