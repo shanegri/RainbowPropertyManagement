@@ -1,5 +1,5 @@
 <div class="propertyPreview card" >
-<div class="col-sm-6 propPrevImg " style="background-image: url('<?php echo $this->prevImage; ?>')">
+<div class="col-sm-6 propPrevImg " style="background-image: url('<?php echo $this->prevImage."?=".filemtime($this->prevImage);; ?>')">
 <a style="text-decoration: none;"href="../../properties?property=<?php echo $this->arIndex ?>">
   <div id="hiddenFade<?php echo $this->arIndex ?>" class="propPrevImgHidden"><p id="hidden<?php echo $this->arIndex ?>">HIDDEN</p></div></a>
 

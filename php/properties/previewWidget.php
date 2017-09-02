@@ -3,7 +3,7 @@
     <small style="color:white; "id="newList" >Newest Listing</small>
     <small id="featuredList" style="color:white;display: none;">Featured Listing</small>
   </h3>
-<div class="propPrevImg " style="background-image: url('<?php echo $this->prevImage; ?>')">
+<div class="propPrevImg " style="background-image: url('<?php echo $this->prevImage."?=".filemtime($this->prevImage); ?>')">
 <a style="text-decoration: none;"href="../../properties?property=<?php echo $this->arIndex ?>">
   <div id="hiddenFade<?php echo $this->arIndex ?>" class="propPrevImgHidden"><p id="hidden<?php echo $this->arIndex ?>">HIDDEN</p></div></a>
 

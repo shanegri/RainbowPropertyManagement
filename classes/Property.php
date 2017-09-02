@@ -130,7 +130,7 @@ public function populateImages(){
 public function updateFolders(){
     if (file_exists("././Images/Properties/".$this->id)){
     } else {
-			$oldmask = umask(0);
+			$oldmask = umask(0);https://rainbow.rent/Images/Properties/4/0.IMG_5086.JPG
       mkdir("././Images/Properties/".$this->id, 0777);
 			umask($oldmask);
       $this->updateFolders();

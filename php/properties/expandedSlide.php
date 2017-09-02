@@ -6,7 +6,7 @@ $images = $this->images;
 for($i = 0 ; $i < sizeof($images) ; $i++){
 	?>
 	<div class="slide" >
-	<img class="slideIm" src="<?php echo $images[$i]?>	">
+	<img class="slideIm" src="<?php echo $images[$i]."?=".filemtime($images[$i]);?>	">
 	</div>
 	<?php
 }

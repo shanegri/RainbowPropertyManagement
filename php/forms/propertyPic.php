@@ -28,6 +28,55 @@
         $prop->setIcon($_POST['setIcon']);
       }
 
+      if(isset($_POST['rotate'])){
+        $imPath = $_POST['rotate'];
+        $imType = exif_imagetype($imPath);
+        $imSource = null;
+        switch ($imType) {
+          case 2: // For JPEG / JPG
+            $imSource = imagecreatefromjpeg($imPath);
+            $imRotate = rotate($imSource);
+            unlink($imPath);
+            imagejpeg($imRotate, $imPath);
+            //Free Up Buffer
+            imagedestroy($imSource);
+            imagedestroy($imRotate);
+            break;
+          case 3: // FOR PNG
+            $imSource = imagecreatefrompng($imPath);
+            $imRotate = rotate($imSource);
+            unlink($imPath);
+            imagejpeg($imRotate, $imPath);
+            //Free Up Buffer
+            imagedestroy($imSource);
+            imagedestroy($imRotate);
+            break;
+          case 0: // FOR GIF
+            $imSource = imagecreatefromgif($imPath);
+            $imRotate = rotate($imSource);
+            unlink($imPath);
+            imagejpeg($imRotate, $imPath);
+            //Free Up Buffer
+            imagedestroy($imSource);
+            imagedestroy($imRotate);
+            break;
+        }
+        unset($_POST['rotate']);
+      }
+
+     function rotate($image){
+        $x = imagesx($image);
+        $y = imagesy($image);
+        $res = @imagecreatetruecolor($y, $x);
+        for($ix = 0 ; $ix < $x ; $ix++){
+          for($iy = 0 ; $iy < $y ; $iy++){
+            $ref = imagecolorat($image, $ix, $iy);
+            imagesetpixel($res, ($y - 1) - $iy, $ix, $ref);
+          }
+        }
+        return $res;
+      }
+
 
       //Handel Image Uploads
       $post = true;
