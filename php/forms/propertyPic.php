@@ -46,19 +46,12 @@
             $imSource = imagecreatefrompng($imPath);
             $imRotate = rotate($imSource);
             unlink($imPath);
-            imagejpeg($imRotate, $imPath);
+            imagepng($imRotate, $imPath);
             //Free Up Buffer
             imagedestroy($imSource);
             imagedestroy($imRotate);
             break;
           case 0: // FOR GIF
-            $imSource = imagecreatefromgif($imPath);
-            $imRotate = rotate($imSource);
-            unlink($imPath);
-            imagejpeg($imRotate, $imPath);
-            //Free Up Buffer
-            imagedestroy($imSource);
-            imagedestroy($imRotate);
             break;
         }
         unset($_POST['rotate']);
