@@ -203,11 +203,12 @@ public function setIsFeatured($isFeatured){
 		}
 		$query = "UPDATE Constants set FeaturedProperty=$this->id where id=1";
 		$this->isFeatured = true;
-	} else {
+		$db->query($query);
+	} else if ($this->isFeatured) {
 		$query = "UPDATE Constants set FeaturedProperty=0 where id=1";
 		$this->isFeatured = false;
+		$db->query($query);
 	}
-	$db->query($query);
 }
 
 public static function enableFeaturedProp($propertyList){
