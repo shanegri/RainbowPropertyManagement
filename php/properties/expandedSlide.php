@@ -3,10 +3,13 @@
 <div class="slideshowImageContainer" style="overflow: hidden;">
 <?php
 $images = $this->images;
+/*
+*src="<?php echo $images[$i]."?=".filemtime($images[$i]);?>"
+*/
 for($i = 0 ; $i < sizeof($images) ; $i++){
 	?>
 	<div class="slide" >
-	<img class="slideIm" src="<?php echo $images[$i]."?=".filemtime($images[$i]);?>	">
+	<img id="<?php echo $images[$i]."?=".filemtime($images[$i]);?>" src="Images/Loading.gif" class="loading slideIm si<?php echo $i; ?>" >
 	</div>
 	<?php
 }
@@ -22,7 +25,6 @@ if(sizeof($images) == 0){
 ?>
 
 </div>
-
 <div class="arrow text-center" >
 <a onclick="reverse()" style="float: left; border-radius: 5px; margin-left: 15px;">&#x2190;</a>
   <?php
@@ -45,6 +47,15 @@ if(sizeof($images) == 0){
 
 <style media="screen">
 
+.slide {
+	height: 400px;
+}
+.loading {
+	width: 4%;
+	height: 4%;
+	object-fit: contain;
+}
+
 .slideIm {
 user-drag: none;
 user-select: none;
@@ -64,14 +75,68 @@ user-select: none;
 
 
 
+
 }
 </style>
 <script>
 
 var counter = 0;
 var slides = document.getElementsByClassName('slide');
+var slideObjects = new Array();
 var dots = document.getElementsByClassName('dot');
 var slideAmt = slides.length;
+
+
+function img(slideElem, slideID){
+	this.isLoaded = false;
+	this.slideElem = slideElem;
+	this.id = slideID;
+	this.im = $('.si'+slideID);
+	this.imURL = this.im.attr('id');
+
+	this.display = function(){
+		this.load();
+		for(var i = 0 ; i < slideAmt ; i++){
+			slides[i].style.display = "none";
+			dots[i].className = dots[i].className.replace(" Dotactive", "");
+		}
+		dots[this.id].className = dots[this.id].className += " Dotactive";
+		slideElem.style.display = "flex";
+	}
+
+	this.load = function(){
+		if(!this.isLoaded){
+			this.isLoaded = true;
+			var id = this.id;
+			var im = this.im;
+			var download = $("<img>");
+			download.on('load', function(){
+				im.attr("src", $(this).attr("src"));
+				im.removeClass("loading");
+				loadNext(id);
+				loadPrev(id);
+				//console.log(id  + " Loaded");
+			});
+			download.attr("src", this.imURL);
+		}
+	}
+}
+
+function loadNext(id){
+	if(id != slideObjects.length - 1){
+		if(!slideObjects[id + 1].isLoaded) slideObjects[id + 1].load();
+	}
+}
+
+function loadPrev(id){
+	if(id === 0){
+		if(!slideObjects[slideObjects.length - 1].isLoaded) slideObjects[slideObjects.length - 1].load();
+	} else {
+		if(!slideObjects[id - 1].isLoaded) slideObjects[id - 1].load();
+	}
+}
+
+for(var i = 0; i < slides.length ; i++){ slideObjects[i] = new img(slides[i], i); }
 goto(counter);
 
 
@@ -84,7 +149,6 @@ function advance(){
 		goto(counter);
 	}
 }
-
 function reverse(){
 	if(counter > 0){
 		counter--;
@@ -97,15 +161,8 @@ function reverse(){
 
 
 function goto(n){
-	for(var i = 0 ; i < slideAmt ; i++){
-		if(i===n){
-			slides[i].style.display = "flex";
-			dots[i].className = dots[i].className += " Dotactive";
-		} else {
-			slides[i].style.display = "none";
-			dots[i].className = dots[i].className.replace(" Dotactive", "");
-		}
-	}
+	counter = n;
+	slideObjects[n].display();
 }
 
 $(document).keydown(function(e){
@@ -132,12 +189,12 @@ $('.slide').on('mousedown', function(e){
 			$('.slideIm').css('margin-left', 0);
 		}
 		if(shift > 150){
-			advance();
+			reverse();
 			$('.slideIm').css('margin-right', 30);
 			$('.slideIm').animate({marginRight: "0"}, "fast");
 		}
 		if(shift < -150){
-			reverse();
+			advance();
 			$('.slideIm').css('margin-left', 30);
 			$('.slideIm').animate({marginLeft: "0"}, "fast");
 		}
