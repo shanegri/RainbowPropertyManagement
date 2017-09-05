@@ -9,7 +9,7 @@ $images = $this->images;
 for($i = 0 ; $i < sizeof($images) ; $i++){
 	?>
 	<div class="slide" >
-	<img id="<?php echo $images[$i]."?=".filemtime($images[$i]);?>" src="Images/Loading.gif" class="loading slideIm si<?php echo $i; ?>" >
+	<img id="<?php echo $images[$i]."?=".filemtime($images[$i]);?>" src="Images/loading.gif" class="loading slideIm si<?php echo $i; ?>" >
 	</div>
 	<?php
 }
