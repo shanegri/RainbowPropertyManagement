@@ -80,7 +80,7 @@ public function echoExpanded(){
 
 //shortens description for preview card
 private function shortenDescription($orgD){
-	$newLength = 150;
+	$newLength = 140;
     if(strLen($orgD) > $newLength){
       return substr($orgD, 0 , $newLength) . "...";
     } else {
