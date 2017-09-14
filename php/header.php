@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Offering full property management service to home owners in Niagara Falls since 1985. With all types of rental properties managed, including condo's, single family homes, commercial and apartment buildings. ">
+  <meta name="keywords" content="<?php MetaTags::genTags(); ?>">
   <title>Rainbow Property Management</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

@@ -8,6 +8,8 @@ include_once('./classes/AppForms/ApplicationForm.php');
 include_once('./classes/AppForms/ApplicationFormLog.php');
 include_once("./classes/aLog.php");
 include_once("./js/redirect.php");
+include_once('./classes/MetaTags.php');
+
 ob_start();
 
 session_start();
