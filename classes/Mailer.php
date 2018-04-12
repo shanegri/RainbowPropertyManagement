@@ -37,6 +37,9 @@ class Mailer {
 	}
 
 	public static function sendFormEmail($type, $body, $userEmail){
+
+		header('location:contact?done');
+		return;
 		///////
 		//$userEmail = 'shgriffin16@gmail.com';
 		///////

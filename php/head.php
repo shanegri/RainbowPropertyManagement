@@ -16,5 +16,9 @@
   <!--Custom css-->
   <link rel="stylesheet" href="css/styles.css">
 
+  <!--SKIP-->
+  <link type="text/javascript" href="http://localhost:35729/livereload.js">
+  <!--CONTINUE-->
+
   <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
 </head>

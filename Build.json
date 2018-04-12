@@ -1,0 +1,21 @@
+{
+  "filesToIgnore" : [
+    "database.json",
+    "Build.py",
+    "Build.json",
+    "jquery-3.2.1.js",
+    "BatchThumbGen.py",
+    "Bundle.pyc",
+    "package.json",
+    "jquery-3.2.1.min.js",
+    "velocity.min.js",
+    ".gitignore"
+  ],
+
+  "folderToIgnore" : [
+    "/config",
+    "/Build",
+    "/\\",
+    "/.git"
+  ]
+}

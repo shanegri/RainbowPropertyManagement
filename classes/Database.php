@@ -42,6 +42,7 @@ class Database {
     }
     $result = mysqli_query($this->conn, $query);
     if(!$result){
+      echo mysqli_error($this->conn) ;
       return false;
     } else {
       return true;
@@ -65,7 +66,8 @@ class Database {
   }
 
   public function getKey(){
-    return $this->config['key'];
+    return "test";
+    //return $this->config['key'];
   }
 
 
